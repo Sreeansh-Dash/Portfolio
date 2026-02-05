@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sreeansh Dash | Portfolio Book</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Lato:wght@300;400;700&family=Inter:wght@300;400;500;600&family=Reenie+Beanie&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Caveat:wght@500&family=La+Belle+Aurore&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Symbols+Outlined" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a1a1a",
+              "paper-light": "#fffdf5",
+              "paper-dark": "#1e293b",
+              "ink-light": "#1a1a1a",
+              "ink-dark": "#e2e8f0",
+              "accent-blue": "#3b82f6",
+              "sticky-yellow": "#fef08a",
+              "bookmark-red": "#b91c1c",
+              "wax-red": "#991b1b",
+            },
+            fontFamily: {
+              display: ["'Playfair Display'", "serif"],
+              body: ["'Lato'", "sans-serif"],
+              sans: ["'Inter'", "sans-serif"],
+              serif: ["'Cormorant Garamond'", "serif"],
+              handwriting: ["'Reenie Beanie'", "cursive"],
+              cursive: ["'Great Vibes'", "cursive"],
+              caveat: ["'Caveat'", "cursive"],
+              belle: ["'La Belle Aurore'", "cursive"],
+            },
+            boxShadow: {
+              'book': '0 20px 50px -12px rgba(0, 0, 0, 0.25)',
+              'spine-center': 'inset -30px 0 40px -20px rgba(0,0,0,0.15), inset 30px 0 40px -20px rgba(0,0,0,0.15)',
+              'spine-left': 'inset -15px 0 20px -10px rgba(0,0,0,0.1)',
+              'spine-right': 'inset 15px 0 20px -10px rgba(0,0,0,0.1)',
+              'paper-menu': '0 10px 30px -5px rgba(0, 0, 0, 0.3)',
+              'polaroid': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+            },
+            backgroundImage: {
+               'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+               'wood-pattern': "url('https://www.transparenttextures.com/patterns/wood-pattern.png')",
+            }
+          },
+        },
+      };
+    </script>
+    <style>
+      .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 4px;
+      }
+      .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #475569;
+      }
+      .spine-shadow-overlay {
+          background: linear-gradient(to right, 
+              rgba(0,0,0,0.05) 0%, 
+              rgba(0,0,0,0.15) 45%, 
+              rgba(0,0,0,0.2) 50%, 
+              rgba(0,0,0,0.15) 55%, 
+              rgba(0,0,0,0.05) 100%);
+      }
+      .dark .spine-shadow-overlay {
+          background: linear-gradient(to right, 
+              rgba(0,0,0,0.4) 0%, 
+              rgba(0,0,0,0.6) 45%, 
+              rgba(0,0,0,0.8) 50%, 
+              rgba(0,0,0,0.6) 55%, 
+              rgba(0,0,0,0.4) 100%);
+      }
+      .wax-seal {
+          background: radial-gradient(circle at 30% 30%, #dc2626, #991b1b, #7f1d1d);
+          box-shadow: 0 4px 8px rgba(0,0,0,0.4), inset 2px 2px 4px rgba(255,255,255,0.4), inset -2px -2px 4px rgba(0,0,0,0.2);
+      }
+
+      /* Ink Writing Effect */
+      .ink-reveal {
+          clip-path: inset(0 100% 0 0);
+          animation: ink-draw 3.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+      }
+      @keyframes ink-draw {
+          to { clip-path: inset(0 0 0 0); }
+      }
+
+      /* Slow fade for paragraphs to look like ink soaking in */
+      .ink-soak {
+          opacity: 0;
+          animation: soak-in 3s ease-out forwards;
+      }
+      @keyframes soak-in {
+          to { opacity: 1; }
+      }
+      
+      /* Gentle scale and fade for cards/elements */
+      .fade-scale {
+          opacity: 0;
+          transform: scale(0.98);
+          animation: fade-scale-in 1.2s ease-out forwards;
+      }
+      @keyframes fade-scale-in {
+          to { opacity: 1; transform: scale(1); }
+      }
+
+      /* Page Flip Simulation */
+      .perspective-1500 {
+          perspective: 1500px;
+      }
+      
+      .page-flip-container {
+          transition: transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+          transform-style: preserve-3d;
+          transform-origin: center center;
+          will-change: transform;
+      }
+      
+      /* Flip Left (Go to Prev): Left side lifts */
+      .flipping-prev {
+          transform: rotateY(12deg) scale(0.96) translateX(12px);
+      }
+      
+      /* Flip Right (Go to Next): Right side lifts */
+      .flipping-next {
+          transform: rotateY(-12deg) scale(0.96) translateX(-12px);
+      }
+      
+      /* Dynamic shadow for page turn */
+      .page-shadow {
+          opacity: 0;
+          transition: opacity 0.4s ease-in-out;
+          background: linear-gradient(to right, 
+              rgba(0,0,0,0) 0%, 
+              rgba(0,0,0,0.1) 40%, 
+              rgba(0,0,0,0.2) 50%, 
+              rgba(0,0,0,0.1) 60%, 
+              rgba(0,0,0,0) 100%);
+      }
+      
+      .flipping-next .page-shadow, .flipping-prev .page-shadow {
+          opacity: 1;
+      }
+
+      .dark .page-shadow {
+           background: linear-gradient(to right, 
+              rgba(0,0,0,0) 0%, 
+              rgba(0,0,0,0.3) 40%, 
+              rgba(0,0,0,0.6) 50%, 
+              rgba(0,0,0,0.3) 60%, 
+              rgba(0,0,0,0) 100%);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-gray-200 dark:bg-gray-900 transition-colors duration-300">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
