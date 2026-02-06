@@ -11,7 +11,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
   return (
     <>
       {/* Left Page: Hero / Intro (Personal Details) */}
-      <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50">
+      <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50">
         <div className="mt-8 md:mt-16 relative">
           <StickyNote className="-top-4 -right-4 md:-right-8 ink-soak" rotation="6deg" style={{ animationDelay: '1.2s' }}>
             <p className="font-handwriting text-2xl leading-tight">Smart-working,<br />Analytical,<br />Innovative,<br />Reliable.<br /><span className="block text-right mt-2 text-base">- S.D.</span></p>
@@ -49,20 +49,22 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
             <button
               onClick={() => onNavigate(Chapter.PROJECTS)}
               className="bg-primary text-white dark:bg-white dark:text-primary px-8 py-3 font-display font-bold tracking-wide text-sm flex items-center gap-2 hover:opacity-90 transition-opacity shadow-lg"
+              aria-label="View Projects"
             >
               View Work
-              <span className="material-icons text-sm">arrow_forward</span>
+              <span className="material-icons text-sm" aria-hidden="true">arrow_forward</span>
             </button>
             <button
               onClick={() => onNavigate(Chapter.CLOSING)}
               className="border border-gray-300 dark:border-gray-600 px-8 py-3 font-display font-bold tracking-wide text-sm text-gray-800 dark:text-gray-200 hover:border-gray-800 dark:hover:border-gray-300 transition-colors"
+              aria-label="Contact Me"
             >
               CONTACT
             </button>
           </div>
         </div>
 
-        <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase fade-scale" style={{ animationDelay: '1.5s' }}>
+        <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase fade-scale" style={{ animationDelay: '1.5s' }} aria-hidden="true">
           <span>Preface</span>
           <span>Page 001</span>
         </div>
@@ -71,42 +73,42 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
       {/* Right Page: Table of Contents (Index) */}
       <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative bg-paper-light dark:bg-paper-dark">
         <div className="flex items-center gap-3 mb-12 opacity-70 fade-scale" style={{ animationDelay: '0.3s' }}>
-          <span className="material-icons text-2xl">menu_book</span>
+          <span className="material-icons text-2xl" aria-hidden="true">menu_book</span>
           <span className="font-display font-bold text-lg tracking-wide">Portfolio Book</span>
         </div>
 
         <div className="mb-10 flex items-baseline justify-between border-b border-gray-300 dark:border-gray-600 pb-4 ink-reveal" style={{ animationDelay: '0.5s' }}>
-          <h1 className="font-display text-5xl md:text-6xl font-bold text-primary dark:text-white">Index</h1>
+          <h2 className="font-display text-5xl md:text-6xl font-bold text-primary dark:text-white">Index</h2>
           <span className="font-display italic text-gray-500 dark:text-gray-400 text-lg hidden sm:block">Table of Contents</span>
         </div>
 
-        <div className="flex-1 space-y-4 overflow-y-auto custom-scrollbar pr-2">
+        <nav aria-label="Table of Contents" className="flex-1 space-y-4 overflow-y-auto custom-scrollbar pr-2">
           {NAVIGATION_ITEMS.map((item, idx) => (
-            <div
+            <button
               key={item.id}
-              className="group cursor-pointer fade-scale p-5 -mx-5 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-200"
+              className="w-full text-left group cursor-pointer fade-scale p-5 -mx-5 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-200"
               style={{ animationDelay: `${0.6 + (idx * 0.1)}s` }}
               onClick={() => onNavigate(item.id)}
-              role="button"
-              tabIndex={0}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onNavigate(item.id) }}
             >
               <div className="flex items-baseline justify-between mb-1">
                 <div className="flex items-baseline gap-6">
                   <span className="text-sm font-bold text-gray-400 dark:text-gray-500 tracking-widest w-12 group-hover:text-accent-blue transition-colors">CH. {item.roman}</span>
-                  <h3 className="font-display font-bold text-2xl text-primary dark:text-white group-hover:text-accent-blue transition-colors underline decoration-transparent group-hover:decoration-accent-blue/30 underline-offset-4">{item.label}</h3>
+                  <span className="font-display font-bold text-2xl text-primary dark:text-white group-hover:text-accent-blue transition-colors underline decoration-transparent group-hover:decoration-accent-blue/30 underline-offset-4">{item.label}</span>
                 </div>
                 <span className="text-xs text-gray-400 dark:text-gray-500 font-mono group-hover:text-primary dark:group-hover:text-white transition-colors">{item.pageNumber}</span>
               </div>
               {item.subLabel && (
                 <p className="text-base text-gray-500 dark:text-gray-400 pl-[4.5rem] italic font-display group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">{item.subLabel}</p>
               )}
-            </div>
+            </button>
           ))}
-        </div>
+        </nav>
 
-        <span>Vol. 1</span>
-        <span>Page 002</span>
+        <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase fade-scale" style={{ animationDelay: '1.5s' }} aria-hidden="true">
+          <span>Vol. 1</span>
+          <span>Page 002</span>
+        </div>
       </div>
     </>
   );

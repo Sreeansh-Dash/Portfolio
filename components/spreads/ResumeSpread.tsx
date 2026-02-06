@@ -4,7 +4,7 @@ const ResumeSpread: React.FC = () => {
     return (
         <>
             {/* Left Page: Header & Education */}
-            <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50">
+            <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50">
                 <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-200/40 to-transparent dark:from-black/40 pointer-events-none"></div>
 
                 <header className="flex justify-between items-start mb-12 fade-scale" style={{ animationDelay: '0.2s' }}>

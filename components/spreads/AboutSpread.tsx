@@ -4,7 +4,7 @@ const AboutSpread: React.FC = () => {
     return (
         <>
             {/* Left Page: Narrative */}
-            <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50 bg-paper-texture bg-cover">
+            <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50 bg-paper-texture bg-cover">
                 <header className="flex justify-between items-start mb-12 fade-scale" style={{ animationDelay: '0.2s' }}>
                     <div className="flex items-center gap-3 opacity-70">
                         <span className="material-icons text-gray-600 dark:text-gray-400">menu_book</span>

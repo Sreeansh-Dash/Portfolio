@@ -20,8 +20,8 @@ const ContactSpread: React.FC = () => {
                 <span className="font-mono text-sm font-bold tracking-wide">{toastMessage}</span>
             </div>
 
-            {/* Left Page: Closing Narrative */}
-            <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50">
+            {/* Left Page: Contact Form & Info */}
+            <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50 bg-paper-texture">
                 <header className="mb-12">
                     <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 font-mono ink-reveal">
                         Chapter VIII
@@ -92,7 +92,7 @@ const ContactSpread: React.FC = () => {
                     <div className="pt-4 ink-reveal" style={{ animationDelay: '0.8s' }}>
                         <a
                             href="mailto:sreeyaju@gmail.com?subject=Collaboration%20Opportunity&body=Hi%20Sreeansh,"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-primary dark:bg-white text-white dark:text-primary text-xs font-bold uppercase tracking-widest hover:bg-black dark:hover:bg-gray-200 transition-colors relative before:absolute before:-inset-8 before:z-10"
+                            className="inline-flex items-center gap-2 px-10 py-5 bg-primary dark:bg-white text-white dark:text-primary text-base font-bold uppercase tracking-widest hover:bg-black dark:hover:bg-gray-200 transition-colors relative before: before:-left-60 before:z-10"
                         >
                             <span>Start a Conversation</span>
                             <span className="material-icons text-sm">arrow_forward</span>

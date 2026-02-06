@@ -52,13 +52,14 @@ const ProjectItem: React.FC<{ project: Project; onNavigate: (chapter: Chapter) =
           <span className="text-[10px] font-mono tracking-wider uppercase text-red-800 dark:text-red-400 block mb-0.5">
             {project.qualifier}
           </span>
-          <h4
+          <button
             onClick={handleClick}
-            className={`font-display text-xl font-bold text-primary dark:text-white transition-colors ${isLinkable ? 'cursor-pointer hover:text-accent-blue' : ''}`}
+            className={`text-left font-display text-xl font-bold text-primary dark:text-white transition-colors ${isLinkable ? 'cursor-pointer hover:text-accent-blue' : ''} focus:outline-none focus:underline`}
+            aria-expanded={!isLinkable ? isExpanded : undefined}
           >
             {project.title}
-            {isLinkable && <span className="material-icons text-sm ml-2 opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-5px] group-hover:translate-x-0">arrow_forward</span>}
-          </h4>
+            {isLinkable && <span className="material-icons text-sm ml-2 opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-5px] group-hover:translate-x-0" aria-hidden="true">arrow_forward</span>}
+          </button>
         </div>
 
         {/* Tech Stack Metadata */}
@@ -104,7 +105,7 @@ const ProjectsSpread: React.FC<Props> = ({ onNavigate }) => {
   return (
     <>
       {/* Left Page: Engineering Context */}
-      <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50">
+      <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50">
         <header className="mb-12">
           <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-2 font-mono ink-reveal">
             Portfolio Vol. 1
