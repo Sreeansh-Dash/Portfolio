@@ -21,7 +21,7 @@ const ContactSpread: React.FC = () => {
             </div>
 
             {/* Left Page: Contact Form & Info */}
-            <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50 bg-paper-texture">
+            <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-texture">
                 <header className="mb-12">
                     <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 font-mono ink-reveal">
                         Chapter VIII

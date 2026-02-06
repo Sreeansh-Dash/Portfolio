@@ -69,7 +69,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-200 dark:bg-gray-900 min-h-screen flex items-center justify-center p-4 md:p-8 font-body transition-colors duration-300 bg-wood-pattern">
+    <div className="bg-gray-200 dark:bg-gray-900 min-h-screen flex items-start md:items-center justify-center p-4 md:p-8 py-10 md:py-8 font-body transition-colors duration-300 bg-wood-pattern">
       {/* Dark Mode Toggle */}
       <div className="fixed top-6 right-6 z-50">
         <button

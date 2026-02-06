@@ -9,7 +9,7 @@ const GrievanceSpread: React.FC<Props> = () => {
     return (
         <>
             {/* Left Page: Problem, Role, Contributors */}
-            <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50 bg-[#f7f5f0] dark:bg-[#1f2937]">
+            <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-[#f7f5f0] dark:bg-[#1f2937]">
                 <header className="mb-8">
                     <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 font-mono ink-reveal">
                         Project Deep Dive · Ch. V

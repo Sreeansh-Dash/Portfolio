@@ -4,7 +4,7 @@ const CaseStudySpread: React.FC = () => {
     return (
         <>
             {/* Left Page: Narrative */}
-            <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50 bg-[#f7f5f0] dark:bg-[#252528]">
+            <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-[#f7f5f0] dark:bg-[#252528]">
                 <div className="flex items-center justify-between mb-12 border-b border-gray-300/50 dark:border-gray-700/50 pb-4 fade-scale" style={{ animationDelay: '0.2s' }}>
                     <div className="flex items-center space-x-2 text-gray-500 dark:text-gray-400">
                         <span className="material-icons text-sm" aria-hidden="true">architecture</span>

@@ -22,8 +22,8 @@ const BookLayout: React.FC<BookLayoutProps> = ({
       {/* The physical book cover/pages container */}
       <div
         className={`
-            bg-paper-light dark:bg-paper-dark w-full h-[85vh] md:h-auto md:aspect-[3/2] lg:aspect-[1.5/1] 
-            shadow-book rounded-sm flex flex-col md:flex-row overflow-hidden relative 
+            bg-paper-light dark:bg-paper-dark w-full min-h-[85vh] h-auto md:h-auto md:aspect-[3/2] lg:aspect-[1.5/1] 
+            shadow-book rounded-sm flex flex-col md:flex-row overflow-visible md:overflow-hidden relative 
             transition-all duration-300 page-flip-container 
             ${flipDirection === 'next' ? 'flipping-next' : ''}
             ${flipDirection === 'prev' ? 'flipping-prev' : ''}

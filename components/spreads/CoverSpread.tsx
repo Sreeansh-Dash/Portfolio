@@ -11,7 +11,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
   return (
     <>
       {/* Left Page: Hero / Intro (Personal Details) */}
-      <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-r border-gray-200 dark:border-gray-700/50">
+      <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50">
         <div className="mt-8 md:mt-16 relative">
           <StickyNote className="-top-4 -right-4 md:-right-8 ink-soak" rotation="6deg" style={{ animationDelay: '1.2s' }}>
             <p className="font-handwriting text-2xl leading-tight">Smart-working,<br />Analytical,<br />Innovative,<br />Reliable.<br /><span className="block text-right mt-2 text-base">- S.D.</span></p>
