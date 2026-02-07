@@ -59,7 +59,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentChapter, onNavigate }) =
   );
 
   return (
-    <nav ref={navRef} className="absolute left-1/2 -ml-2 top-0 z-50 flex flex-col items-center" aria-label="Chapter Navigation">
+    <nav ref={navRef} className="absolute right-12 md:right-24 top-0 z-50 flex flex-col items-center" aria-label="Chapter Navigation">
       {/* The Red Ribbon hanging part - Now Toggles */}
       <button
         className={`w-8 bg-bookmark-red shadow-md cursor-pointer transition-all duration-300 hover:h-24 ${isOpen ? 'h-16' : 'h-20'} border-none outline-none focus:ring-2 focus:ring-yellow-400`}
@@ -70,6 +70,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentChapter, onNavigate }) =
       >
         {!isOpen && (
           <div className="w-full h-full flex flex-col items-center justify-end pb-2">
+            <span className="text-[8px] font-bold text-white/90 writing-vertical-rl transform rotate-180 mb-1 tracking-widest opacity-80 decoration-transparent">MENU</span>
             <div className="w-0 h-0 border-l-[16px] border-r-[16px] border-b-[10px] border-l-transparent border-r-transparent border-b-paper-light dark:border-b-paper-dark"></div>
           </div>
         )}

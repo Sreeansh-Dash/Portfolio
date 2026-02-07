@@ -46,7 +46,7 @@ const BookLayout: React.FC<BookLayoutProps> = ({
         {onPrev && (
           <button
             onClick={onPrev}
-            className="absolute bottom-4 left-4 md:bottom-8 md:left-8 z-40 group flex items-center gap-2 text-primary dark:text-white transition-all duration-300 outline-none focus:ring-2 focus:ring-accent-blue rounded-full p-2"
+            className="absolute bottom-4 left-4 md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:left-4 z-40 group flex items-center gap-2 text-primary dark:text-white transition-all duration-300 outline-none focus:ring-2 focus:ring-accent-blue rounded-full p-2"
             aria-label={prevLabel ? `Previous Chapter: ${prevLabel}` : "Previous Chapter"}
           >
             {/* Arrow - subtle ghost by default */}
@@ -65,7 +65,7 @@ const BookLayout: React.FC<BookLayoutProps> = ({
         {onNext && (
           <button
             onClick={onNext}
-            className="absolute bottom-4 right-4 md:bottom-8 md:right-8 z-40 group flex items-center gap-2 text-primary dark:text-white transition-all duration-300 text-right outline-none focus:ring-2 focus:ring-accent-blue rounded-full p-2"
+            className="absolute bottom-4 right-4 md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:right-4 z-40 group flex items-center gap-2 text-primary dark:text-white transition-all duration-300 text-right outline-none focus:ring-2 focus:ring-accent-blue rounded-full p-2"
             aria-label={nextLabel ? `Next Chapter: ${nextLabel}` : "Next Chapter"}
           >
             {/* Text - hidden and non-blocking until hover */}

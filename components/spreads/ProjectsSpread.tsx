@@ -144,7 +144,7 @@ const ProjectsSpread: React.FC<Props> = ({ onNavigate }) => {
 
       {/* Right Page: Project List */}
       <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative bg-paper-light dark:bg-paper-dark">
-        <div className="absolute top-0 right-12 w-10 h-24 bg-red-800 dark:bg-red-900 shadow-lg z-30 fade-scale" style={{ animationDelay: '0.8s' }}>
+        <div className="absolute top-0 right-6 w-10 h-24 bg-red-800 dark:bg-red-900 shadow-lg z-30 fade-scale" style={{ animationDelay: '0.8s' }}>
           <div className="w-full h-full bg-gradient-to-b from-black/20 to-transparent"></div>
           <div className="absolute bottom-0 left-0 right-0 h-0 border-l-[20px] border-r-[20px] border-b-[15px] border-l-transparent border-r-transparent border-b-paper-light dark:border-b-paper-dark transform rotate-180 mb-[-15px]"></div>
           <span className="absolute top-2 left-1/2 -translate-x-1/2 text-white/70 text-[10px] font-mono font-bold writing-vertical-rl">CH. III</span>

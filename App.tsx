@@ -84,7 +84,6 @@ const App: React.FC = () => {
       </div>
 
       <div className="w-full relative">
-        <Navigation currentChapter={currentChapter} onNavigate={handleNavigate} />
         <BookLayout
           flipDirection={flipDirection}
           onPrev={prevChapter ? handlePrev : undefined}
@@ -92,6 +91,7 @@ const App: React.FC = () => {
           prevLabel={prevChapter?.label}
           nextLabel={nextChapter?.label}
         >
+          <Navigation currentChapter={currentChapter} onNavigate={handleNavigate} />
           {renderSpread()}
         </BookLayout>
       </div>
