@@ -16,9 +16,10 @@ import SmartCaneSpread from './components/spreads/SmartCaneSpread';
 const App: React.FC = () => {
   const [currentChapter, setCurrentChapter] = useState<Chapter>(Chapter.COVER);
   const [flipDirection, setFlipDirection] = useState<'next' | 'prev' | null>(null);
+  const [isFlipping, setIsFlipping] = useState(false);
 
   const handleNavigate = (targetChapter: Chapter) => {
-    if (targetChapter === currentChapter) return;
+    if (targetChapter === currentChapter || isFlipping) return;
 
     // Determine direction
     const currentIndex = NAVIGATION_ITEMS.findIndex(item => item.id === currentChapter);
@@ -26,15 +27,17 @@ const App: React.FC = () => {
     const direction = targetIndex > currentIndex ? 'next' : 'prev';
 
     setFlipDirection(direction);
+    setIsFlipping(true);
 
-    // Timing matches the CSS transition (0.4s)
+    // Timing matches the CSS transition (0.6s)
     setTimeout(() => {
       setCurrentChapter(targetChapter);
       // Short delay to allow content swap before returning
       setTimeout(() => {
         setFlipDirection(null);
+        setIsFlipping(false);
       }, 50);
-    }, 400);
+    }, 600);
   };
 
   // Determine Next and Previous Chapters for buttons
