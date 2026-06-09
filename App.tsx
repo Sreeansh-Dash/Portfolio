@@ -79,19 +79,19 @@ const App: React.FC = () => {
         <Lightfall
           colors={['#A6C8FF', '#5227FF', '#FF9FFC']}
           backgroundColor="#020d20"
-          speed={1}
-          streakCount={8}
-          streakWidth={1}
-          streakLength={1}
-          glow={1}
-          density={1}
-          twinkle={1}
-          zoom={2}
-          backgroundGlow={1}
-          opacity={1}
+          speed={0.25}
+          streakCount={4}
+          streakWidth={0.8}
+          streakLength={2}
+          glow={0.8}
+          density={0.5}
+          twinkle={0.4}
+          zoom={2.2}
+          backgroundGlow={0.5}
+          opacity={0.7}
           mouseInteraction={true}
-          mouseStrength={1}
-          mouseRadius={0.6}
+          mouseStrength={0.5}
+          mouseRadius={0.5}
         />
       </div>
 
