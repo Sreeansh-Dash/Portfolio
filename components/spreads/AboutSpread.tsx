@@ -52,7 +52,7 @@ const AboutSpread: React.FC = () => {
 
                 <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase fade-scale" style={{ animationDelay: '1.2s' }}>
                     <span>Vol. 1</span>
-                    <span>05</span>
+                    <span>03</span>
                 </div>
             </div>
 
@@ -101,7 +101,7 @@ const AboutSpread: React.FC = () => {
 
                 <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase fade-scale" style={{ animationDelay: '2.5s' }}>
                     <span>About Me</span>
-                    <span>06</span>
+                    <span>04</span>
                 </div>
             </div>
         </>

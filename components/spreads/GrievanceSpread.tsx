@@ -58,7 +58,7 @@ const GrievanceSpread: React.FC<Props> = () => {
                 </div>
 
                 <div className="mt-auto pt-8 text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1s' }}>
-                    033
+                    09
                 </div>
             </div>
 
@@ -140,7 +140,7 @@ const GrievanceSpread: React.FC<Props> = () => {
                 </div>
 
                 <div className="mt-8 flex justify-end text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1.6s' }}>
-                    Vol. 1 · Page 034
+                    Vol. 1 · Page 010
                 </div>
             </div>
         </>

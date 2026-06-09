@@ -12,49 +12,49 @@ export const NAVIGATION_ITEMS: NavItem[] = [
     id: Chapter.ABOUT,
     label: 'About Me',
     roman: 'II',
-    pageNumber: '5-6',
+    pageNumber: '3-4',
     subLabel: 'How I think'
   },
   {
     id: Chapter.PROJECTS,
     label: 'Projects',
     roman: 'III',
-    pageNumber: '14-15',
+    pageNumber: '5-6',
     subLabel: 'Selected Works'
   },
   {
     id: Chapter.DEEP_DIVE_1,
     label: 'Deep Dive 1',
     roman: 'IV',
-    pageNumber: '20-21',
+    pageNumber: '7-8',
     subLabel: 'Case Study'
   },
   {
     id: Chapter.DEEP_DIVE_2,
     label: 'Deep Dive 2',
     roman: 'V',
-    pageNumber: '33-34',
+    pageNumber: '9-10',
     subLabel: 'Analysis'
   },
   {
     id: Chapter.TOOLKIT,
     label: 'Technical Toolkit',
     roman: 'VI',
-    pageNumber: '45-46',
+    pageNumber: '11-12',
     subLabel: 'Skills & Tools'
   },
   {
     id: Chapter.RESUME,
     label: 'Resume',
     roman: 'VII',
-    pageNumber: '58-59',
+    pageNumber: '13-14',
     subLabel: 'Professional History'
   },
   {
     id: Chapter.CLOSING,
     label: 'Contact',
     roman: 'VIII',
-    pageNumber: '68-69',
+    pageNumber: '15-16',
     subLabel: 'Get in Touch'
   }
 ];

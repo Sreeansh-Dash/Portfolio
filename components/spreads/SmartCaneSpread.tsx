@@ -59,7 +59,7 @@ const SmartCaneSpread: React.FC<Props> = () => {
                 </div>
 
                 <div className="mt-auto pt-8 text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1s' }}>
-                    020
+                    07
                 </div>
             </div>
 
@@ -136,7 +136,7 @@ const SmartCaneSpread: React.FC<Props> = () => {
                 </div>
 
                 <div className="mt-8 flex justify-end text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1.4s' }}>
-                    Vol. 1 · Page 021
+                    Vol. 1 · Page 008
                 </div>
             </div>
         </>

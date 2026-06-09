@@ -59,7 +59,7 @@ const ContactSpread: React.FC = () => {
         </div>
 
         <div className="mt-auto pt-8 text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '0.8s' }}>
-          068
+          15
         </div>
       </div>
 
@@ -160,7 +160,7 @@ const ContactSpread: React.FC = () => {
         </div>
 
         <div className="mt-auto pt-8 flex justify-end text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1.2s' }}>
-          Vol. 1 · Page 069
+          Vol. 1 · Page 016
         </div>
       </div>
     </>

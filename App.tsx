@@ -12,6 +12,7 @@ import AboutSpread from './components/spreads/AboutSpread';
 import ResumeSpread from './components/spreads/ResumeSpread';
 import ContactSpread from './components/spreads/ContactSpread';
 import SmartCaneSpread from './components/spreads/SmartCaneSpread';
+import Lightfall from './components/Lightfall';
 
 const App: React.FC = () => {
   const [currentChapter, setCurrentChapter] = useState<Chapter>(Chapter.COVER);
@@ -72,7 +73,28 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-200 dark:bg-gray-900 min-h-screen flex items-start md:items-center justify-center p-4 md:p-8 py-10 md:py-8 font-body transition-colors duration-300 bg-wood-pattern">
+    <div className="min-h-screen flex items-start md:items-center justify-center p-4 md:p-8 py-10 md:py-8 font-body transition-colors duration-300 relative">
+      {/* Fullscreen background Lightfall component */}
+      <div className="fixed inset-0 -z-10 w-screen h-screen overflow-hidden bg-[#020d20]">
+        <Lightfall
+          colors={['#A6C8FF', '#5227FF', '#FF9FFC']}
+          backgroundColor="#020d20"
+          speed={1}
+          streakCount={8}
+          streakWidth={1}
+          streakLength={1}
+          glow={1}
+          density={1}
+          twinkle={1}
+          zoom={2}
+          backgroundGlow={1}
+          opacity={1}
+          mouseInteraction={true}
+          mouseStrength={1}
+          mouseRadius={0.6}
+        />
+      </div>
+
       {/* Dark Mode Toggle */}
       <div className="fixed top-6 right-6 z-50">
         <button

@@ -53,7 +53,7 @@ const SkillsSpread: React.FC = () => {
         </div>
 
         <div className="mt-auto pt-8 text-xs font-mono text-gray-600 fade-scale" style={{ animationDelay: '0.8s' }}>
-          045
+          11
         </div>
       </div>
 
@@ -114,7 +114,7 @@ const SkillsSpread: React.FC = () => {
         </div>
 
         <div className="mt-auto pt-8 flex justify-end text-xs font-mono text-gray-600 fade-scale" style={{ animationDelay: '1.5s' }}>
-          Vol. 1 · Page 046
+          Vol. 1 · Page 012
         </div>
       </div>
     </>

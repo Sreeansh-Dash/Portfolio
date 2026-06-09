@@ -46,7 +46,7 @@ const ResumeSpread: React.FC = () => {
 
                 <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase fade-scale" style={{ animationDelay: '1.2s' }}>
                     <span>Vol. 1</span>
-                    <span>058</span>
+                    <span>13</span>
                 </div>
             </div>
 
@@ -131,7 +131,7 @@ const ResumeSpread: React.FC = () => {
 
                 <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase fade-scale" style={{ animationDelay: '2.5s' }}>
                     <span>Resume</span>
-                    <span>059</span>
+                    <span>14</span>
                 </div>
             </div>
         </>

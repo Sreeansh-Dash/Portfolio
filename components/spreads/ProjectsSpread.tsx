@@ -147,7 +147,7 @@ const ProjectsSpread: React.FC<Props> = ({ onNavigate }) => {
         </div>
 
         <div className="mt-auto pt-8 text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1s' }}>
-          014
+          05
         </div>
       </div>
 
@@ -175,7 +175,7 @@ const ProjectsSpread: React.FC<Props> = ({ onNavigate }) => {
         </div>
 
         <div className="mt-auto pt-8 flex justify-end text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1.5s' }}>
-          015
+          06
         </div>
       </div>
     </>
