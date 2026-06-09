@@ -27,4 +27,5 @@ export interface Project {
   techStack?: string;
   ctaText?: string;
   link?: Chapter;
+  comingSoon?: boolean;
 }

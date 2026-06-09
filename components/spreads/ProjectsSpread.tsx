@@ -10,6 +10,7 @@ const ProjectItem: React.FC<{ project: Project; onNavigate: (chapter: Chapter) =
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleClick = () => {
+    if (project.comingSoon) return;
     if (project.link) {
       onNavigate(project.link);
     } else {
@@ -17,13 +18,13 @@ const ProjectItem: React.FC<{ project: Project; onNavigate: (chapter: Chapter) =
     }
   };
 
-  const isLinkable = !!project.link;
+  const isLinkable = !!project.link && !project.comingSoon;
   const isPortfolio = project.title === "Portfolio Site";
 
   // Icon selection based on project title
   let iconSrc = project.image; // Default fallback (though we replace it below)
   if (project.title === "Smart Cane") iconSrc = "/accessible.png";
-  else if (project.title === "Grievance System") iconSrc = "/rocket.png";
+  else if (project.title === "Grievance System" || project.title === "Grievance AI") iconSrc = "/rocket.png";
   else if (project.title === "Portfolio Site") iconSrc = "/book_ribbon.png";
 
   return (
@@ -54,8 +55,9 @@ const ProjectItem: React.FC<{ project: Project; onNavigate: (chapter: Chapter) =
           </span>
           <button
             onClick={handleClick}
-            className={`text-left font-display text-xl font-bold text-primary dark:text-white transition-colors ${isLinkable ? 'cursor-pointer hover:text-accent-blue' : ''} focus:outline-none focus:underline`}
-            aria-expanded={!isLinkable ? isExpanded : undefined}
+            disabled={project.comingSoon}
+            className={`text-left font-display text-xl font-bold text-primary dark:text-white transition-colors ${isLinkable ? 'cursor-pointer hover:text-accent-blue' : ''} ${project.comingSoon ? 'cursor-default' : ''} focus:outline-none focus:underline`}
+            aria-expanded={!isLinkable && !project.comingSoon ? isExpanded : undefined}
           >
             {project.title}
             {isLinkable && <span className="material-icons text-sm ml-2 opacity-0 group-hover:opacity-100 transition-opacity translate-x-[-5px] group-hover:translate-x-0" aria-hidden="true">arrow_forward</span>}
@@ -69,7 +71,7 @@ const ProjectItem: React.FC<{ project: Project; onNavigate: (chapter: Chapter) =
 
         {/* Description & CTA */}
         <div className="relative">
-          <p className={`text-sm text-ink-light dark:text-gray-400 leading-relaxed font-serif ${isExpanded ? '' : 'line-clamp-2'}`}>
+          <p className={`text-sm text-ink-light dark:text-gray-400 leading-relaxed font-serif ${isExpanded || project.comingSoon ? '' : 'line-clamp-2'}`}>
             {project.description}
           </p>
 
@@ -79,6 +81,13 @@ const ProjectItem: React.FC<{ project: Project; onNavigate: (chapter: Chapter) =
                 Viewing right now!
                 <span className="material-icons text-[12px]">check_circle</span>
               </span>
+            ) : project.comingSoon ? (
+              <button
+                disabled
+                className="text-xs font-sans font-bold tracking-wide text-stone-500 dark:text-stone-400 opacity-50 cursor-not-allowed inline-flex items-center gap-1 uppercase"
+              >
+                {project.ctaText || "Coming Soon"}
+              </button>
             ) : (
               <button
                 onClick={(e) => {
