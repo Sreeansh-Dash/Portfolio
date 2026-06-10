@@ -22,7 +22,7 @@ import PageCurlWrapper from './components/PageCurlWrapper';
 const App: React.FC = () => {
   const [currentChapter, setCurrentChapter] = useState<Chapter>(Chapter.COVER);
   const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
-  const { reduceAnimations, setReduceAnimations } = useAnimation();
+  const { reduceAnimations, liteMode, setReduceAnimations } = useAnimation();
 
   // Book opening cinematic state
   const [bookOpened, setBookOpened] = useState<boolean>(() => {
@@ -160,7 +160,7 @@ const App: React.FC = () => {
                   <PageCurlWrapper
                     key={currentChapter}
                     direction={direction}
-                    reduceAnimations={reduceAnimations}
+                    reduceAnimations={liteMode}
                   >
                     {renderSpread()}
                   </PageCurlWrapper>

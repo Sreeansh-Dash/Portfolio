@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import SplitText from '../ui/SplitText';
-import BlurText from '../ui/BlurText';
+import WrittenText from '../ui/WrittenText';
 
 const SkillsSpread: React.FC = () => {
   return (
@@ -15,16 +15,16 @@ const SkillsSpread: React.FC = () => {
           <h1 className="font-display text-4xl lg:text-5xl text-white font-black mb-6 tracking-tight">
             <SplitText text="Technical Toolkit" delay={70} duration={0.4} />
           </h1>
-          <div className="w-12 h-0.5 bg-gray-600 ink-reveal" style={{ animationDelay: '0.4s' }}></div>
+          <div className="w-12 h-0.5 bg-gray-600"></div>
         </header>
 
         <div className="flex-grow space-y-8 max-w-prose pt-1">
           <p className="font-serif text-lg leading-relaxed text-gray-300">
             <span className="text-5xl font-display float-left mr-3 mt-[-6px] text-white">T</span>
-            <BlurText
+            <WrittenText
               text="ools are not the work — they're how the work gets done. The most important skill is knowing which tool the problem actually needs, and why."
-              animateBy="words"
-              delay={20}
+              delay={200}
+              speed={10}
             />
           </p>
           <p className="font-serif text-lg leading-relaxed text-gray-300">
@@ -59,7 +59,7 @@ const SkillsSpread: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-auto pt-8 text-xs font-mono text-gray-600 fade-scale" style={{ animationDelay: '0.8s' }}>
+        <div className="mt-auto pt-8 text-xs font-mono text-gray-600">
           11
         </div>
       </div>
@@ -107,7 +107,7 @@ const SkillsSpread: React.FC = () => {
               skills: ['Git', 'GitHub', 'VS Code', 'Groq API', 'Embedded Systems']
             }
           ].map((item, idx) => (
-            <div key={item.group} className="ink-reveal" style={{ animationDelay: `${0.8 + (idx * 0.1)}s` }}>
+            <div key={item.group}>
               <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-3">{item.group}</h4>
               <div className="flex flex-wrap gap-2">
                 {item.skills.map(skill => (
@@ -123,7 +123,7 @@ const SkillsSpread: React.FC = () => {
           ))}
 
           {/* Certifications Block */}
-          <div className="pt-6 border-t border-gray-800 ink-reveal" style={{ animationDelay: '1.4s' }}>
+          <div className="pt-6 border-t border-gray-800">
             <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-3">Certifications</h4>
             <div className="border border-gray-800 p-4 bg-black/10 rounded-sm">
               <span className="block font-sans font-bold text-sm text-white uppercase tracking-wider">Google UX Design Certificate</span>
@@ -134,7 +134,7 @@ const SkillsSpread: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-auto pt-8 flex justify-end text-xs font-mono text-gray-600 fade-scale" style={{ animationDelay: '1.5s' }}>
+        <div className="mt-auto pt-8 flex justify-end text-xs font-mono text-gray-600">
           Vol. 1 · Page 012
         </div>
       </div>

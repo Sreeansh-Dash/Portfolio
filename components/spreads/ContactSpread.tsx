@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import SplitText from '../ui/SplitText';
-import BlurText from '../ui/BlurText';
+import WrittenText from '../ui/WrittenText';
 import { useAnimation } from '../AnimationContext';
 
 const ContactSpread: React.FC = () => {
@@ -32,10 +32,10 @@ const ContactSpread: React.FC = () => {
         <div className="flex-grow space-y-6 pt-1">
           <p className="font-serif text-lg leading-relaxed text-ink-light dark:text-gray-300 text-justify">
             <span className="float-left text-5xl font-display font-bold mr-3 mt-[-6px] text-primary dark:text-white">I</span>
-            <BlurText
+            <WrittenText
               text="'m a third-year student at VIT Chennai — actively building, actively learning, and actively looking for opportunities to contribute to real work."
-              animateBy="words"
-              delay={20}
+              delay={200}
+              speed={10}
             />
           </p>
           <p className="font-serif text-lg leading-relaxed text-ink-light dark:text-gray-300 text-justify">
@@ -67,7 +67,7 @@ const ContactSpread: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-auto pt-8 text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '0.8s' }}>
+        <div className="mt-auto pt-8 text-xs font-mono text-gray-400">
           15
         </div>
       </div>
@@ -93,7 +93,7 @@ const ContactSpread: React.FC = () => {
         </header>
 
         <div className="flex-grow flex flex-col justify-between">
-          <div className="space-y-4 ink-reveal" style={{ animationDelay: '0.8s' }}>
+          <div className="space-y-4">
             {/* Email Card */}
             <div className="border border-gray-200 dark:border-gray-700 p-5 bg-white/60 dark:bg-gray-800/40 hover:border-gray-400 transition-colors flex items-center justify-between rounded-sm">
               <div className="flex items-center gap-4">
@@ -181,12 +181,12 @@ const ContactSpread: React.FC = () => {
             transition={reduceAnimations ? {} : { duration: 6, repeat: Infinity, ease: 'easeInOut' }}
           >
             <p className="font-handwriting text-3xl text-center text-gray-500 dark:text-gray-400">
-              <BlurText text="&ldquo;Thank you for reading.&rdquo;" animateBy="words" delay={30} />
+              <WrittenText text="&ldquo;Thank you for reading.&rdquo;" delay={200} speed={25} fontHandwriting={true} />
             </p>
           </motion.div>
         </div>
 
-        <div className="mt-auto pt-8 flex justify-end text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1.2s' }}>
+        <div className="mt-auto pt-8 flex justify-end text-xs font-mono text-gray-400">
           Vol. 1 · Page 016
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import SplitText from '../ui/SplitText';
-import BlurText from '../ui/BlurText';
+import WrittenText from '../ui/WrittenText';
 import { useAnimation } from '../AnimationContext';
 
 const ResumeSpread: React.FC = () => {
@@ -13,7 +13,7 @@ const ResumeSpread: React.FC = () => {
             <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50">
                 <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-200/40 to-transparent dark:from-black/40 pointer-events-none"></div>
 
-                <header className="flex justify-between items-start mb-12 fade-scale" style={{ animationDelay: '0.2s' }}>
+                <header className="flex justify-between items-start mb-12">
                     <div className="flex items-center space-x-2 text-ink-light dark:text-ink-dark opacity-70">
                         <span className="material-icons text-sm">menu_book</span>
                         <span className="text-xs uppercase tracking-widest font-semibold">Portfolio Book</span>
@@ -31,7 +31,7 @@ const ResumeSpread: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="space-y-8 ink-soak" style={{ animationDelay: '0.8s' }}>
+                    <div className="space-y-8">
                         <div className="space-y-6">
                             <h3 className="text-xs uppercase tracking-widest text-gray-400 font-semibold mb-4">Education</h3>
 
@@ -54,7 +54,7 @@ const ResumeSpread: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase fade-scale" style={{ animationDelay: '1.2s' }}>
+                <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase">
                     <span>Vol. 1</span>
                     <span>13</span>
                 </div>
@@ -77,7 +77,7 @@ const ResumeSpread: React.FC = () => {
                 />
 
                 {/* Download Action (Top Right) */}
-                <div className="absolute top-12 right-12 z-30 fade-scale" style={{ animationDelay: '2.2s' }}>
+                <div className="absolute top-12 right-12 z-30">
                     <a
                         href="/Sreeansh_dash_resume_visual.pdf"
                         download
@@ -93,14 +93,14 @@ const ResumeSpread: React.FC = () => {
                           animate={reduceAnimations ? { rotate: -2 } : { rotate: [-2, -0.5, -2, -3.5, -2] }}
                           transition={reduceAnimations ? {} : { duration: 8, repeat: Infinity, ease: 'easeInOut' }}
                         >
-                          <BlurText text="Full resume?" animateBy="words" delay={40} />
+                          <WrittenText text="Full resume?" delay={400} speed={15} />
                         </motion.span>
                     </a>
                 </div>
 
                 <div className="mt-8 z-10 space-y-10 pl-4 lg:pl-8">
                     {/* Experience */}
-                    <section className="ink-reveal" style={{ animationDelay: '1.4s' }}>
+                    <section>
                         <h3 className="font-serif text-primary dark:text-white text-xl mb-6 flex items-center">
                             <span className="w-8 h-[1px] bg-primary dark:bg-white mr-3"></span>
                             <SplitText text="Experience" delay={50} duration={0.4} />
@@ -124,7 +124,7 @@ const ResumeSpread: React.FC = () => {
                     </section>
 
                     {/* Certifications */}
-                    <section className="ink-reveal" style={{ animationDelay: '1.6s' }}>
+                    <section>
                         <h3 className="font-serif text-primary dark:text-white text-xl mb-4 flex items-center">
                             <span className="w-8 h-[1px] bg-primary dark:bg-white mr-3"></span>
                             <SplitText text="Certifications" delay={50} duration={0.4} />
@@ -140,7 +140,7 @@ const ResumeSpread: React.FC = () => {
                     </section>
 
                     {/* Skills Summary */}
-                    <section className="ink-reveal" style={{ animationDelay: '1.8s' }}>
+                    <section>
                         <h3 className="font-serif text-primary dark:text-white text-xl mb-6 flex items-center">
                             <span className="w-8 h-[1px] bg-primary dark:bg-white mr-3"></span>
                             <SplitText text="Skills Summary" delay={50} duration={0.4} />
@@ -162,7 +162,7 @@ const ResumeSpread: React.FC = () => {
                     </section>
                 </div>
 
-                <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase fade-scale" style={{ animationDelay: '2.5s' }}>
+                <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase">
                     <span>Resume</span>
                     <span>14</span>
                 </div>

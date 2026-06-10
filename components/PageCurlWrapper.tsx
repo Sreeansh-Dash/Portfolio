@@ -14,24 +14,37 @@ const PageCurlWrapper: React.FC<PageCurlWrapperProps> = ({
 }) => {
   const rotateYVal = useMotionValue(0);
 
-  // Map the rotateY motion value to a shadow opacity
-  const shadowOpacity = useTransform(
+  // Map the rotateY motion value to a shadow opacity for the crease
+  const creaseOpacity = useTransform(
     rotateYVal,
     [-180, -90, 0, 90, 180],
-    [0, 0.45, 0, 0.45, 0]
+    [0, 0.6, 0, 0.6, 0]
+  );
+
+  // Map the rotateY to a sweeping highlight to simulate a curved surface catching light
+  const highlightPosition = useTransform(
+    rotateYVal,
+    [-180, 0, 180],
+    ['100%', '50%', '0%']
   );
 
   const pageCurlVariants = {
     enter: (dir: number) => ({
       rotateY: dir > 0 ? 180 : -180,
+      scale: 0.95,
+      rotateZ: dir > 0 ? -2 : 2,
       opacity: 0,
     }),
     center: {
       rotateY: 0,
+      scale: 1,
+      rotateZ: 0,
       opacity: 1,
     },
     exit: (dir: number) => ({
       rotateY: dir > 0 ? -180 : 180,
+      scale: 0.95,
+      rotateZ: dir > 0 ? 2 : -2,
       opacity: 0,
     }),
   };
@@ -89,8 +102,8 @@ const PageCurlWrapper: React.FC<PageCurlWrapperProps> = ({
         <motion.div
           className="absolute inset-0 pointer-events-none z-30"
           style={{
-            opacity: shadowOpacity,
-            background: 'linear-gradient(to right, transparent, rgba(0, 0, 0, 0.45), transparent)',
+            opacity: creaseOpacity,
+            background: useTransform(highlightPosition, (pos) => `linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(255,255,255,0.2) ${pos}, rgba(0,0,0,0.5) 100%)`),
           }}
         />
       </motion.div>

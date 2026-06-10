@@ -8,7 +8,7 @@ interface Props {
 
 const BookOpeningSequence: React.FC<Props> = ({ onComplete }) => {
   const [phase, setPhase] = useState<'closed' | 'opening' | 'done'>('closed');
-  const { reduceAnimations } = useAnimation();
+  const { liteMode: reduceAnimations } = useAnimation();
 
   useEffect(() => {
     if (reduceAnimations) {

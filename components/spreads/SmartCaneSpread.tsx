@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import { Chapter } from '../../types';
 import SplitText from '../ui/SplitText';
 import BlurText from '../ui/BlurText';
+import WrittenText from '../ui/WrittenText';
+import InteractiveWord from '../ui/InteractiveWord';
 
 interface Props {
     onNavigate: (chapter: Chapter) => void;
@@ -39,17 +41,17 @@ const SmartCaneSpread: React.FC<Props> = () => {
                     </div>
 
                     {/* Key Decisions */}
-                    <div className="font-serif text-sm text-ink-light dark:text-gray-300 leading-relaxed max-w-prose ink-soak" style={{ animationDelay: '0.8s' }}>
+                    <div className="font-serif text-sm text-ink-light dark:text-gray-300 leading-relaxed max-w-prose">
                         <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-2">Key Decisions</h3>
                         <ul className="list-disc list-outside pl-4 space-y-1.5 text-justify">
-                            <li>Ackermann geometry chosen over simpler pivot steering for natural walking-pace control</li>
-                            <li>Multi-angle ultrasonic array rather than single forward sensor — covers low obstacles and drops</li>
-                            <li>Haptic feedback prioritised over audio-only — usable in noisy environments</li>
-                            <li>Offline-first: no cloud dependency, works in any environment</li>
+                            <li><InteractiveWord text="Ackermann geometry" hoverClass="font-handwriting text-lg text-red-600" /> chosen over simpler pivot steering for natural walking-pace control</li>
+                            <li><WrittenText text="Multi-angle ultrasonic array rather than single forward sensor — covers low obstacles and drops" delay={300} speed={10} /></li>
+                            <li><WrittenText text="Haptic feedback prioritised over audio-only — usable in noisy environments" delay={600} speed={10} /></li>
+                            <li><InteractiveWord text="Offline-first" hoverClass="font-bold text-primary" />: <WrittenText text="no cloud dependency, works in any environment" delay={900} speed={10} /></li>
                         </ul>
                     </div>
 
-                    <div className="mt-6 flex flex-col md:flex-row gap-8 text-sm ink-soak" style={{ animationDelay: '1.0s' }}>
+                    <div className="mt-6 flex flex-col md:flex-row gap-8 text-sm">
                         {/* Contributors */}
                         <div className="flex-1">
                             <h4 className="font-mono text-xs uppercase tracking-widest text-gray-500 mb-2 border-b border-gray-200 pb-1">Contributors</h4>
@@ -71,7 +73,7 @@ const SmartCaneSpread: React.FC<Props> = () => {
                     </div>
                 </div>
 
-                <div className="mt-auto pt-8 text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1.2s' }}>
+                <div className="mt-auto pt-8 text-xs font-mono text-gray-400">
                     07
                 </div>
             </div>
@@ -95,13 +97,13 @@ const SmartCaneSpread: React.FC<Props> = () => {
                     <h3 className="font-display text-2xl font-bold text-ink-light dark:text-white mb-3 border-b-2 border-primary/10 pb-2">
                         <SplitText text="What Was Built" delay={50} duration={0.4} />
                     </h3>
-                    <p className="font-serif text-sm text-ink-light dark:text-gray-300 leading-relaxed text-justify ink-soak" style={{ animationDelay: '0.8s' }}>
-                        A mobility aid integrating Ackermann steering geometry for directional stability, ultrasonic sensors for proximity detection across multiple angles, and haptic + audio feedback calibrated to terrain type and obstacle distance. The system runs entirely on embedded hardware with no external connectivity required.
+                    <p className="font-serif text-sm text-ink-light dark:text-gray-300 leading-relaxed text-justify">
+                        <WrittenText text="A mobility aid integrating Ackermann steering geometry for directional stability, ultrasonic sensors for proximity detection across multiple angles, and haptic + audio feedback calibrated to terrain type and obstacle distance. The system runs entirely on embedded hardware with no external connectivity required." delay={400} speed={8} />
                     </p>
                 </div>
 
                 {/* Visual Reference */}
-                <div className="relative mb-4 group flex justify-center fade-scale" style={{ animationDelay: '1.0s' }}>
+                <div className="relative mb-4 group flex justify-center">
                     <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-32 h-6 bg-yellow-100/80 dark:bg-yellow-900/40 rotate-1 shadow-sm border border-yellow-200/50 backdrop-blur-[1px] z-20"></div>
 
                     <div className="relative">
@@ -130,15 +132,15 @@ const SmartCaneSpread: React.FC<Props> = () => {
                 </div>
 
                 {/* What I Learned */}
-                <div className="mb-4 ink-reveal" style={{ animationDelay: '1.2s' }}>
+                <div className="mb-4">
                     <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-1">What I Learned</h4>
-                    <p className="font-serif text-xs italic text-ink-light dark:text-gray-300 leading-relaxed text-justify">
-                        Building in hardware makes every decision irreversible in a way that software doesn't. You can't hot-reload a circuit. That constraint changed how I approach architecture generally — decide slowly, build once.
+                    <p className="font-serif text-xs text-ink-light dark:text-gray-300 leading-relaxed text-justify">
+                        <WrittenText text="Building in hardware makes every decision irreversible in a way that software doesn't. You can't hot-reload a circuit. That constraint changed how I approach architecture generally — decide slowly, build once." delay={1000} speed={12} fontHandwriting={true} />
                     </p>
                 </div>
 
                 {/* Outcome Section */}
-                <div className="mt-auto ink-reveal" style={{ animationDelay: '1.4s' }}>
+                <div className="mt-auto">
                     <h3 className="font-display text-sm font-bold text-ink-light dark:text-white mb-2">
                         Outcome
                     </h3>
@@ -162,7 +164,7 @@ const SmartCaneSpread: React.FC<Props> = () => {
                     </div>
                 </div>
 
-                <div className="mt-8 flex justify-end text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1.4s' }}>
+                <div className="mt-8 flex justify-end text-xs font-mono text-gray-400">
                     Vol. 1 · Page 008
                 </div>
             </div>

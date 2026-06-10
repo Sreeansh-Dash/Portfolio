@@ -17,7 +17,7 @@ const BookLayout: React.FC<BookLayoutProps> = ({
   prevLabel,
   nextLabel
 }) => {
-  const { reduceAnimations } = useAnimation();
+  const { liteMode: reduceAnimations } = useAnimation();
 
   // Heartbeat pulse animation for nav buttons
   const pulseAnimate = reduceAnimations ? { scale: 1 } : { scale: [1, 1.04, 1] };

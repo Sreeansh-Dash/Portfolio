@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useAnimation } from './AnimationContext';
 
 const InkCursor: React.FC = () => {
-  const { reduceAnimations } = useAnimation();
+  const { liteMode: reduceAnimations } = useAnimation();
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
 

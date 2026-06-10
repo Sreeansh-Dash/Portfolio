@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { PROJECTS } from '../../constants';
 import { Project, Chapter } from '../../types';
 import SplitText from '../ui/SplitText';
-import BlurText from '../ui/BlurText';
+import WrittenText from '../ui/WrittenText';
 import { useAnimation } from '../AnimationContext';
 
 interface Props {
@@ -140,10 +140,10 @@ const ProjectsSpread: React.FC<Props> = ({ onNavigate }) => {
         <div className="flex-grow pt-1">
           <p className="text-lg text-ink-light dark:text-gray-300 text-justify hyphens-auto font-serif leading-relaxed">
             <span className="float-left text-6xl font-display font-bold mr-3 mt-[-10px] text-primary dark:text-white">E</span>
-            <BlurText
+            <WrittenText
               text="ngineering is the art of balancing constraints. Whether designing embedded control loops or distributed AI pipelines, my focus is on system integrity, scalability, and impact."
-              animateBy="words"
-              delay={20}
+              delay={200}
+              speed={8}
             />
           </p>
           <p className="text-lg text-ink-light dark:text-gray-300 text-justify hyphens-auto mt-8 font-serif leading-relaxed">
@@ -160,7 +160,7 @@ const ProjectsSpread: React.FC<Props> = ({ onNavigate }) => {
           </div>
         </div>
 
-        <div className="mt-auto pt-8 text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1s' }}>
+        <div className="mt-auto pt-8 text-xs font-mono text-gray-400">
           05
         </div>
       </div>
@@ -200,14 +200,14 @@ const ProjectsSpread: React.FC<Props> = ({ onNavigate }) => {
 
           <ul className="space-y-10 overflow-y-auto custom-scrollbar h-full pr-4 pb-4">
             {PROJECTS.map((project, idx) => (
-              <li key={idx} className="group cursor-default fade-scale" style={{ animationDelay: `${1 + (idx * 0.2)}s` }}>
+              <li key={idx} className="group cursor-default">
                 <ProjectItem project={project} onNavigate={onNavigate} />
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="mt-auto pt-8 flex justify-end text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1.5s' }}>
+        <div className="mt-auto pt-8 flex justify-end text-xs font-mono text-gray-400">
           06
         </div>
       </div>

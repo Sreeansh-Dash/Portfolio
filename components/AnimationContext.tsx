@@ -3,11 +3,15 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 interface AnimationContextType {
   reduceAnimations: boolean;
   setReduceAnimations: (reduce: boolean) => void;
+  isLowEndDevice: boolean;
+  liteMode: boolean;
 }
 
 const AnimationContext = createContext<AnimationContextType>({
   reduceAnimations: false,
   setReduceAnimations: () => {},
+  isLowEndDevice: false,
+  liteMode: false,
 });
 
 export const AnimationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -22,6 +26,16 @@ export const AnimationProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     }
     return false;
   });
+
+  const [isLowEndDevice] = useState<boolean>(() => {
+    if (typeof window !== 'undefined' && typeof navigator !== 'undefined') {
+      return (navigator.hardwareConcurrency ?? 4) <= 4 ||
+        (('deviceMemory' in navigator) && (navigator as any).deviceMemory < 4);
+    }
+    return false;
+  });
+
+  const liteMode = reduceAnimations || isLowEndDevice;
 
   const setReduceAnimations = (reduce: boolean) => {
     setReduceAnimationsState(reduce);
@@ -54,7 +68,7 @@ export const AnimationProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   }, [reduceAnimations]);
 
   return (
-    <AnimationContext.Provider value={{ reduceAnimations, setReduceAnimations }}>
+    <AnimationContext.Provider value={{ reduceAnimations, setReduceAnimations, isLowEndDevice, liteMode }}>
       {children}
     </AnimationContext.Provider>
   );

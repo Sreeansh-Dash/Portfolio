@@ -2,7 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Chapter } from '../../types';
 import SplitText from '../ui/SplitText';
-import BlurText from '../ui/BlurText';
+import WrittenText from '../ui/WrittenText';
+import InteractiveWord from '../ui/InteractiveWord';
 
 interface Props {
     onNavigate?: (chapter: Chapter) => void;
@@ -30,10 +31,10 @@ const GrievanceSpread: React.FC<Props> = () => {
                     <div className="font-serif text-base text-ink-light dark:text-gray-300 text-justify leading-relaxed">
                         <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-2">Problem Framing</h3>
                         <p>
-                            <BlurText
+                            <WrittenText
                                 text="Manual grievance handling in institutions is slow, inconsistent, and opaque. Complaints get lost, misrouted, or deprioritised arbitrarily. The goal was an AI-driven pipeline that removes human bottlenecks from classification and routing — not from resolution."
-                                animateBy="words"
-                                delay={20}
+                                delay={200}
+                                speed={10}
                             />
                         </p>
                     </div>
@@ -53,13 +54,13 @@ const GrievanceSpread: React.FC<Props> = () => {
                     </div>
 
                     {/* Key Decisions */}
-                    <div className="font-serif text-xs text-ink-light dark:text-gray-300 leading-relaxed space-y-2 max-w-prose ink-soak" style={{ animationDelay: '0.8s' }}>
+                    <div className="font-serif text-xs text-ink-light dark:text-gray-300 leading-relaxed space-y-2 max-w-prose">
                         <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-2">Key Decisions</h3>
                         <ul className="list-disc list-outside pl-4 space-y-1 text-justify">
-                            <li>NLP classification handles category + urgency in one pass — fewer model calls, lower latency</li>
-                            <li>Rule-based routing on top of ML output — keeps decisions inspectable and correctable</li>
-                            <li>Designed for institutional deployment: no PII stored beyond the session</li>
-                            <li>Explainability over raw accuracy — a wrong decision that can be traced is better than a right one that can't</li>
+                            <li><InteractiveWord text="NLP classification" hoverClass="font-handwriting text-lg text-primary" /> <WrittenText text="handles category + urgency in one pass — fewer model calls, lower latency" delay={400} speed={10} /></li>
+                            <li><WrittenText text="Rule-based routing on top of ML output — keeps decisions inspectable and correctable" delay={800} speed={10} /></li>
+                            <li><InteractiveWord text="Designed for institutional deployment" hoverClass="font-bold text-primary" />: <WrittenText text="no PII stored beyond the session" delay={1200} speed={10} /></li>
+                            <li><WrittenText text="Explainability over raw accuracy — a wrong decision that can be traced is better than a right one that can't" delay={1600} speed={10} /></li>
                         </ul>
                     </div>
 
@@ -73,7 +74,7 @@ const GrievanceSpread: React.FC<Props> = () => {
                     </div>
                 </div>
 
-                <div className="mt-auto pt-8 text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1s' }}>
+                <div className="mt-auto pt-8 text-xs font-mono text-gray-400">
                     09
                 </div>
             </div>
@@ -97,13 +98,13 @@ const GrievanceSpread: React.FC<Props> = () => {
                     <h3 className="font-display text-2xl font-bold text-ink-light dark:text-white mb-3 border-b-2 border-primary/10 pb-2">
                         <SplitText text="System Architecture" delay={50} duration={0.4} />
                     </h3>
-                    <p className="font-serif text-sm text-ink-light dark:text-gray-300 leading-relaxed text-justify ink-soak" style={{ animationDelay: '0.8s' }}>
-                        The system takes unstructured text input (grievance submissions), runs NLP classification to assign category and urgency, applies a rule-based decision workflow to route to the correct handler, and generates a structured resolution recommendation. Each stage is auditable and explainable — not a black box.
+                    <p className="font-serif text-sm text-ink-light dark:text-gray-300 leading-relaxed text-justify">
+                        <WrittenText text="The system takes unstructured text input (grievance submissions), runs NLP classification to assign category and urgency, applies a rule-based decision workflow to route to the correct handler, and generates a structured resolution recommendation. Each stage is auditable and explainable — not a black box." delay={400} speed={10} />
                     </p>
                 </div>
 
                 {/* Visual Reference: Architecture */}
-                <div className="relative mb-4 group flex justify-center py-2 fade-scale" style={{ animationDelay: '1.0s' }}>
+                <div className="relative mb-4 group flex justify-center py-2">
                     {/* Simple tape effect */}
                     <div className="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-6 bg-blue-100/80 dark:bg-blue-900/40 -rotate-1 shadow-sm opacity-80 z-20 mix-blend-multiply dark:mix-blend-overlay"></div>
 
@@ -125,7 +126,7 @@ const GrievanceSpread: React.FC<Props> = () => {
                 </div>
 
                 {/* Tech Stack */}
-                <div className="mb-4 ink-reveal" style={{ animationDelay: '1.2s' }}>
+                <div className="mb-4">
                     <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-1.5">Technology Stack</h4>
                     <div className="flex flex-wrap gap-2">
                         {['Python', 'Flask', 'NLP Classification', 'RESTful APIs'].map(tech => (
@@ -137,15 +138,15 @@ const GrievanceSpread: React.FC<Props> = () => {
                 </div>
 
                 {/* What I Learned */}
-                <div className="mb-4 ink-reveal" style={{ animationDelay: '1.3s' }}>
+                <div className="mb-4">
                     <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-1">What I Learned</h4>
-                    <p className="font-serif text-xs italic text-ink-light dark:text-gray-300 leading-relaxed text-justify">
-                        There's a meaningful difference between building a classifier and building a decision system. The classifier is one component. The architecture around it — routing logic, fallback handling, auditability — is where the actual product lives.
+                    <p className="font-serif text-xs text-ink-light dark:text-gray-300 leading-relaxed text-justify">
+                        <WrittenText text="There's a meaningful difference between building a classifier and building a decision system. The classifier is one component. The architecture around it — routing logic, fallback handling, auditability — is where the actual product lives." delay={800} speed={12} fontHandwriting={true} />
                     </p>
                 </div>
 
                 {/* Outcome Section */}
-                <div className="mt-auto ink-reveal" style={{ animationDelay: '1.4s' }}>
+                <div className="mt-auto">
                     <h3 className="font-display text-sm font-bold text-ink-light dark:text-white mb-2">
                         Outcome
                     </h3>
@@ -169,7 +170,7 @@ const GrievanceSpread: React.FC<Props> = () => {
                     </div>
                 </div>
 
-                <div className="mt-8 flex justify-end text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1.6s' }}>
+                <div className="mt-8 flex justify-end text-xs font-mono text-gray-400">
                     Vol. 1 · Page 010
                 </div>
             </div>

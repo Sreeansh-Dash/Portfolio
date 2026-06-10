@@ -35,7 +35,7 @@ const SplitText: React.FC<SplitTextProps> = ({
     margin: rootMargin as any,
   });
 
-  const { reduceAnimations } = useAnimation();
+  const { liteMode: reduceAnimations } = useAnimation();
 
   // If animations are reduced, just render normal static text
   if (reduceAnimations) {

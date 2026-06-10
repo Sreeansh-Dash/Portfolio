@@ -11,7 +11,7 @@ interface StickyNoteProps {
 
 const StickyNote: React.FC<StickyNoteProps> = ({ children, rotation = "3deg", className = "", style }) => {
   const [isFolded, setIsFolded] = useState(false);
-  const { reduceAnimations } = useAnimation();
+  const { liteMode: reduceAnimations } = useAnimation();
 
   // Parse rotation string (e.g. "6deg" -> 6)
   const baseRotation = parseFloat(rotation) || 3;

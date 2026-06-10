@@ -4,7 +4,7 @@ import { Chapter } from '../../types';
 import { NAVIGATION_ITEMS } from '../../constants';
 import StickyNote from '../StickyNote';
 import SplitText from '../ui/SplitText';
-import BlurText from '../ui/BlurText';
+import WrittenText from '../ui/WrittenText';
 import MistakeText from '../ui/MistakeText';
 
 interface Props {
@@ -28,13 +28,13 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
         <div className="mt-8 md:mt-16 relative">
           <StickyNote className="-top-4 -right-4 md:-right-8" rotation="6deg">
             <div className="font-handwriting text-2xl leading-tight text-gray-800">
-              <BlurText text="Building 3 projects before semester 6 ends." animateBy="words" delay={30} />
+              <WrittenText text="Building 3 projects before semester 6 ends." delay={200} speed={25} fontHandwriting={true} />
               <span className="block text-right mt-2 text-base">— S.D.</span>
             </div>
           </StickyNote>
 
           {/* Photo Space */}
-          <div className="mb-8 w-32 h-32 md:w-40 md:h-40 relative ink-reveal" style={{ animationDelay: '0.1s' }}>
+          <div className="mb-8 w-32 h-32 md:w-40 md:h-40 relative">
             <div className="absolute inset-0 border-2 border-gray-200 dark:border-gray-600 transform -rotate-2"></div>
             <div className="absolute inset-0 bg-gray-100 dark:bg-gray-800 shadow-sm p-1 transform rotate-1">
               <img
@@ -59,17 +59,17 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
             <SplitText text="AI & ML · Full Stack · Product Design" delay={30} duration={0.4} />
           </p>
 
-          <p className="font-sans text-sm text-gray-500 mb-8 ink-reveal" style={{ animationDelay: '0.6s' }}>
-            B.Tech CSE (AI & ML) — VIT Chennai · 9.62 CGPA · 5th Semester
+          <p className="font-sans text-sm text-gray-500 mb-8">
+            <WrittenText text="B.Tech CSE (AI & ML) — VIT Chennai · 9.62 CGPA · 5th Semester" delay={400} speed={5} />
           </p>
 
-          <hr className="w-16 border-t-2 border-gray-200 dark:border-gray-700 mb-8 fade-scale" style={{ animationDelay: '0.9s' }} />
+          <hr className="w-16 border-t-2 border-gray-200 dark:border-gray-700 mb-8" />
 
           <p className="font-serif italic text-xl leading-relaxed text-gray-700 dark:text-gray-300 max-w-md mb-12">
             <MistakeText text="“I don't wait to understand things before building them.”" mistakeAt={42} wrongChars="builsing" />
           </p>
 
-          <div className="flex flex-wrap gap-4 mb-8 ink-soak" style={{ animationDelay: '1.4s' }}>
+          <div className="flex flex-wrap gap-4 mb-8">
             <button
               onClick={() => onNavigate(Chapter.PROJECTS)}
               className="bg-primary text-white dark:bg-white dark:text-primary px-8 py-3 font-display font-bold tracking-wide text-sm flex items-center gap-2 hover:opacity-90 transition-opacity shadow-lg"
@@ -93,7 +93,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
             </a>
           </div>
 
-          <div className="flex items-center gap-5 ink-soak animate-delay-1500" style={{ animationDelay: '1.5s' }}>
+          <div className="flex items-center gap-5">
             <a href="https://www.linkedin.com/in/sreeansh-dash/" target="_blank" rel="noopener noreferrer"
                className="flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-gray-500 hover:text-accent-blue transition-colors">
               <span className="material-icons text-base">link</span> LinkedIn
@@ -111,7 +111,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           </div>
         </div>
 
-        <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase fade-scale" style={{ animationDelay: '1.5s' }} aria-hidden="true">
+        <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase" aria-hidden="true">
           <span>Preface</span>
           <span>Page 001</span>
         </div>
@@ -131,12 +131,12 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           }}
         />
 
-        <div className="flex items-center gap-3 mb-12 opacity-70 fade-scale" style={{ animationDelay: '0.3s' }}>
+        <div className="flex items-center gap-3 mb-12 opacity-70">
           <span className="material-icons text-2xl" aria-hidden="true">menu_book</span>
           <span className="font-display font-bold text-lg tracking-wide">Portfolio Book</span>
         </div>
 
-        <div className="mb-10 flex items-baseline justify-between border-b border-gray-300 dark:border-gray-600 pb-4 ink-reveal" style={{ animationDelay: '0.5s' }}>
+        <div className="mb-10 flex items-baseline justify-between border-b border-gray-300 dark:border-gray-600 pb-4">
           <h2 className="font-display text-5xl md:text-6xl font-bold text-primary dark:text-white">Index</h2>
           <span className="font-display italic text-gray-500 dark:text-gray-400 text-lg hidden sm:block">Table of Contents</span>
         </div>
@@ -145,8 +145,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           {NAVIGATION_ITEMS.map((item, idx) => (
             <button
               key={item.id}
-              className="w-full text-left group cursor-pointer fade-scale p-5 -mx-5 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-200"
-              style={{ animationDelay: `${0.6 + (idx * 0.1)}s` }}
+              className="w-full text-left group cursor-pointer p-5 -mx-5 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-all duration-200"
               onClick={() => onNavigate(item.id)}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onNavigate(item.id) }}
             >
@@ -164,7 +163,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           ))}
         </nav>
 
-        <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase fade-scale" style={{ animationDelay: '1.5s' }} aria-hidden="true">
+        <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase" aria-hidden="true">
           <span>Vol. 1</span>
           <span>Page 002</span>
         </div>

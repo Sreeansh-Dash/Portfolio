@@ -60,7 +60,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentChapter, onNavigate }) =
     item.roman.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const { reduceAnimations } = useAnimation();
+  const { liteMode: reduceAnimations } = useAnimation();
 
   // Flutter animation for bookmark ribbon
   const flutterAnimate = reduceAnimations ? { skewX: 0 } : { skewX: [0, 1, 0, -0.5, 0] };

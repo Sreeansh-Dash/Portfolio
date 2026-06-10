@@ -8,7 +8,7 @@ interface InkWordProps {
 }
 
 const InkWord: React.FC<InkWordProps> = ({ children, accent = false }) => {
-  const { reduceAnimations } = useAnimation();
+  const { liteMode: reduceAnimations } = useAnimation();
 
   // If animations are reduced, disable animations entirely
   const wordHover = reduceAnimations ? {} : { y: -2, transition: { duration: 0.15 } };

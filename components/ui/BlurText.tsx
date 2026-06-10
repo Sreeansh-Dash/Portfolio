@@ -30,7 +30,7 @@ const BlurText: React.FC<BlurTextProps> = ({
     margin: rootMargin as any,
   });
 
-  const { reduceAnimations } = useAnimation();
+  const { liteMode: reduceAnimations } = useAnimation();
 
   if (reduceAnimations) {
     return <span className={className}>{text}</span>;

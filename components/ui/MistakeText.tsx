@@ -25,7 +25,7 @@ const MistakeText: React.FC<MistakeTextProps> = ({
 }) => {
   const containerRef = useRef<HTMLSpanElement>(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.1 });
-  const { reduceAnimations } = useAnimation();
+  const { liteMode: reduceAnimations } = useAnimation();
 
   const [displayedText, setDisplayedText] = useState('');
   const [phase, setPhase] = useState<'idle' | 'typing-prefix' | 'typing-mistake' | 'pausing' | 'erasing' | 'retyping' | 'done'>('idle');

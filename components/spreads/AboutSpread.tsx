@@ -2,18 +2,20 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import SplitText from '../ui/SplitText';
 import BlurText from '../ui/BlurText';
+import WrittenText from '../ui/WrittenText';
+import InteractiveWord from '../ui/InteractiveWord';
 import InkWord from '../InkWord';
 import { useAnimation } from '../AnimationContext';
 import MistakeText from '../ui/MistakeText';
 
 const AboutSpread: React.FC = () => {
-  const { reduceAnimations } = useAnimation();
+  const { liteMode: reduceAnimations } = useAnimation();
 
   return (
     <>
       {/* Left Page: Narrative */}
       <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-texture bg-cover">
-        <header className="flex justify-between items-start mb-12 fade-scale" style={{ animationDelay: '0.2s' }}>
+        <header className="flex justify-between items-start mb-12">
           <div className="flex items-center gap-3 opacity-70">
             <span className="material-icons text-gray-600 dark:text-gray-400">menu_book</span>
             <span className="font-display font-bold text-gray-900 dark:text-gray-100 tracking-wide">Portfolio Book</span>
@@ -28,21 +30,21 @@ const AboutSpread: React.FC = () => {
           <div className="prose dark:prose-invert prose-lg font-serif text-gray-900 dark:text-gray-200 max-w-lg leading-relaxed">
             <p>
               <span className="text-5xl font-display float-left mr-3 mt-[-6px]">I</span>
-              <BlurText
+              <WrittenText
                 text="'m a third-year AI & ML student at VIT Chennai who builds things before most of my batch knows what they want to build. Not because I'm ahead — but because building is how I learn. I need the problem to be real before the solution means anything to me."
-                animateBy="words"
-                delay={20}
+                delay={200}
+                speed={8}
               />
             </p>
             <p className="mt-6">
-              My work cuts across <InkWord>embedded systems</InkWord>, <InkWord>machine learning</InkWord>, and <InkWord>product design</InkWord> — not because I can't focus, but because the most interesting problems sit at exactly those intersections.
+              <WrittenText text="My work cuts across" delay={600} speed={10} /> <InteractiveWord text="embedded systems" />, <InteractiveWord text="machine learning" />, and <InteractiveWord text="product design" /> — <WrittenText text="not because I can't focus, but because the most interesting problems sit at exactly those intersections." delay={900} speed={10} />
             </p>
             <p className="mt-6">
-              I care about <InkWord>structural integrity</InkWord>: understanding why a system works, not just that it does.
+              <WrittenText text="I care about" delay={1500} speed={10} /> <InteractiveWord text="structural integrity" hoverClass="font-bold text-primary dark:text-blue-400" />: <WrittenText text="understanding why a system works, not just that it does." delay={1800} speed={10} />
             </p>
           </div>
 
-          <div className="mt-8 p-4 border border-dashed border-gray-300 dark:border-gray-600 bg-gray-50/50 dark:bg-gray-800/30 ink-soak" style={{ animationDelay: '1.0s' }}>
+          <div className="mt-8 p-4 border border-dashed border-gray-300 dark:border-gray-600 bg-gray-50/50 dark:bg-gray-800/30">
             <p className="font-mono text-[10px] uppercase tracking-widest text-gray-400 mb-3">Currently building</p>
             <ul className="space-y-1.5">
               {[
@@ -64,7 +66,7 @@ const AboutSpread: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase fade-scale" style={{ animationDelay: '1.2s' }}>
+        <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase">
           <span>Vol. 1</span>
           <span>03</span>
         </div>
@@ -91,14 +93,14 @@ const AboutSpread: React.FC = () => {
           transition={reduceAnimations ? {} : { duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         >
           <div className="font-handwriting text-xl text-gray-800 dark:text-gray-900 leading-snug">
-            <BlurText text="&ldquo;Constraints don't limit the solution. They are the solution.&rdquo;" animateBy="words" delay={25} />
+            <WrittenText text="&ldquo;Constraints don't limit the solution. They are the solution.&rdquo;" delay={200} speed={25} fontHandwriting={true} />
             <span className="block text-right mt-2 text-sm opacity-75">— Note to self</span>
           </div>
           <div className="w-3 h-3 absolute -top-1.5 left-1/2 -ml-1.5 rounded-full bg-gray-400/50 shadow-inner"></div>
         </motion.div>
 
         <div className="flex-grow flex flex-col mt-32 relative">
-          <div className="flex items-start gap-8 mb-10 ink-soak" style={{ animationDelay: '1s' }}>
+          <div className="flex items-start gap-8 mb-10">
             <div className="w-32 h-40 flex-shrink-0 bg-gray-200 dark:bg-gray-700 relative overflow-hidden shadow-sm border-4 border-white dark:border-gray-600 transform -rotate-1">
               <img src="/about.jpeg" alt="Sreeansh Dash" className="w-full h-full object-cover" />
             </div>
@@ -106,21 +108,23 @@ const AboutSpread: React.FC = () => {
               <h2 className="font-display text-3xl text-gray-900 dark:text-gray-100 mb-2">
                 <SplitText text="Way of Thinking" delay={50} duration={0.4} />
               </h2>
-              <p className="font-serif italic text-gray-500 dark:text-gray-400 text-lg ink-reveal" style={{ animationDelay: '1.4s' }}>Translating problems to models.</p>
+              <p className="font-serif italic text-gray-500 dark:text-gray-400 text-lg">
+                <WrittenText text="Translating problems to models." delay={500} speed={15} fontHandwriting={true} />
+              </p>
             </div>
           </div>
 
-          <div className="pl-4 border-l-2 border-gray-200 dark:border-gray-700 space-y-8 relative ml-4 ink-soak" style={{ animationDelay: '1.6s' }}>
+          <div className="pl-4 border-l-2 border-gray-200 dark:border-gray-700 space-y-8 relative ml-4">
             <div>
               <h3 className="font-sans font-bold text-sm uppercase tracking-wider text-black dark:text-white mb-2">Build to understand</h3>
               <p className="font-serif text-gray-800 dark:text-gray-300 text-sm leading-relaxed">
-                The <InkWord>Smart Cane</InkWord> started as a question: what does "terrain-aware" actually mean in hardware? I built it to find out.
+                The <InteractiveWord text="Smart Cane" hoverClass="font-handwriting text-lg text-primary" /> started as a question: <WrittenText text="what does 'terrain-aware' actually mean in hardware? I built it to find out." delay={800} speed={10} />
               </p>
             </div>
             <div>
               <h3 className="font-sans font-bold text-sm uppercase tracking-wider text-black dark:text-white mb-2">Systems over features</h3>
               <p className="font-serif text-gray-800 dark:text-gray-300 text-sm leading-relaxed">
-                The <InkWord>Grievance AI</InkWord> wasn't a classifier. It was a decision pipeline. The difference in framing changes every architectural choice you make.
+                The <InteractiveWord text="Grievance AI" hoverClass="font-handwriting text-lg text-primary" /> wasn't a classifier. <WrittenText text="It was a decision pipeline. The difference in framing changes every architectural choice you make." delay={1200} speed={10} />
               </p>
             </div>
             <div>
@@ -132,7 +136,7 @@ const AboutSpread: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase fade-scale" style={{ animationDelay: '2.5s' }}>
+        <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase">
           <span>About Me</span>
           <span>04</span>
         </div>

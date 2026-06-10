@@ -7,14 +7,14 @@ interface BookSceneProps {
 }
 
 const BookScene: React.FC<BookSceneProps> = ({ children }) => {
-  const { reduceAnimations } = useAnimation();
+  const { liteMode } = useAnimation();
 
   // Gentle breathing rotateX animation
-  const tiltAnimate = reduceAnimations
-    ? { rotateX: -4 }
+  const tiltAnimate = liteMode
+    ? { rotateX: -4, rotateY: 0 }
     : { rotateX: [-4.5, -3.5, -4.5] };
 
-  const tiltTransition = reduceAnimations
+  const tiltTransition = liteMode
     ? {}
     : { duration: 12, repeat: Infinity, ease: 'easeInOut' };
 
