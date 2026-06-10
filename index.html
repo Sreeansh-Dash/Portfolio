@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sreeansh Dash — AI & ML | Full Stack | Product Design</title>
-    <meta name="description" content="Portfolio of Sreeansh Dash — first-year B.Tech CSE (AI & ML) student at VIT Chennai building AI systems, full-stack products, and embedded solutions. 9.57 CGPA." />
+    <meta name="description" content="Portfolio of Sreeansh Dash — third-year B.Tech CSE (AI & ML) student at VIT Chennai building AI systems, full-stack products, and embedded solutions. 9.62 CGPA." />
     <meta name="keywords" content="Sreeansh Dash, AI engineer, ML student, VIT Chennai, full stack developer, React, Python, NLP, embedded systems, portfolio" />
     <meta property="og:title" content="Sreeansh Dash — AI & ML · Full Stack · Product Design" />
-    <meta property="og:description" content="Building things at the edge of AI, software, and design. First-year CSE student at VIT Chennai." />
+    <meta property="og:description" content="Building things at the edge of AI, software, and design. Third-year CSE student at VIT Chennai." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Sreeansh Dash — Portfolio" />
@@ -129,26 +129,34 @@
       }
       
       .page-flip-container {
-          transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+          transition: none;
           transform-style: preserve-3d;
           transform-origin: center center;
           will-change: transform;
       }
       
-      /* Flip Left (Go to Prev): Left side lifts */
-      .flipping-prev {
-          transform: rotateY(12deg) scale(0.96) translateX(12px);
+      @media (min-width: 768px) {
+          .page-flip-container {
+              transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+          }
       }
       
-      /* Flip Right (Go to Next): Right side lifts */
-      .flipping-next {
-          transform: rotateY(-12deg) scale(0.96) translateX(-12px);
+      /* Flip Left (Go to Prev): Left side lifts */
+      @media (min-width: 768px) {
+          .flipping-prev {
+              transform: rotateY(12deg) scale(0.96) translateX(12px);
+          }
+          
+          /* Flip Right (Go to Next): Right side lifts */
+          .flipping-next {
+              transform: rotateY(-12deg) scale(0.96) translateX(-12px);
+          }
       }
       
       /* Dynamic shadow for page turn */
       .page-shadow {
           opacity: 0;
-          transition: opacity 0.4s ease-in-out;
+          transition: none;
           background: linear-gradient(to right, 
               rgba(0,0,0,0) 0%, 
               rgba(0,0,0,0.1) 40%, 
@@ -157,8 +165,13 @@
               rgba(0,0,0,0) 100%);
       }
       
-      .flipping-next .page-shadow, .flipping-prev .page-shadow {
-          opacity: 1;
+      @media (min-width: 768px) {
+          .page-shadow {
+              transition: opacity 0.4s ease-in-out;
+          }
+          .flipping-next .page-shadow, .flipping-prev .page-shadow {
+              opacity: 1;
+          }
       }
 
       .dark .page-shadow {

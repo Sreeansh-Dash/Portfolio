@@ -27,7 +27,7 @@ const ContactSpread: React.FC = () => {
         <div className="flex-grow space-y-6 ink-soak" style={{ animationDelay: '0.4s' }}>
           <p className="font-serif text-lg leading-relaxed text-ink-light dark:text-gray-300 text-justify">
             <span className="float-left text-5xl font-display font-bold mr-3 mt-[-6px] text-primary dark:text-white">I</span>
-            'm a first-year student at VIT Chennai — actively building, actively learning, and actively looking for opportunities to contribute to real work.
+            'm a third-year student at VIT Chennai — actively building, actively learning, and actively looking for opportunities to contribute to real work.
           </p>
           <p className="font-serif text-lg leading-relaxed text-ink-light dark:text-gray-300 text-justify">
             I'm open to internships, research collaborations, and project partnerships — particularly in AI systems, full-stack product development, or anything that sits at the intersection of the two.

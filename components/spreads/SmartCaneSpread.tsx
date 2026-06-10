@@ -22,25 +22,31 @@ const SmartCaneSpread: React.FC<Props> = () => {
                     </h2>
                 </header>
 
-                <div className="flex-grow">
-                    {/* Abstract / Problem Statement */}
-                    <div className="font-serif text-base text-ink-light dark:text-gray-300 text-justify leading-relaxed space-y-4 max-w-prose ink-soak" style={{ animationDelay: '0.6s' }}>
+                <div className="flex-grow space-y-6">
+                    {/* Problem Framing */}
+                    <div className="font-serif text-base text-ink-light dark:text-gray-300 text-justify leading-relaxed max-w-prose ink-soak" style={{ animationDelay: '0.6s' }}>
+                        <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-2">Problem Framing</h3>
                         <p>
-                            Traditional assistive mobility devices often lack contextual awareness and adaptive feedback, limiting their effectiveness in real-world navigation. This project explores how embedded intelligence and mechanical design can be combined to improve independent mobility for visually impaired users.
-                        </p>
-                        <p>
-                            The goal was to design an affordable, reliable, and fully offline assistive system capable of real-time obstacle detection and guided motion, while operating under strict constraints of latency, power consumption, and usability.
-                        </p>
-                        <p>
-                            The system integrates sensor fusion and AI-based perception, with all inference performed on-device to ensure privacy, responsiveness, and consistent performance across environments.
+                            Visually impaired individuals navigating unfamiliar environments face a gap that standard white canes don't address: uneven terrain, sudden drops, and obstacles below knee height. The challenge was building a low-cost, hardware-level response to that gap.
                         </p>
                     </div>
 
-                    <div className="mt-8 flex flex-col md:flex-row gap-8 text-sm ink-soak" style={{ animationDelay: '0.8s' }}>
+                    {/* Key Decisions */}
+                    <div className="font-serif text-sm text-ink-light dark:text-gray-300 leading-relaxed max-w-prose ink-soak" style={{ animationDelay: '0.8s' }}>
+                        <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-2">Key Decisions</h3>
+                        <ul className="list-disc list-outside pl-4 space-y-1.5 text-justify">
+                            <li>Ackermann geometry chosen over simpler pivot steering for natural walking-pace control</li>
+                            <li>Multi-angle ultrasonic array rather than single forward sensor — covers low obstacles and drops</li>
+                            <li>Haptic feedback prioritised over audio-only — usable in noisy environments</li>
+                            <li>Offline-first: no cloud dependency, works in any environment</li>
+                        </ul>
+                    </div>
+
+                    <div className="mt-6 flex flex-col md:flex-row gap-8 text-sm ink-soak" style={{ animationDelay: '1.0s' }}>
                         {/* Contributors */}
                         <div className="flex-1">
                             <h4 className="font-mono text-xs uppercase tracking-widest text-gray-500 mb-2 border-b border-gray-200 pb-1">Contributors</h4>
-                            <div className="font-serif text-ink dark:text-gray-300">
+                            <div className="font-serif text-xs text-ink dark:text-gray-300">
                                 <p><span className="italic">Guide:</span> Dr. Sukriti</p>
                                 <p><span className="italic">Team:</span> R. Harshvardhan, Soumit M.</p>
                             </div>
@@ -49,7 +55,7 @@ const SmartCaneSpread: React.FC<Props> = () => {
                         {/* Components */}
                         <div className="flex-1">
                             <h4 className="font-mono text-xs uppercase tracking-widest text-gray-500 mb-2 border-b border-gray-200 pb-1">Components</h4>
-                            <ul className="font-mono text-xs text-ink dark:text-gray-300 space-y-1 list-disc pl-4">
+                            <ul className="font-mono text-[11px] text-ink dark:text-gray-300 space-y-1 list-disc pl-4">
                                 <li>ESP32 Controller</li>
                                 <li>OV2640 Camera & MPU6050 IMU</li>
                                 <li>Ultrasonic Sensors & TinyML Models</li>
@@ -58,7 +64,7 @@ const SmartCaneSpread: React.FC<Props> = () => {
                     </div>
                 </div>
 
-                <div className="mt-auto pt-8 text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1s' }}>
+                <div className="mt-auto pt-8 text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1.2s' }}>
                     07
                 </div>
             </div>
@@ -66,23 +72,18 @@ const SmartCaneSpread: React.FC<Props> = () => {
             {/* Right Page: Technical Approach & Outcome */}
             <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative bg-paper-light dark:bg-paper-dark">
 
-                {/* Section: The Approach */}
-                <div className="mb-8">
-                    <h3 className="font-display text-2xl font-bold text-ink-light dark:text-white mb-4 border-b-2 border-primary/10 pb-2 ink-reveal" style={{ animationDelay: '0.6s' }}>
-                        The Approach
+                {/* Section: What Was Built */}
+                <div className="mb-6">
+                    <h3 className="font-display text-2xl font-bold text-ink-light dark:text-white mb-3 border-b-2 border-primary/10 pb-2 ink-reveal" style={{ animationDelay: '0.6s' }}>
+                        What Was Built
                     </h3>
-                    <div className="ink-soak" style={{ animationDelay: '0.8s' }}>
-                        <p className="font-serif text-sm text-ink-light dark:text-gray-300 leading-relaxed text-justify mb-4">
-                            The system combines ultrasonic proximity sensing with embedded AI to provide continuous environmental awareness. Sensor data is processed locally, eliminating cloud dependence and minimizing response time.
-                        </p>
-                        <p className="font-serif text-sm text-ink-light dark:text-gray-300 leading-relaxed text-justify">
-                            A key design decision is the use of Ackermann steering-based motion control, enabling smoother directional guidance and improved stability while navigating uneven or constrained terrain. The overall architecture prioritizes low power operation without compromising reliability or safety.
-                        </p>
-                    </div>
+                    <p className="font-serif text-sm text-ink-light dark:text-gray-300 leading-relaxed text-justify ink-soak" style={{ animationDelay: '0.8s' }}>
+                        A mobility aid integrating Ackermann steering geometry for directional stability, ultrasonic sensors for proximity detection across multiple angles, and haptic + audio feedback calibrated to terrain type and obstacle distance. The system runs entirely on embedded hardware with no external connectivity required.
+                    </p>
                 </div>
 
                 {/* Visual Reference */}
-                <div className="relative mb-4 group flex justify-center fade-scale" style={{ animationDelay: '1s' }}>
+                <div className="relative mb-4 group flex justify-center fade-scale" style={{ animationDelay: '1.0s' }}>
                     <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-32 h-6 bg-yellow-100/80 dark:bg-yellow-900/40 rotate-1 shadow-sm border border-yellow-200/50 backdrop-blur-[1px] z-20"></div>
 
                     <div className="relative">
@@ -93,15 +94,15 @@ const SmartCaneSpread: React.FC<Props> = () => {
                                     e.currentTarget.src = "https://placehold.co/400x600/e5e5e5/a0a0a0?text=Prototype+Mk.+I";
                                 }}
                                 alt="Smart Cane Prototype Mk. I"
-                                className="w-auto h-auto max-h-[320px] object-contain opacity-90 mx-auto"
+                                className="w-auto h-auto max-h-[180px] object-contain opacity-90 mx-auto"
                             />
                         </div>
                         <div className="text-center mt-2 font-mono text-[10px] text-gray-500 uppercase tracking-wider">
                             Figure 1. Prototype Mk. I
                         </div>
 
-                        {/* Handwritten Annotation - Adjusted to point to chassis */}
-                        <div className="absolute -right-25 bottom-30 w-32 transform -rotate-12 text-red-700 dark:text-red-400 font-handwriting text-sm leading-tight opacity-90 mix-blend-multiply dark:mix-blend-normal pointer-events-none hidden md:flex flex-col items-center">
+                        {/* Handwritten Annotation - Pointing to chassis */}
+                        <div className="absolute -right-25 bottom-12 w-32 transform -rotate-12 text-red-700 dark:text-red-400 font-handwriting text-sm leading-tight opacity-90 mix-blend-multiply dark:mix-blend-normal pointer-events-none hidden md:flex flex-col items-center">
                             <span className="block mb-1 text-center">Ackermann steering geometry</span>
                             <svg className="w-8 h-8 text-red-700 transform -rotate-45 self-start -ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M7 11l5-5m0 0l5 5m-5-5v12" />
@@ -110,22 +111,30 @@ const SmartCaneSpread: React.FC<Props> = () => {
                     </div>
                 </div>
 
+                {/* What I Learned */}
+                <div className="mb-4 ink-reveal" style={{ animationDelay: '1.2s' }}>
+                    <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-1">What I Learned</h4>
+                    <p className="font-serif text-xs italic text-ink-light dark:text-gray-300 leading-relaxed text-justify">
+                        Building in hardware makes every decision irreversible in a way that software doesn't. You can't hot-reload a circuit. That constraint changed how I approach architecture generally — decide slowly, build once.
+                    </p>
+                </div>
+
                 {/* Outcome Section */}
-                <div className="mt-auto ink-reveal" style={{ animationDelay: '1.2s' }}>
-                    <h3 className="font-display text-xl font-bold text-ink-light dark:text-white mb-4">
+                <div className="mt-auto ink-reveal" style={{ animationDelay: '1.4s' }}>
+                    <h3 className="font-display text-sm font-bold text-ink-light dark:text-white mb-2">
                         Outcome
                     </h3>
                     <div className="grid grid-cols-2 gap-4">
-                        <div className="border border-stone-300 dark:border-stone-600 p-3 bg-stone-50 dark:bg-stone-800/50">
-                            <span className="block text-2xl font-bold font-display text-primary dark:text-white mb-1">
+                        <div className="border border-stone-300 dark:border-stone-600 p-2.5 bg-stone-50 dark:bg-stone-800/50">
+                            <span className="block text-xl font-bold font-display text-primary dark:text-white mb-1">
                                 Real-time
                             </span>
                             <span className="text-[10px] font-mono uppercase tracking-wider text-gray-500">
                                 Obstacle Detection
                             </span>
                         </div>
-                        <div className="border border-stone-300 dark:border-stone-600 p-3 bg-stone-50 dark:bg-stone-800/50">
-                            <span className="block text-2xl font-bold font-display text-primary dark:text-white mb-1">
+                        <div className="border border-stone-300 dark:border-stone-600 p-2.5 bg-stone-50 dark:bg-stone-800/50">
+                            <span className="block text-xl font-bold font-display text-primary dark:text-white mb-1">
                                 Low
                             </span>
                             <span className="text-[10px] font-mono uppercase tracking-wider text-gray-500">

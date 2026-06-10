@@ -28,17 +28,17 @@ const ResumeSpread: React.FC = () => {
                             <div className="flex justify-between items-baseline border-b border-dashed border-gray-300 dark:border-gray-700 pb-3">
                                 <div>
                                     <h4 className="font-serif text-lg font-bold text-ink-light dark:text-ink-dark">VIT Chennai</h4>
-                                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">B.Tech CSE (AI & ML) — 9.57 CGPA</p>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">B.Tech CSE (AI & ML) · CGPA: 9.62</p>
                                 </div>
-                                <span className="text-sm font-serif text-gray-400 font-medium">2024 – 2028</span>
+                                <span className="text-sm font-serif text-gray-400 font-medium">2023 – 2027</span>
                             </div>
 
                             <div className="flex justify-between items-baseline border-b border-dashed border-gray-300 dark:border-gray-700 pb-3">
                                 <div>
-                                    <h4 className="font-serif text-lg font-bold text-ink-light dark:text-ink-dark">Delhi Public School, Bhilai</h4>
-                                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">CBSE Class XII — 93.4%</p>
+                                    <h4 className="font-serif text-lg font-bold text-ink-light dark:text-ink-dark">DPS Bhilai</h4>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">CBSE Class XII · 93.4%</p>
                                 </div>
-                                <span className="text-sm font-serif text-gray-400 font-medium">2022 – 2024</span>
+                                <span className="text-sm font-serif text-gray-400 font-medium">2023</span>
                             </div>
                         </div>
                     </div>
@@ -62,8 +62,8 @@ const ResumeSpread: React.FC = () => {
                         className="group flex flex-col items-end gap-2 text-gray-500 hover:text-primary dark:hover:text-white transition-colors"
                     >
                         <div className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold">
-                            <span>Download PDF</span>
-                            <span className="material-icons text-sm group-hover:translate-y-0.5 transition-transform">download</span>
+                             <span>Download PDF</span>
+                             <span className="material-icons text-sm group-hover:translate-y-0.5 transition-transform">download</span>
                         </div>
                         {/* Optional handwritten note */}
                         <span className="font-handwriting text-gray-400 text-sm transform -rotate-2 group-hover:rotate-0 transition-transform">Full resume?</span>
@@ -82,13 +82,16 @@ const ResumeSpread: React.FC = () => {
                             <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-white border-2 border-primary dark:border-white"></div>
                             <div className="relative">
                                 <div className="flex justify-between items-baseline mb-1">
-                                    <h4 className="font-bold text-ink-light dark:text-ink-dark">Head of Operations</h4>
-                                    <span className="text-xs font-serif text-gray-500 font-medium">Current</span>
+                                    <h4 className="font-bold text-ink-light dark:text-ink-dark">Operations & Marketing Lead</h4>
+                                    <span className="text-xs font-serif text-gray-500 font-medium">8 months (2023 – 2024)</span>
                                 </div>
-                                <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">KalingaJyoti, VIT Chennai</p>
-                                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed text-justify">
-                                    Led a team of 30+ members, managing scheduling, logistics, and execution for large-scale cultural and organizational events. Responsible for coordination across teams, process planning, and on-ground execution under time and resource constraints.
-                                </p>
+                                <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">KalingaJyoti — Student Cultural Organisation, VIT Chennai</p>
+                                <ul className="text-sm text-gray-600 dark:text-gray-300 list-disc list-outside ml-4 space-y-1 text-justify">
+                                    <li>Managed operations and marketing for one of VIT Chennai's active student cultural organisations</li>
+                                    <li>Led a team of 30+ members across event logistics, on-campus outreach, and scheduling</li>
+                                    <li>Coordinated and executed multiple large-scale on-campus cultural events end to end</li>
+                                    <li>Owned the marketing function: social communication, promotional collateral, and audience growth</li>
+                                </ul>
                             </div>
                         </div>
                     </section>
@@ -100,10 +103,12 @@ const ResumeSpread: React.FC = () => {
                             Certifications
                         </h3>
                         <div className="ml-13 pl-1">
-                            <h4 className="font-bold text-ink-light dark:text-ink-dark mb-1">Google UX Design Certificate</h4>
-                            <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed text-justify">
-                                Foundations of user-centered design, usability principles, wireframing, and interaction design with a focus on accessibility and clarity.
-                            </p>
+                            <h4 className="font-bold text-ink-light dark:text-ink-dark mb-1">Google UX Design Certificate — Google / Coursera</h4>
+                            <ul className="text-sm text-gray-600 dark:text-gray-300 list-disc list-outside ml-4 space-y-1 text-justify">
+                                <li>Completed all 7 courses in the Google UX Design Professional Certificate programme</li>
+                                <li>Applied learning: user research, wireframing, low-to-high fidelity prototyping, usability testing</li>
+                                <li>Informed the design decisions in the Portfolio site and Grievance AI interface work</li>
+                            </ul>
                         </div>
                     </section>
 
@@ -115,10 +120,11 @@ const ResumeSpread: React.FC = () => {
                         </h3>
                         <div className="grid grid-cols-2 gap-x-8 gap-y-6 text-sm">
                             {[
-                                { t: 'Languages', v: 'Python, Java, C, C++' },
-                                { t: 'Core', v: 'Machine Learning, NLP, Embedded Systems' },
-                                { t: 'Tools', v: 'Git, GitHub, Figma' },
-                                { t: 'Spoken', v: 'English, Hindi, French (Basic)' },
+                                { t: 'Languages', v: 'Python, Java, C, C++, TypeScript' },
+                                { t: 'Frameworks & UI', v: 'React, Tailwind CSS, HTML/CSS' },
+                                { t: 'AI / ML', v: 'NLP, Classification, Clustering, Data Analysis' },
+                                { t: 'Design', v: 'Figma, UX Design, Wireframing, Interaction Design' },
+                                { t: 'Tools', v: 'Git, GitHub, VS Code, Groq API, Embedded Systems' },
                             ].map(s => (
                                 <div key={s.t}>
                                     <h5 className="font-bold text-[10px] uppercase tracking-wider text-gray-400 mb-2">{s.t}</h5>

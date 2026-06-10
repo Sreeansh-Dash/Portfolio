@@ -22,6 +22,13 @@ const App: React.FC = () => {
   const handleNavigate = (targetChapter: Chapter) => {
     if (targetChapter === currentChapter || isFlipping) return;
 
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
+    if (isMobile) {
+      setCurrentChapter(targetChapter);
+      return;
+    }
+
     // Determine direction
     const currentIndex = NAVIGATION_ITEMS.findIndex(item => item.id === currentChapter);
     const targetIndex = NAVIGATION_ITEMS.findIndex(item => item.id === targetChapter);

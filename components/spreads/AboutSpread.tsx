@@ -20,7 +20,7 @@ const AboutSpread: React.FC = () => {
                     </h1>
                     <div className="prose dark:prose-invert prose-lg font-serif text-gray-900 dark:text-gray-200 max-w-lg leading-relaxed ink-soak" style={{ animationDelay: '0.6s' }}>
                         <p>
-                            <span className="text-5xl font-display float-left mr-3 mt-[-6px]">I</span>'m a first-year AI & ML student at VIT Chennai who builds things before most of my batch knows what they want to build. Not because I'm ahead — but because building is how I learn. I need the problem to be real before the solution means anything to me.
+                            <span className="text-5xl font-display float-left mr-3 mt-[-6px]">I</span>'m a third-year AI & ML student at VIT Chennai who builds things before most of my batch knows what they want to build. Not because I'm ahead — but because building is how I learn. I need the problem to be real before the solution means anything to me.
                         </p>
                         <p className="mt-6">
                             My work cuts across embedded systems, machine learning, and product design — not because I can't focus, but because the most interesting problems sit at exactly those intersections.

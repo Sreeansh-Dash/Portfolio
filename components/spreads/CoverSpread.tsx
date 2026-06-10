@@ -16,7 +16,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           <StickyNote className="-top-4 -right-4 md:-right-8 ink-soak" rotation="6deg" style={{ animationDelay: '1.2s' }}>
             <p className="font-handwriting text-2xl leading-tight">
               Building 3 projects<br />
-              before semester 2<br />
+              before semester 6<br />
               ends.<br />
               <span className="block text-right mt-2 text-base">— S.D.</span>
             </p>
@@ -34,6 +34,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
             </div>
           </div>
 
+          {/* Title and details */}
           <h4 className="text-accent-blue font-bold tracking-widest text-xs uppercase mb-4 ink-reveal" style={{ animationDelay: '0.2s' }}>Portfolio & Journal</h4>
           <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-bold text-primary dark:text-white leading-[0.9] mb-6 ink-reveal" style={{ animationDelay: '0.4s' }}>
             Sreeansh<br />Dash
@@ -44,7 +45,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           </p>
 
           <p className="font-sans text-sm text-gray-500 mb-8 ink-reveal" style={{ animationDelay: '0.6s' }}>
-            B.Tech CSE (AI & ML) — VIT Chennai · 9.57 CGPA
+            B.Tech CSE (AI & ML) — VIT Chennai · 9.62 CGPA · 5th Semester
           </p>
 
           <hr className="w-16 border-t-2 border-gray-200 dark:border-gray-700 mb-8 fade-scale" style={{ animationDelay: '0.9s' }} />
