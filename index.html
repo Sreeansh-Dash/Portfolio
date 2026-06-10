@@ -122,66 +122,6 @@
       @keyframes fade-scale-in {
           to { opacity: 1; transform: scale(1); }
       }
-
-      /* Page Flip Simulation */
-      .perspective-1500 {
-          perspective: 1500px;
-      }
-      
-      .page-flip-container {
-          transition: none;
-          transform-style: preserve-3d;
-          transform-origin: center center;
-          will-change: transform;
-      }
-      
-      @media (min-width: 768px) {
-          .page-flip-container {
-              transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-          }
-      }
-      
-      /* Flip Left (Go to Prev): Left side lifts */
-      @media (min-width: 768px) {
-          .flipping-prev {
-              transform: rotateY(12deg) scale(0.96) translateX(12px);
-          }
-          
-          /* Flip Right (Go to Next): Right side lifts */
-          .flipping-next {
-              transform: rotateY(-12deg) scale(0.96) translateX(-12px);
-          }
-      }
-      
-      /* Dynamic shadow for page turn */
-      .page-shadow {
-          opacity: 0;
-          transition: none;
-          background: linear-gradient(to right, 
-              rgba(0,0,0,0) 0%, 
-              rgba(0,0,0,0.1) 40%, 
-              rgba(0,0,0,0.2) 50%, 
-              rgba(0,0,0,0.1) 60%, 
-              rgba(0,0,0,0) 100%);
-      }
-      
-      @media (min-width: 768px) {
-          .page-shadow {
-              transition: opacity 0.4s ease-in-out;
-          }
-          .flipping-next .page-shadow, .flipping-prev .page-shadow {
-              opacity: 1;
-          }
-      }
-
-      .dark .page-shadow {
-           background: linear-gradient(to right, 
-              rgba(0,0,0,0) 0%, 
-              rgba(0,0,0,0.3) 40%, 
-              rgba(0,0,0,0.6) 50%, 
-              rgba(0,0,0,0.3) 60%, 
-              rgba(0,0,0,0) 100%);
-      }
     </style>
   <script type="importmap">
 {

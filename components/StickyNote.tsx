@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useAnimation } from './AnimationContext';
 
 interface StickyNoteProps {
   children: React.ReactNode;
@@ -9,19 +11,32 @@ interface StickyNoteProps {
 
 const StickyNote: React.FC<StickyNoteProps> = ({ children, rotation = "3deg", className = "", style }) => {
   const [isFolded, setIsFolded] = useState(false);
+  const { reduceAnimations } = useAnimation();
+
+  // Parse rotation string (e.g. "6deg" -> 6)
+  const baseRotation = parseFloat(rotation) || 3;
+
+  const swayAnimate = isFolded
+    ? { rotate: 0 }
+    : reduceAnimations
+    ? { rotate: baseRotation }
+    : { rotate: [baseRotation - 1, baseRotation + 0.5, baseRotation - 1, baseRotation - 2.5, baseRotation - 1] };
+
+  const swayTransition = isFolded || reduceAnimations
+    ? {}
+    : { duration: 10, repeat: Infinity, ease: 'easeInOut' };
 
   return (
-    <div
+    <motion.div
       onClick={() => setIsFolded(!isFolded)}
       className={`
         absolute bg-sticky-yellow shadow-md p-4 z-20 cursor-pointer transition-all duration-500 ease-in-out origin-top
         ${className}
         ${isFolded ? 'h-10 w-32 overflow-hidden hover:opacity-90' : 'w-32 h-32 md:w-40 md:h-40'}
       `}
-      style={{
-        transform: `rotate(${isFolded ? '0deg' : rotation})`,
-        ...style
-      }}
+      animate={swayAnimate}
+      transition={swayTransition}
+      style={style}
       title={isFolded ? "Click to read note" : "Click to fold note"}
     >
       {/* Tape effect */}
@@ -46,7 +61,7 @@ const StickyNote: React.FC<StickyNoteProps> = ({ children, rotation = "3deg", cl
           <span className="material-icons text-[14px]">expand_less</span>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

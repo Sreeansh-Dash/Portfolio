@@ -1,5 +1,8 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Chapter } from '../../types';
+import SplitText from '../ui/SplitText';
+import BlurText from '../ui/BlurText';
 
 interface Props {
     onNavigate: (chapter: Chapter) => void;
@@ -11,23 +14,27 @@ const SmartCaneSpread: React.FC<Props> = () => {
             {/* Left Page: Narrative & Context */}
             <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50">
                 <header className="mb-8">
-                    <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 font-mono ink-reveal">
-                        Project Deep Dive · Ch. IV
+                    <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 font-mono">
+                        <SplitText text="Project Deep Dive · Ch. IV" delay={40} duration={0.4} />
                     </span>
-                    <h1 className="font-display text-4xl lg:text-5xl text-primary dark:text-white font-black mb-2 tracking-tight ink-reveal" style={{ animationDelay: '0.2s' }}>
-                        Smart Walking Stick
+                    <h1 className="font-display text-4xl lg:text-5xl text-primary dark:text-white font-black mb-2 tracking-tight">
+                        <SplitText text="Smart Walking Stick" delay={70} duration={0.4} />
                     </h1>
-                    <h2 className="font-serif text-xl text-ink-light dark:text-gray-300 italic mb-8 ink-reveal" style={{ animationDelay: '0.4s' }}>
-                        Embedded AI for Independent Mobility
+                    <h2 className="font-serif text-xl text-ink-light dark:text-gray-300 italic mb-8">
+                        <SplitText text="Embedded AI for Independent Mobility" delay={60} duration={0.4} />
                     </h2>
                 </header>
 
                 <div className="flex-grow space-y-6">
                     {/* Problem Framing */}
-                    <div className="font-serif text-base text-ink-light dark:text-gray-300 text-justify leading-relaxed max-w-prose ink-soak" style={{ animationDelay: '0.6s' }}>
+                    <div className="font-serif text-base text-ink-light dark:text-gray-300 text-justify leading-relaxed max-w-prose">
                         <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-2">Problem Framing</h3>
                         <p>
-                            Visually impaired individuals navigating unfamiliar environments face a gap that standard white canes don't address: uneven terrain, sudden drops, and obstacles below knee height. The challenge was building a low-cost, hardware-level response to that gap.
+                            <BlurText
+                                text="Visually impaired individuals navigating unfamiliar environments face a gap that standard white canes don't address: uneven terrain, sudden drops, and obstacles below knee height. The challenge was building a low-cost, hardware-level response to that gap."
+                                animateBy="words"
+                                delay={20}
+                            />
                         </p>
                     </div>
 
@@ -71,11 +78,22 @@ const SmartCaneSpread: React.FC<Props> = () => {
 
             {/* Right Page: Technical Approach & Outcome */}
             <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative bg-paper-light dark:bg-paper-dark">
+                {/* Corner curl — sits at bottom-right, appears on hover */}
+                <motion.div
+                  className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  style={{
+                    background: 'linear-gradient(225deg, rgba(0,0,0,0.08) 45%, transparent 45%)',
+                    borderLeft: '1px solid rgba(0,0,0,0.08)',
+                    borderTop: '1px solid rgba(0,0,0,0.08)',
+                  }}
+                />
 
                 {/* Section: What Was Built */}
                 <div className="mb-6">
-                    <h3 className="font-display text-2xl font-bold text-ink-light dark:text-white mb-3 border-b-2 border-primary/10 pb-2 ink-reveal" style={{ animationDelay: '0.6s' }}>
-                        What Was Built
+                    <h3 className="font-display text-2xl font-bold text-ink-light dark:text-white mb-3 border-b-2 border-primary/10 pb-2">
+                        <SplitText text="What Was Built" delay={50} duration={0.4} />
                     </h3>
                     <p className="font-serif text-sm text-ink-light dark:text-gray-300 leading-relaxed text-justify ink-soak" style={{ animationDelay: '0.8s' }}>
                         A mobility aid integrating Ackermann steering geometry for directional stability, ultrasonic sensors for proximity detection across multiple angles, and haptic + audio feedback calibrated to terrain type and obstacle distance. The system runs entirely on embedded hardware with no external connectivity required.

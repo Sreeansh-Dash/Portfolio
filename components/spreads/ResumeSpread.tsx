@@ -1,6 +1,12 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import SplitText from '../ui/SplitText';
+import BlurText from '../ui/BlurText';
+import { useAnimation } from '../AnimationContext';
 
 const ResumeSpread: React.FC = () => {
+    const { reduceAnimations } = useAnimation();
+
     return (
         <>
             {/* Left Page: Header & Education */}
@@ -17,8 +23,12 @@ const ResumeSpread: React.FC = () => {
 
                 <div className="space-y-8 z-10">
                     <div>
-                        <h1 className="font-serif text-5xl md:text-6xl text-primary dark:text-white mb-4 ink-reveal" style={{ animationDelay: '0.4s' }}>Resume</h1>
-                        <p className="font-serif text-xl italic text-gray-500 dark:text-gray-400 border-b pb-6 border-gray-300 dark:border-gray-700 ink-reveal" style={{ animationDelay: '0.6s' }}>Education & Experience</p>
+                        <h1 className="font-serif text-5xl md:text-6xl text-primary dark:text-white mb-4">
+                            <SplitText text="Resume" delay={80} duration={0.4} />
+                        </h1>
+                        <p className="font-serif text-xl italic text-gray-500 dark:text-gray-400 border-b pb-6 border-gray-300 dark:border-gray-700">
+                            <SplitText text="Education & Experience" delay={60} duration={0.4} />
+                        </p>
                     </div>
 
                     <div className="space-y-8 ink-soak" style={{ animationDelay: '0.8s' }}>
@@ -54,6 +64,18 @@ const ResumeSpread: React.FC = () => {
             <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative bg-paper-light dark:bg-paper-dark">
                 <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-gray-200/40 to-transparent dark:from-black/40 pointer-events-none"></div>
 
+                {/* Corner curl — sits at bottom-right, appears on hover */}
+                <motion.div
+                  className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  style={{
+                    background: 'linear-gradient(225deg, rgba(0,0,0,0.08) 45%, transparent 45%)',
+                    borderLeft: '1px solid rgba(0,0,0,0.08)',
+                    borderTop: '1px solid rgba(0,0,0,0.08)',
+                  }}
+                />
+
                 {/* Download Action (Top Right) */}
                 <div className="absolute top-12 right-12 z-30 fade-scale" style={{ animationDelay: '2.2s' }}>
                     <a
@@ -66,17 +88,22 @@ const ResumeSpread: React.FC = () => {
                              <span className="material-icons text-sm group-hover:translate-y-0.5 transition-transform">download</span>
                         </div>
                         {/* Optional handwritten note */}
-                        <span className="font-handwriting text-gray-400 text-sm transform -rotate-2 group-hover:rotate-0 transition-transform">Full resume?</span>
+                        <motion.span
+                          className="font-handwriting text-gray-400 text-sm block"
+                          animate={reduceAnimations ? { rotate: -2 } : { rotate: [-2, -0.5, -2, -3.5, -2] }}
+                          transition={reduceAnimations ? {} : { duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                        >
+                          <BlurText text="Full resume?" animateBy="words" delay={40} />
+                        </motion.span>
                     </a>
                 </div>
 
                 <div className="mt-8 z-10 space-y-10 pl-4 lg:pl-8">
-
                     {/* Experience */}
                     <section className="ink-reveal" style={{ animationDelay: '1.4s' }}>
                         <h3 className="font-serif text-primary dark:text-white text-xl mb-6 flex items-center">
                             <span className="w-8 h-[1px] bg-primary dark:bg-white mr-3"></span>
-                            Experience
+                            <SplitText text="Experience" delay={50} duration={0.4} />
                         </h3>
                         <div className="space-y-6 border-l border-gray-200 dark:border-gray-700 ml-4 pl-6 relative">
                             <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-white border-2 border-primary dark:border-white"></div>
@@ -100,7 +127,7 @@ const ResumeSpread: React.FC = () => {
                     <section className="ink-reveal" style={{ animationDelay: '1.6s' }}>
                         <h3 className="font-serif text-primary dark:text-white text-xl mb-4 flex items-center">
                             <span className="w-8 h-[1px] bg-primary dark:bg-white mr-3"></span>
-                            Certifications
+                            <SplitText text="Certifications" delay={50} duration={0.4} />
                         </h3>
                         <div className="ml-13 pl-1">
                             <h4 className="font-bold text-ink-light dark:text-ink-dark mb-1">Google UX Design Certificate — Google / Coursera</h4>
@@ -116,7 +143,7 @@ const ResumeSpread: React.FC = () => {
                     <section className="ink-reveal" style={{ animationDelay: '1.8s' }}>
                         <h3 className="font-serif text-primary dark:text-white text-xl mb-6 flex items-center">
                             <span className="w-8 h-[1px] bg-primary dark:bg-white mr-3"></span>
-                            Skills Summary
+                            <SplitText text="Skills Summary" delay={50} duration={0.4} />
                         </h3>
                         <div className="grid grid-cols-2 gap-x-8 gap-y-6 text-sm">
                             {[

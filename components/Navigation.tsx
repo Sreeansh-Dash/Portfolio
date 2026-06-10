@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Chapter, NavItem } from '../types';
 import { NAVIGATION_ITEMS } from '../constants';
+import { useAnimation } from './AnimationContext';
 
 interface NavigationProps {
   currentChapter: Chapter;
@@ -58,23 +60,35 @@ const Navigation: React.FC<NavigationProps> = ({ currentChapter, onNavigate }) =
     item.roman.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const { reduceAnimations } = useAnimation();
+
+  // Flutter animation for bookmark ribbon
+  const flutterAnimate = reduceAnimations ? { skewX: 0 } : { skewX: [0, 1, 0, -0.5, 0] };
+  const flutterTransition = reduceAnimations ? {} : { duration: 8, repeat: Infinity, ease: 'easeInOut' };
+
   return (
     <nav ref={navRef} className="absolute right-12 md:right-24 top-0 z-50 flex flex-col items-center" aria-label="Chapter Navigation">
       {/* The Red Ribbon hanging part - Now Toggles */}
-      <button
-        className={`w-8 bg-bookmark-red shadow-md cursor-pointer transition-all duration-300 hover:h-24 ${isOpen ? 'h-16' : 'h-20'} border-none outline-none focus:ring-2 focus:ring-yellow-400`}
-        onClick={toggleMenu}
-        aria-expanded={isOpen}
-        aria-controls="chapter-menu"
-        aria-label={isOpen ? "Close Chapter Menu" : "Open Chapter Menu"}
+      <motion.div
+        className="origin-top"
+        animate={flutterAnimate}
+        transition={flutterTransition}
       >
-        {!isOpen && (
-          <div className="w-full h-full flex flex-col items-center justify-end pb-2">
-            <span className="text-[8px] font-bold text-white/90 writing-vertical-rl transform rotate-180 mb-1 tracking-widest opacity-80 decoration-transparent">MENU</span>
-            <div className="w-0 h-0 border-l-[16px] border-r-[16px] border-b-[10px] border-l-transparent border-r-transparent border-b-paper-light dark:border-b-paper-dark"></div>
-          </div>
-        )}
-      </button>
+        <button
+          className={`w-8 bg-bookmark-red shadow-md cursor-pointer transition-all duration-300 hover:h-24 ${isOpen ? 'h-16' : 'h-20'} border-none outline-none focus:ring-2 focus:ring-yellow-400`}
+          onClick={toggleMenu}
+          aria-expanded={isOpen}
+          aria-controls="chapter-menu"
+          aria-label={isOpen ? "Close Chapter Menu" : "Open Chapter Menu"}
+        >
+          {!isOpen && (
+            <div className="w-full h-full flex flex-col items-center justify-end pb-2">
+              <span className="text-[8px] font-bold text-white/90 writing-vertical-rl transform rotate-180 mb-1 tracking-widest opacity-80 decoration-transparent">MENU</span>
+              <div className="w-0 h-0 border-l-[16px] border-r-[16px] border-b-[10px] border-l-transparent border-r-transparent border-b-paper-light dark:border-b-paper-dark"></div>
+            </div>
+          )}
+        </button>
+      </motion.div>
 
       {/* The Paper Menu Dropdown */}
       <div

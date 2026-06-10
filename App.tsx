@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import BookLayout from './components/BookLayout';
 import Navigation from './components/Navigation';
 import { Chapter } from './types';
@@ -12,15 +13,62 @@ import AboutSpread from './components/spreads/AboutSpread';
 import ResumeSpread from './components/spreads/ResumeSpread';
 import ContactSpread from './components/spreads/ContactSpread';
 import SmartCaneSpread from './components/spreads/SmartCaneSpread';
-import Lightfall from './components/Lightfall';
+import BookScene from './components/BookScene';
+import BookOpeningSequence from './components/BookOpeningSequence';
+import InkCursor from './components/InkCursor';
+import { useAnimation } from './components/AnimationContext';
+
+const pageTurnVariants = {
+  enter: (dir: number) => ({
+    rotateY: dir > 0 ? 25 : -25,
+    opacity: 0,
+    transformOrigin: dir > 0 ? 'left center' : 'right center',
+  }),
+  center: {
+    rotateY: 0,
+    opacity: 1,
+    transformOrigin: 'center',
+  },
+  exit: (dir: number) => ({
+    rotateY: dir > 0 ? -25 : 25,
+    opacity: 0,
+    transformOrigin: dir > 0 ? 'right center' : 'left center',
+  }),
+};
+
+const fadeVariants = {
+  enter: { opacity: 0 },
+  center: { opacity: 1 },
+  exit: { opacity: 0 },
+};
 
 const App: React.FC = () => {
   const [currentChapter, setCurrentChapter] = useState<Chapter>(Chapter.COVER);
-  const [flipDirection, setFlipDirection] = useState<'next' | 'prev' | null>(null);
-  const [isFlipping, setIsFlipping] = useState(false);
+  const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
+  const { reduceAnimations, setReduceAnimations } = useAnimation();
+
+  // Book opening cinematic state
+  const [bookOpened, setBookOpened] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const hasOpened = sessionStorage.getItem('book-opened');
+      return !!hasOpened;
+    }
+    return false;
+  });
+
+  const handleOpenComplete = () => {
+    sessionStorage.setItem('book-opened', '1');
+    setBookOpened(true);
+  };
+
+  // Touch device detection for custom cursor
+  const [isTouch, setIsTouch] = useState(false);
+  useEffect(() => {
+    setIsTouch(window.matchMedia('(pointer: coarse)').matches);
+  }, []);
 
   const handleNavigate = (targetChapter: Chapter) => {
-    if (targetChapter === currentChapter || isFlipping) return;
+    if (targetChapter === currentChapter) return;
 
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
@@ -32,20 +80,10 @@ const App: React.FC = () => {
     // Determine direction
     const currentIndex = NAVIGATION_ITEMS.findIndex(item => item.id === currentChapter);
     const targetIndex = NAVIGATION_ITEMS.findIndex(item => item.id === targetChapter);
-    const direction = targetIndex > currentIndex ? 'next' : 'prev';
+    const newDirection = targetIndex > currentIndex ? 1 : -1;
 
-    setFlipDirection(direction);
-    setIsFlipping(true);
-
-    // Timing matches the CSS transition (0.6s)
-    setTimeout(() => {
-      setCurrentChapter(targetChapter);
-      // Short delay to allow content swap before returning
-      setTimeout(() => {
-        setFlipDirection(null);
-        setIsFlipping(false);
-      }, 50);
-    }, 600);
+    setDirection(newDirection);
+    setCurrentChapter(targetChapter);
   };
 
   // Determine Next and Previous Chapters for buttons
@@ -67,45 +105,56 @@ const App: React.FC = () => {
       case Chapter.DEEP_DIVE_1:
         return <SmartCaneSpread onNavigate={handleNavigate} />;
       case Chapter.DEEP_DIVE_2:
-        return <GrievanceSpread />; // Renamed in UI but kept component for now
+        return <GrievanceSpread />;
       case Chapter.TOOLKIT:
-        return <SkillsSpread />; // Renamed in UI
+        return <SkillsSpread />;
       case Chapter.RESUME:
         return <ResumeSpread />;
       case Chapter.CLOSING:
-        return <ContactSpread />; // Renamed in UI
+        return <ContactSpread />;
       default:
         return <CoverSpread onNavigate={handleNavigate} />;
     }
   };
 
   return (
-    <div className="min-h-screen flex items-start md:items-center justify-center p-4 md:p-8 py-10 md:py-8 font-body transition-colors duration-300 relative">
-      {/* Fullscreen background Lightfall component */}
-      <div className="fixed inset-0 -z-10 w-screen h-screen overflow-hidden bg-[#020d20]">
-        <Lightfall
-          colors={['#A6C8FF', '#5227FF', '#FF9FFC']}
-          backgroundColor="#020d20"
-          speed={0.25}
-          streakCount={4}
-          streakWidth={0.8}
-          streakLength={2}
-          glow={0.8}
-          density={0.5}
-          twinkle={0.4}
-          zoom={2.2}
-          backgroundGlow={0.5}
-          opacity={0.7}
-          mouseInteraction={true}
-          mouseStrength={0.5}
-          mouseRadius={0.5}
+    <div className={`min-h-screen flex items-start md:items-center justify-center p-4 md:p-8 py-10 md:py-8 font-body transition-colors duration-300 relative ${!isTouch ? 'cursor-none' : ''}`}>
+      {/* Background: dark ambient with subtle paper grain — fits the book aesthetic */}
+      <div className="fixed inset-0 -z-10 bg-[#0f0e0d] w-screen h-screen overflow-hidden">
+        {/* Subtle radial glow — like a lamp above the desk */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_-10%,rgba(80,60,40,0.25),transparent)]" />
+        {/* Grain texture overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.035] pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'repeat',
+            backgroundSize: '128px 128px',
+          }}
         />
       </div>
 
-      {/* Dark Mode Toggle */}
-      <div className="fixed top-6 right-6 z-50">
+      {/* Control Panel: Dark Mode and Reduce Animations */}
+      <div className="fixed top-6 right-6 z-50 flex items-center gap-3">
+        {/* Reduce Animations Toggle */}
         <button
-          className="p-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:scale-105 transition-transform border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-yellow-400"
+          className={`p-3 rounded-full shadow-lg hover:scale-105 transition-all border text-xl flex items-center justify-center ${
+            reduceAnimations
+              ? 'bg-amber-100 dark:bg-amber-950 border-amber-300 dark:border-amber-800 text-amber-800 dark:text-amber-300'
+              : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-800 dark:text-stone-400'
+          }`}
+          onClick={() => setReduceAnimations(!reduceAnimations)}
+          aria-label="Toggle Animations"
+          title={reduceAnimations ? "Enable animations" : "Reduce animations"}
+        >
+          <span className="material-icons-outlined text-xl block">
+            {reduceAnimations ? 'play_circle' : 'pause_circle'}
+          </span>
+        </button>
+
+        {/* Dark Mode Toggle */}
+        <button
+          className="p-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover:scale-105 transition-transform border border-gray-200 dark:border-gray-700 text-gray-800 dark:text-yellow-400 flex items-center justify-center"
           onClick={() => document.documentElement.classList.toggle('dark')}
           aria-label="Toggle Dark Mode"
         >
@@ -115,18 +164,44 @@ const App: React.FC = () => {
         </button>
       </div>
 
+      {/* Book Scene Wrapper */}
       <div className="w-full relative">
-        <BookLayout
-          flipDirection={flipDirection}
-          onPrev={prevChapter ? handlePrev : undefined}
-          onNext={nextChapter ? handleNext : undefined}
-          prevLabel={prevChapter?.label}
-          nextLabel={nextChapter?.label}
-        >
-          <Navigation currentChapter={currentChapter} onNavigate={handleNavigate} />
-          {renderSpread()}
-        </BookLayout>
+        {!bookOpened ? (
+          <BookOpeningSequence onComplete={handleOpenComplete} />
+        ) : (
+          <BookScene>
+            <BookLayout
+              onPrev={prevChapter ? handlePrev : undefined}
+              onNext={nextChapter ? handleNext : undefined}
+              prevLabel={prevChapter?.label}
+              nextLabel={nextChapter?.label}
+            >
+              <Navigation currentChapter={currentChapter} onNavigate={handleNavigate} />
+              
+              <div className="w-full h-full relative" style={{ perspective: '2000px', transformStyle: 'preserve-3d' }}>
+                <AnimatePresence mode="wait" custom={direction}>
+                  <motion.div
+                    key={currentChapter}
+                    custom={direction}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    variants={reduceAnimations ? fadeVariants : pageTurnVariants}
+                    transition={{ duration: reduceAnimations ? 0.15 : 0.45, ease: [0.4, 0, 0.2, 1] }}
+                    className="w-full h-full flex flex-col md:flex-row relative z-10"
+                    style={{ transformStyle: 'preserve-3d' }}
+                  >
+                    {renderSpread()}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </BookLayout>
+          </BookScene>
+        )}
       </div>
+
+      {/* Custom Ink Cursor */}
+      {!isTouch && <InkCursor />}
     </div>
   );
 };

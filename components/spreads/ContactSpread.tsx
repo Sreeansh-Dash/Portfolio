@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import SplitText from '../ui/SplitText';
+import BlurText from '../ui/BlurText';
+import { useAnimation } from '../AnimationContext';
 
 const ContactSpread: React.FC = () => {
   const [copied, setCopied] = useState(false);
+  const { reduceAnimations } = useAnimation();
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('sreeansh786@gmail.com');
@@ -16,18 +21,22 @@ const ContactSpread: React.FC = () => {
       {/* Left Page: Let's Talk & Open to Grid */}
       <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-texture">
         <header className="mb-12">
-          <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 font-mono ink-reveal">
-            Chapter VIII
+          <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 font-mono">
+            <SplitText text="Chapter VIII" delay={40} duration={0.4} />
           </span>
-          <h1 className="font-display text-4xl lg:text-5xl text-primary dark:text-white font-black mb-6 tracking-tight ink-reveal" style={{ animationDelay: '0.2s' }}>
-            Let's Talk
+          <h1 className="font-display text-4xl lg:text-5xl text-primary dark:text-white font-black mb-6 tracking-tight">
+            <SplitText text="Let's Talk" delay={70} duration={0.4} />
           </h1>
         </header>
 
-        <div className="flex-grow space-y-6 ink-soak" style={{ animationDelay: '0.4s' }}>
+        <div className="flex-grow space-y-6 pt-1">
           <p className="font-serif text-lg leading-relaxed text-ink-light dark:text-gray-300 text-justify">
             <span className="float-left text-5xl font-display font-bold mr-3 mt-[-6px] text-primary dark:text-white">I</span>
-            'm a third-year student at VIT Chennai — actively building, actively learning, and actively looking for opportunities to contribute to real work.
+            <BlurText
+              text="'m a third-year student at VIT Chennai — actively building, actively learning, and actively looking for opportunities to contribute to real work."
+              animateBy="words"
+              delay={20}
+            />
           </p>
           <p className="font-serif text-lg leading-relaxed text-ink-light dark:text-gray-300 text-justify">
             I'm open to internships, research collaborations, and project partnerships — particularly in AI systems, full-stack product development, or anything that sits at the intersection of the two.
@@ -65,8 +74,22 @@ const ContactSpread: React.FC = () => {
 
       {/* Right Page: Get in Touch cards & actions */}
       <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative bg-paper-light dark:bg-paper-dark text-primary dark:text-white">
-        <header className="mb-10 border-b-2 border-primary/10 pb-4 ink-reveal" style={{ animationDelay: '0.6s' }}>
-          <h2 className="font-display text-2xl font-bold">Get in Touch</h2>
+        {/* Corner curl — sits at bottom-right, appears on hover */}
+        <motion.div
+          className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          style={{
+            background: 'linear-gradient(225deg, rgba(0,0,0,0.08) 45%, transparent 45%)',
+            borderLeft: '1px solid rgba(0,0,0,0.08)',
+            borderTop: '1px solid rgba(0,0,0,0.08)',
+          }}
+        />
+
+        <header className="mb-10 border-b-2 border-primary/10 pb-4">
+          <h2 className="font-display text-2xl font-bold">
+            <SplitText text="Get in Touch" delay={50} duration={0.4} />
+          </h2>
         </header>
 
         <div className="flex-grow flex flex-col justify-between">
@@ -152,11 +175,15 @@ const ContactSpread: React.FC = () => {
           </div>
 
           {/* Bottom Handwritten Note */}
-          <div className="pt-10 pb-4 ink-reveal" style={{ animationDelay: '1.4s' }}>
+          <motion.div
+            className="pt-10 pb-4"
+            animate={reduceAnimations ? { rotate: 0 } : { rotate: [-1, 1, -1, 0, -1] }}
+            transition={reduceAnimations ? {} : { duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          >
             <p className="font-handwriting text-3xl text-center text-gray-500 dark:text-gray-400">
-              "Thank you for reading."
+              <BlurText text="&ldquo;Thank you for reading.&rdquo;" animateBy="words" delay={30} />
             </p>
-          </div>
+          </motion.div>
         </div>
 
         <div className="mt-auto pt-8 flex justify-end text-xs font-mono text-gray-400 fade-scale" style={{ animationDelay: '1.2s' }}>

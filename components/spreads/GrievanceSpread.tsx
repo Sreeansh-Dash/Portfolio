@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { Chapter } from '../../types';
+import React from 'react';
+import { motion } from 'framer-motion';
+import SplitText from '../ui/SplitText';
+import BlurText from '../ui/BlurText';
 
 interface Props {
     onNavigate?: (chapter: Chapter) => void;
@@ -11,14 +13,14 @@ const GrievanceSpread: React.FC<Props> = () => {
             {/* Left Page: Problem, Role, Contributors */}
             <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-[#f7f5f0] dark:bg-[#1f2937]">
                 <header className="mb-8">
-                    <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 font-mono ink-reveal">
-                        Project Deep Dive · Ch. V
+                    <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 font-mono">
+                        <SplitText text="Project Deep Dive · Ch. V" delay={40} duration={0.4} />
                     </span>
-                    <h1 className="font-display text-4xl lg:text-5xl text-primary dark:text-white font-black mb-2 tracking-tight ink-reveal" style={{ animationDelay: '0.2s' }}>
-                        AI-Powered Grievance Redressal System
+                    <h1 className="font-display text-4xl lg:text-5xl text-primary dark:text-white font-black mb-2 tracking-tight">
+                        <SplitText text="AI-Powered Grievance Redressal" delay={70} duration={0.4} />
                     </h1>
-                    <h2 className="font-serif text-xl text-ink-light dark:text-gray-300 italic mb-8 ink-reveal" style={{ animationDelay: '0.4s' }}>
-                        Applied AI for Public Issue Resolution
+                    <h2 className="font-serif text-xl text-ink-light dark:text-gray-300 italic mb-8">
+                        <SplitText text="Applied AI for Public Issue Resolution" delay={60} duration={0.4} />
                     </h2>
                 </header>
 
@@ -27,7 +29,11 @@ const GrievanceSpread: React.FC<Props> = () => {
                     <div className="font-serif text-base text-ink-light dark:text-gray-300 text-justify leading-relaxed">
                         <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-2">Problem Framing</h3>
                         <p>
-                            Manual grievance handling in institutions is slow, inconsistent, and opaque. Complaints get lost, misrouted, or deprioritised arbitrarily. The goal was an AI-driven pipeline that removes human bottlenecks from classification and routing — not from resolution.
+                            <BlurText
+                                text="Manual grievance handling in institutions is slow, inconsistent, and opaque. Complaints get lost, misrouted, or deprioritised arbitrarily. The goal was an AI-driven pipeline that removes human bottlenecks from classification and routing — not from resolution."
+                                animateBy="words"
+                                delay={20}
+                            />
                         </p>
                     </div>
 
@@ -46,7 +52,7 @@ const GrievanceSpread: React.FC<Props> = () => {
                     </div>
 
                     {/* Key Decisions */}
-                    <div className="font-serif text-xs text-ink-light dark:text-gray-300 leading-relaxed space-y-2 max-w-prose">
+                    <div className="font-serif text-xs text-ink-light dark:text-gray-300 leading-relaxed space-y-2 max-w-prose ink-soak" style={{ animationDelay: '0.8s' }}>
                         <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-2">Key Decisions</h3>
                         <ul className="list-disc list-outside pl-4 space-y-1 text-justify">
                             <li>NLP classification handles category + urgency in one pass — fewer model calls, lower latency</li>
@@ -73,11 +79,22 @@ const GrievanceSpread: React.FC<Props> = () => {
 
             {/* Right Page: System Overview & Tech */}
             <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative bg-paper-light dark:bg-paper-dark">
+                {/* Corner curl — sits at bottom-right, appears on hover */}
+                <motion.div
+                  className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  style={{
+                    background: 'linear-gradient(225deg, rgba(0,0,0,0.08) 45%, transparent 45%)',
+                    borderLeft: '1px solid rgba(0,0,0,0.08)',
+                    borderTop: '1px solid rgba(0,0,0,0.08)',
+                  }}
+                />
 
                 {/* Section: System Architecture */}
                 <div className="mb-6">
-                    <h3 className="font-display text-2xl font-bold text-ink-light dark:text-white mb-3 border-b-2 border-primary/10 pb-2 ink-reveal" style={{ animationDelay: '0.6s' }}>
-                        System Architecture
+                    <h3 className="font-display text-2xl font-bold text-ink-light dark:text-white mb-3 border-b-2 border-primary/10 pb-2">
+                        <SplitText text="System Architecture" delay={50} duration={0.4} />
                     </h3>
                     <p className="font-serif text-sm text-ink-light dark:text-gray-300 leading-relaxed text-justify ink-soak" style={{ animationDelay: '0.8s' }}>
                         The system takes unstructured text input (grievance submissions), runs NLP classification to assign category and urgency, applies a rule-based decision workflow to route to the correct handler, and generates a structured resolution recommendation. Each stage is auditable and explainable — not a black box.

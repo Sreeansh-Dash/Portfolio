@@ -1,7 +1,10 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Chapter } from '../../types';
 import { NAVIGATION_ITEMS } from '../../constants';
 import StickyNote from '../StickyNote';
+import SplitText from '../ui/SplitText';
+import BlurText from '../ui/BlurText';
 
 interface Props {
   onNavigate: (chapter: Chapter) => void;
@@ -13,13 +16,11 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
       {/* Left Page: Hero / Intro (Personal Details) */}
       <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50">
         <div className="mt-8 md:mt-16 relative">
-          <StickyNote className="-top-4 -right-4 md:-right-8 ink-soak" rotation="6deg" style={{ animationDelay: '1.2s' }}>
-            <p className="font-handwriting text-2xl leading-tight">
-              Building 3 projects<br />
-              before semester 6<br />
-              ends.<br />
+          <StickyNote className="-top-4 -right-4 md:-right-8" rotation="6deg">
+            <div className="font-handwriting text-2xl leading-tight text-gray-800">
+              <BlurText text="Building 3 projects before semester 6 ends." animateBy="words" delay={30} />
               <span className="block text-right mt-2 text-base">— S.D.</span>
-            </p>
+            </div>
           </StickyNote>
 
           {/* Photo Space */}
@@ -35,13 +36,17 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           </div>
 
           {/* Title and details */}
-          <h4 className="text-accent-blue font-bold tracking-widest text-xs uppercase mb-4 ink-reveal" style={{ animationDelay: '0.2s' }}>Portfolio & Journal</h4>
-          <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-bold text-primary dark:text-white leading-[0.9] mb-6 ink-reveal" style={{ animationDelay: '0.4s' }}>
-            Sreeansh<br />Dash
+          <h4 className="text-accent-blue font-bold tracking-widest text-xs uppercase mb-4">
+            <SplitText text="Portfolio & Journal" delay={40} duration={0.4} />
+          </h4>
+          <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-bold text-primary dark:text-white leading-[0.9] mb-6">
+            <SplitText text="Sreeansh" delay={80} duration={0.4} />
+            <br />
+            <SplitText text="Dash" delay={80} duration={0.4} />
           </h1>
 
-          <p className="font-display italic text-lg md:text-xl text-gray-800 dark:text-gray-200 mb-2 ink-reveal" style={{ animationDelay: '0.5s' }}>
-            AI & ML · Full Stack · Product Design
+          <p className="font-display italic text-lg md:text-xl text-gray-800 dark:text-gray-200 mb-2">
+            <SplitText text="AI & ML · Full Stack · Product Design" delay={30} duration={0.4} />
           </p>
 
           <p className="font-sans text-sm text-gray-500 mb-8 ink-reveal" style={{ animationDelay: '0.6s' }}>
@@ -50,8 +55,8 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
 
           <hr className="w-16 border-t-2 border-gray-200 dark:border-gray-700 mb-8 fade-scale" style={{ animationDelay: '0.9s' }} />
 
-          <p className="font-serif italic text-xl leading-relaxed text-gray-700 dark:text-gray-300 max-w-md mb-12 ink-soak" style={{ animationDelay: '1s' }}>
-            "I don't wait to understand things before building them."
+          <p className="font-serif italic text-xl leading-relaxed text-gray-700 dark:text-gray-300 max-w-md mb-12">
+            <BlurText text="&ldquo;I don't wait to understand things before building them.&rdquo;" animateBy="words" delay={40} />
           </p>
 
           <div className="flex flex-wrap gap-4 mb-8 ink-soak" style={{ animationDelay: '1.4s' }}>
@@ -95,6 +100,18 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
 
       {/* Right Page: Table of Contents (Index) */}
       <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative bg-paper-light dark:bg-paper-dark">
+        {/* Corner curl — sits at bottom-right, appears on hover */}
+        <motion.div
+          className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"
+          initial={{ opacity: 0 }}
+          whileHover={{ opacity: 1 }}
+          style={{
+            background: 'linear-gradient(225deg, rgba(0,0,0,0.08) 45%, transparent 45%)',
+            borderLeft: '1px solid rgba(0,0,0,0.08)',
+            borderTop: '1px solid rgba(0,0,0,0.08)',
+          }}
+        />
+
         <div className="flex items-center gap-3 mb-12 opacity-70 fade-scale" style={{ animationDelay: '0.3s' }}>
           <span className="material-icons text-2xl" aria-hidden="true">menu_book</span>
           <span className="font-display font-bold text-lg tracking-wide">Portfolio Book</span>

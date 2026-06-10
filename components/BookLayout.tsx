@@ -1,8 +1,9 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { useAnimation } from './AnimationContext';
 
 interface BookLayoutProps {
   children: React.ReactNode;
-  flipDirection?: 'next' | 'prev' | null;
   onPrev?: () => void;
   onNext?: () => void;
   prevLabel?: string;
@@ -11,43 +12,40 @@ interface BookLayoutProps {
 
 const BookLayout: React.FC<BookLayoutProps> = ({
   children,
-  flipDirection,
   onPrev,
   onNext,
   prevLabel,
   nextLabel
 }) => {
+  const { reduceAnimations } = useAnimation();
+
+  // Heartbeat pulse animation for nav buttons
+  const pulseAnimate = reduceAnimations ? { scale: 1 } : { scale: [1, 1.04, 1] };
+  const pulseTransition = reduceAnimations ? {} : { duration: 3, repeat: Infinity, ease: 'easeInOut' };
+
   return (
-    <div className="book-container w-full max-w-7xl mx-auto relative perspective-1500">
+    <div className="book-container w-full max-w-7xl mx-auto relative">
       {/* The physical book cover/pages container */}
       <div
-        className={`
-            bg-paper-light dark:bg-paper-dark w-full min-h-[85vh] h-auto md:h-auto md:aspect-[3/2] lg:aspect-[1.5/1] 
-            shadow-book rounded-sm flex flex-col md:flex-row overflow-visible md:overflow-hidden relative 
-            transition-all duration-300 page-flip-container 
-            ${flipDirection === 'next' ? 'flipping-next' : ''}
-            ${flipDirection === 'prev' ? 'flipping-prev' : ''}
-        `}
+        className="bg-paper-light dark:bg-paper-dark w-full min-h-[85vh] h-auto md:h-auto md:aspect-[3/2] lg:aspect-[1.5/1] shadow-book rounded-sm flex flex-col md:flex-row overflow-visible md:overflow-hidden relative transition-all duration-300"
       >
-
         {/* Paper Texture Overlay */}
         <div className="absolute inset-0 bg-paper-texture opacity-40 pointer-events-none mix-blend-multiply dark:mix-blend-soft-light z-0" aria-hidden="true"></div>
 
         {/* Center Spine Shadow for 3D effect */}
         <div className="absolute left-1/2 top-0 bottom-0 w-16 -ml-8 spine-shadow-overlay z-20 pointer-events-none mix-blend-multiply dark:mix-blend-overlay hidden md:block" aria-hidden="true"></div>
 
-        {/* Dynamic Page Flip Shadow - Sweeps across during animation */}
-        <div className="absolute inset-0 page-shadow z-30 pointer-events-none" aria-hidden="true"></div>
-
         {/* Mobile: Top to Bottom separation line */}
         <div className="absolute top-1/2 left-0 right-0 h-px bg-gray-300 dark:bg-gray-700 md:hidden z-20" aria-hidden="true"></div>
 
         {/* Navigation Controls - Unobtrusive until hovered */}
         {onPrev && (
-          <button
+          <motion.button
             onClick={onPrev}
             className="absolute bottom-4 left-4 md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:left-4 z-40 group flex items-center gap-2 text-primary dark:text-white transition-all duration-300 outline-none focus:ring-2 focus:ring-accent-blue rounded-full p-2"
             aria-label={prevLabel ? `Previous Chapter: ${prevLabel}` : "Previous Chapter"}
+            animate={pulseAnimate}
+            transition={pulseTransition}
           >
             {/* Arrow - subtle ghost by default */}
             <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white/0 group-hover:bg-white/20 dark:group-hover:bg-black/20 transition-all duration-300 backdrop-blur-[2px]">
@@ -59,14 +57,16 @@ const BookLayout: React.FC<BookLayoutProps> = ({
               <span className="block text-[10px] font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">Previous</span>
               <span className="block text-xs font-serif italic text-primary dark:text-white whitespace-nowrap">{prevLabel}</span>
             </div>
-          </button>
+          </motion.button>
         )}
 
         {onNext && (
-          <button
+          <motion.button
             onClick={onNext}
             className="absolute bottom-4 right-4 md:bottom-auto md:top-1/2 md:-translate-y-1/2 md:right-4 z-40 group flex items-center gap-2 text-primary dark:text-white transition-all duration-300 text-right outline-none focus:ring-2 focus:ring-accent-blue rounded-full p-2"
             aria-label={nextLabel ? `Next Chapter: ${nextLabel}` : "Next Chapter"}
+            animate={pulseAnimate}
+            transition={pulseTransition}
           >
             {/* Text - hidden and non-blocking until hover */}
             <div className="text-right hidden md:block opacity-0 translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none group-hover:pointer-events-auto">
@@ -78,7 +78,7 @@ const BookLayout: React.FC<BookLayoutProps> = ({
             <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white/0 group-hover:bg-white/20 dark:group-hover:bg-black/20 transition-all duration-300 backdrop-blur-[2px]">
               <span className="material-icons group-hover:translate-x-1 transition-transform text-2xl opacity-30 group-hover:opacity-100" aria-hidden="true">arrow_forward</span>
             </div>
-          </button>
+          </motion.button>
         )}
 
         {/* Content Rendered Here (Usually two flex-1 divs) */}
