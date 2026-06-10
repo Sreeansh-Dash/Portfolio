@@ -4,6 +4,7 @@ import SplitText from '../ui/SplitText';
 import BlurText from '../ui/BlurText';
 import InkWord from '../InkWord';
 import { useAnimation } from '../AnimationContext';
+import MistakeText from '../ui/MistakeText';
 
 const AboutSpread: React.FC = () => {
   const { reduceAnimations } = useAnimation();
@@ -22,11 +23,7 @@ const AboutSpread: React.FC = () => {
 
         <div className="flex-grow flex flex-col justify-center">
           <h1 className="font-display text-5xl lg:text-6xl text-primary dark:text-white mb-8 leading-tight">
-            <SplitText text="How I" delay={60} duration={0.4} />
-            <br />
-            <span className="italic font-serif text-gray-600 dark:text-gray-300">
-              <SplitText text="Think" delay={60} duration={0.4} />
-            </span>
+            <MistakeText text="How I Think" mistakeAt={6} wrongChars="Thnk" />
           </h1>
           <div className="prose dark:prose-invert prose-lg font-serif text-gray-900 dark:text-gray-200 max-w-lg leading-relaxed">
             <p>

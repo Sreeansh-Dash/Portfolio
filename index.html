@@ -122,6 +122,23 @@
       @keyframes fade-scale-in {
           to { opacity: 1; transform: scale(1); }
       }
+
+      /* MistakeText Cursor Styling */
+      @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+      }
+      .mistake-cursor {
+          animation: blink 0.8s step-end infinite;
+          font-family: 'Reenie Beanie', cursive;
+          font-weight: bold;
+          color: #3b82f6; /* accent blue */
+          margin-left: 2px;
+          display: inline-block;
+      }
+      .dark .mistake-cursor {
+          color: #60a5fa; /* lighter accent blue for dark mode */
+      }
     </style>
   <script type="importmap">
 {

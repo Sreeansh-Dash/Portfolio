@@ -17,30 +17,7 @@ import BookScene from './components/BookScene';
 import BookOpeningSequence from './components/BookOpeningSequence';
 import InkCursor from './components/InkCursor';
 import { useAnimation } from './components/AnimationContext';
-
-const pageTurnVariants = {
-  enter: (dir: number) => ({
-    rotateY: dir > 0 ? 25 : -25,
-    opacity: 0,
-    transformOrigin: dir > 0 ? 'left center' : 'right center',
-  }),
-  center: {
-    rotateY: 0,
-    opacity: 1,
-    transformOrigin: 'center',
-  },
-  exit: (dir: number) => ({
-    rotateY: dir > 0 ? -25 : 25,
-    opacity: 0,
-    transformOrigin: dir > 0 ? 'right center' : 'left center',
-  }),
-};
-
-const fadeVariants = {
-  enter: { opacity: 0 },
-  center: { opacity: 1 },
-  exit: { opacity: 0 },
-};
+import PageCurlWrapper from './components/PageCurlWrapper';
 
 const App: React.FC = () => {
   const [currentChapter, setCurrentChapter] = useState<Chapter>(Chapter.COVER);
@@ -180,19 +157,13 @@ const App: React.FC = () => {
               
               <div className="w-full h-full relative" style={{ perspective: '2000px', transformStyle: 'preserve-3d' }}>
                 <AnimatePresence mode="wait" custom={direction}>
-                  <motion.div
+                  <PageCurlWrapper
                     key={currentChapter}
-                    custom={direction}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    variants={reduceAnimations ? fadeVariants : pageTurnVariants}
-                    transition={{ duration: reduceAnimations ? 0.15 : 0.45, ease: [0.4, 0, 0.2, 1] }}
-                    className="w-full h-full flex flex-col md:flex-row relative z-10"
-                    style={{ transformStyle: 'preserve-3d' }}
+                    direction={direction}
+                    reduceAnimations={reduceAnimations}
                   >
                     {renderSpread()}
-                  </motion.div>
+                  </PageCurlWrapper>
                 </AnimatePresence>
               </div>
             </BookLayout>

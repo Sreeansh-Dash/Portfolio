@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Chapter } from '../../types';
 import { NAVIGATION_ITEMS } from '../../constants';
 import StickyNote from '../StickyNote';
 import SplitText from '../ui/SplitText';
 import BlurText from '../ui/BlurText';
+import MistakeText from '../ui/MistakeText';
 
 interface Props {
   onNavigate: (chapter: Chapter) => void;
 }
 
 const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownloadClick = () => {
+    setIsDownloading(true);
+    setTimeout(() => {
+      setIsDownloading(false);
+    }, 1500);
+  };
+
   return (
     <>
       {/* Left Page: Hero / Intro (Personal Details) */}
@@ -56,7 +66,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           <hr className="w-16 border-t-2 border-gray-200 dark:border-gray-700 mb-8 fade-scale" style={{ animationDelay: '0.9s' }} />
 
           <p className="font-serif italic text-xl leading-relaxed text-gray-700 dark:text-gray-300 max-w-md mb-12">
-            <BlurText text="&ldquo;I don't wait to understand things before building them.&rdquo;" animateBy="words" delay={40} />
+            <MistakeText text="“I don't wait to understand things before building them.”" mistakeAt={42} wrongChars="builsing" />
           </p>
 
           <div className="flex flex-wrap gap-4 mb-8 ink-soak" style={{ animationDelay: '1.4s' }}>
@@ -68,9 +78,18 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
               View Work
               <span className="material-icons text-sm" aria-hidden="true">arrow_forward</span>
             </button>
-            <a href="/Sreeansh_dash_resume_visual.pdf" download
+            <a href="/Sreeansh_dash_resume_visual.pdf" download="Sreeansh_Dash_Resume.pdf"
+               onClick={handleDownloadClick}
                className="border border-gray-300 dark:border-gray-600 px-6 py-2.5 font-display font-bold tracking-wide text-sm text-gray-800 dark:text-gray-200 hover:border-gray-800 transition-colors flex items-center gap-2">
-              Resume <span className="material-icons text-sm">download</span>
+              {isDownloading ? (
+                <>
+                  Downloading… <span className="material-icons text-sm animate-spin">hourglass_top</span>
+                </>
+              ) : (
+                <>
+                  Resume <span className="material-icons text-sm">download</span>
+                </>
+              )}
             </a>
           </div>
 
