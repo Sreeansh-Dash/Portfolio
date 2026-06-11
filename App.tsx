@@ -114,11 +114,10 @@ const App: React.FC = () => {
       <div className="fixed top-6 right-6 z-50 flex items-center gap-3">
         {/* Reduce Animations Toggle */}
         <button
-          className={`p-3 rounded-full shadow-lg hover:scale-105 transition-all border text-xl flex items-center justify-center ${
-            reduceAnimations
+          className={`p-3 rounded-full shadow-lg hover:scale-105 transition-all border text-xl flex items-center justify-center ${reduceAnimations
               ? 'bg-amber-100 dark:bg-amber-950 border-amber-300 dark:border-amber-800 text-amber-800 dark:text-amber-300'
               : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-800 dark:text-stone-400'
-          }`}
+            }`}
           onClick={() => setReduceAnimations(!reduceAnimations)}
           aria-label="Toggle Animations"
           title={reduceAnimations ? "Enable animations" : "Reduce animations"}
@@ -153,7 +152,7 @@ const App: React.FC = () => {
               nextLabel={nextChapter?.label}
             >
               <Navigation currentChapter={currentChapter} onNavigate={handleNavigate} />
-              
+
               <div className="w-full h-full relative" style={{ perspective: '2000px', transformStyle: 'preserve-3d' }}>
                 <AnimatePresence mode="wait" custom={direction}>
                   <PageCurlWrapper
