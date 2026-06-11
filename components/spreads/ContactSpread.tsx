@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import SplitText from '../ui/SplitText';
 import WrittenText from '../ui/WrittenText';
+import StickyNote from '../StickyNote';
 import { useAnimation } from '../AnimationContext';
 
 const ContactSpread: React.FC = () => {
   const [copied, setCopied] = useState(false);
+  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+  const [isSending, setIsSending] = useState(false);
+  const [sent, setSent] = useState(false);
   const { reduceAnimations } = useAnimation();
 
   const handleCopyEmail = () => {
@@ -16,50 +20,77 @@ const ContactSpread: React.FC = () => {
     }, 2000);
   };
 
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSending(true);
+    // Simulate submission
+    setTimeout(() => {
+      setIsSending(false);
+      setSent(true);
+      setFormState({ name: '', email: '', message: '' });
+      setTimeout(() => setSent(false), 3000);
+    }, 1200);
+  };
+
   return (
     <>
-      {/* Left Page: Let's Talk & Open to Grid */}
-      <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-texture">
-        <header className="mb-12">
-          <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 font-mono">
-            <SplitText text="Chapter VIII" delay={40} duration={0.4} />
+      {/* Left Page: Let's Talk, Intentions & Open To */}
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-texture">
+        <header className="mb-8 flex justify-between items-start">
+          <div className="flex items-center space-x-2 opacity-70">
+            <span className="material-icons text-xs">menu_book</span>
+            <span className="text-xs uppercase tracking-widest font-mono font-bold">Portfolio Book</span>
+          </div>
+          <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase font-mono">
+            Chapter VIII
           </span>
-          <h1 className="font-display text-4xl lg:text-5xl text-primary dark:text-white font-black mb-6 tracking-tight">
-            <SplitText text="Let's Talk" delay={70} duration={0.4} />
-          </h1>
         </header>
 
-        <div className="flex-grow space-y-6 pt-1">
-          <p className="font-serif text-lg leading-relaxed text-ink-light dark:text-gray-300 text-justify">
-            <span className="float-left text-5xl font-display font-bold mr-3 mt-[-6px] text-primary dark:text-white">I</span>
-            <WrittenText
-              text="'m a third-year student at VIT Chennai — actively building, actively learning, and actively looking for opportunities to contribute to real work."
-              delay={200}
-              speed={10}
-            />
-          </p>
-          <p className="font-serif text-lg leading-relaxed text-ink-light dark:text-gray-300 text-justify">
-            I'm open to internships, research collaborations, and project partnerships — particularly in AI systems, full-stack product development, or anything that sits at the intersection of the two.
-          </p>
-          <p className="font-serif text-lg leading-relaxed text-ink-light dark:text-gray-300 text-justify">
-            If something I've built resonates with what you're working on, I'd genuinely like to hear about it.
-          </p>
+        <div className="flex-grow space-y-6 pt-1 flex flex-col justify-center max-w-xl">
+          <div className="space-y-4">
+            <h1 className="font-display text-5xl lg:text-6xl text-primary dark:text-white font-black mb-3 tracking-tight">
+              <SplitText text="Let's Talk" delay={70} duration={0.4} />
+            </h1>
+            <p className="font-serif italic text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-snug">
+              "If you're building something interesting, I want to hear about it."
+            </p>
+          </div>
+
+          <div className="font-serif text-base md:text-lg text-ink-light dark:text-gray-300 space-y-4 leading-relaxed">
+            <p>
+              I'm currently looking for Software Engineering and AI/ML internships for Summer 2027, preferably in Bengaluru, Hyderabad, Mumbai, or Pune — though I'll always make exceptions for work that's genuinely exciting.
+            </p>
+            <p>
+              Not hiring? That's fine too. Reach out if you want to discuss a project, collaborate on something, or just talk about why standard blood test reference ranges are a systemic problem.
+            </p>
+          </div>
+
+          {/* Email CTA */}
+          <div className="py-4 border-y border-stone-200 dark:border-stone-800 my-4">
+            <span className="block text-[10px] font-mono uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-1">Direct Correspondence</span>
+            <a 
+              href="mailto:sreeansh786@gmail.com" 
+              className="font-mono text-lg md:text-xl font-black text-accent-blue dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors break-all"
+            >
+              sreeansh786@gmail.com
+            </a>
+          </div>
 
           {/* Open To Grid */}
-          <div className="pt-8">
-            <h4 className="font-mono text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Open to</h4>
-            <div className="grid grid-cols-2 gap-4">
+          <div>
+            <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3">Open to</h4>
+            <div className="grid grid-cols-2 gap-3">
               {[
                 { title: 'Internships', icon: 'work_outline' },
                 { title: 'Research Collab', icon: 'science' },
                 { title: 'Open Source', icon: 'group_work' },
-                { title: 'Project Partnerships', icon: 'lightbulb_outline' }
+                { title: 'Partnerships', icon: 'lightbulb_outline' }
               ].map(item => (
                 <div
                   key={item.title}
-                  className="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-700/60 bg-white/20 dark:bg-black/10 rounded-sm"
+                  className="flex items-center gap-3 p-3 border border-gray-200/80 dark:border-gray-700/60 bg-white/20 dark:bg-black/10 rounded-sm"
                 >
-                  <span className="material-icons text-accent-blue text-lg" aria-hidden="true">{item.icon}</span>
+                  <span className="material-icons text-accent-blue text-base" aria-hidden="true">{item.icon}</span>
                   <span className="font-mono text-xs text-gray-700 dark:text-gray-300 font-bold uppercase tracking-wide">{item.title}</span>
                 </div>
               ))}
@@ -67,13 +98,14 @@ const ContactSpread: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-auto pt-8 text-xs font-mono text-gray-400">
-          15
+        <div className="mt-8 pt-8 flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase" aria-hidden="true">
+          <span>Let's Talk</span>
+          <span>Page 015</span>
         </div>
       </div>
 
-      {/* Right Page: Get in Touch cards & actions */}
-      <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative bg-paper-light dark:bg-paper-dark text-primary dark:text-white">
+      {/* Right Page: Message Form & Socials */}
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-paper-light dark:bg-paper-dark text-primary dark:text-white">
         {/* Corner curl — sits at bottom-right, appears on hover */}
         <motion.div
           className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"
@@ -86,108 +118,116 @@ const ContactSpread: React.FC = () => {
           }}
         />
 
-        <header className="mb-10 border-b-2 border-primary/10 pb-4">
-          <h2 className="font-display text-2xl font-bold">
-            <SplitText text="Get in Touch" delay={50} duration={0.4} />
-          </h2>
-        </header>
-
-        <div className="flex-grow flex flex-col justify-between">
-          <div className="space-y-4">
-            {/* Email Card */}
-            <div className="border border-gray-200 dark:border-gray-700 p-5 bg-white/60 dark:bg-gray-800/40 hover:border-gray-400 transition-colors flex items-center justify-between rounded-sm">
-              <div className="flex items-center gap-4">
-                <span className="material-icons text-gray-400">email</span>
-                <div>
-                  <span className="block text-[10px] font-mono uppercase tracking-wider text-gray-400">Email</span>
-                  <a href="mailto:sreeansh786@gmail.com" className="font-mono text-sm hover:text-accent-blue transition-colors">
-                    sreeansh786@gmail.com
-                  </a>
-                </div>
+        <div className="flex-grow flex flex-col justify-center relative mt-4 space-y-6 max-w-xl">
+          
+          {/* Contact Form */}
+          <form onSubmit={handleFormSubmit} className="space-y-4">
+            <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-gray-400 border-b border-stone-250 dark:border-stone-800 pb-2 mb-3">
+              Send a Message
+            </h3>
+            
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="form-name" className="block text-[10px] font-mono uppercase text-gray-400 mb-1">Name</label>
+                <input 
+                  id="form-name"
+                  type="text" 
+                  required
+                  placeholder="Your Name"
+                  value={formState.name}
+                  onChange={e => setFormState({ ...formState, name: e.target.value })}
+                  className="w-full text-sm font-sans p-3 bg-white/40 dark:bg-black/15 border border-stone-300 dark:border-stone-700 rounded-sm focus:outline-none focus:border-accent-blue dark:text-white"
+                />
               </div>
-              <button
-                onClick={handleCopyEmail}
-                className="text-gray-400 hover:text-accent-blue transition-colors p-1.5 focus:outline-none"
-                title="Copy to clipboard"
-                aria-label="Copy Email address"
-              >
-                <span className="material-icons text-base">
-                  {copied ? 'check' : 'content_copy'}
-                </span>
-              </button>
+              <div>
+                <label htmlFor="form-email" className="block text-[10px] font-mono uppercase text-gray-400 mb-1">Email</label>
+                <input 
+                  id="form-email"
+                  type="email" 
+                  required
+                  placeholder="your@email.com"
+                  value={formState.email}
+                  onChange={e => setFormState({ ...formState, email: e.target.value })}
+                  className="w-full text-sm font-sans p-3 bg-white/40 dark:bg-black/15 border border-stone-300 dark:border-stone-700 rounded-sm focus:outline-none focus:border-accent-blue dark:text-white"
+                />
+              </div>
+            </div>
+            
+            <div>
+              <label htmlFor="form-message" className="block text-[10px] font-mono uppercase text-gray-400 mb-1">Message</label>
+              <textarea 
+                id="form-message"
+                rows={3}
+                required
+                placeholder="What are you building?"
+                value={formState.message}
+                onChange={e => setFormState({ ...formState, message: e.target.value })}
+                className="w-full text-sm font-sans p-3 bg-white/40 dark:bg-black/15 border border-stone-300 dark:border-stone-700 rounded-sm focus:outline-none focus:border-accent-blue dark:text-white resize-none"
+              />
             </div>
 
-            {/* LinkedIn Card */}
-            <a
-              href="https://www.linkedin.com/in/sreeansh-dash/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-gray-200 dark:border-gray-700 p-5 bg-white/60 dark:bg-gray-800/40 hover:border-gray-400 transition-colors flex items-center justify-between rounded-sm group block"
+            <button 
+              type="submit"
+              disabled={isSending || sent}
+              className="w-full py-3 bg-primary dark:bg-white text-white dark:text-primary font-mono text-xs font-bold uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-1.5 cursor-pointer"
             >
-              <div className="flex items-center gap-4">
-                <span className="material-icons text-gray-400">link</span>
-                <div>
-                  <span className="block text-[10px] font-mono uppercase tracking-wider text-gray-400">LinkedIn</span>
-                  <span className="font-mono text-sm group-hover:text-accent-blue transition-colors">
-                    in/sreeansh-dash
-                  </span>
-                </div>
-              </div>
-              <span className="material-icons text-base text-gray-400 group-hover:text-accent-blue transition-colors">
-                arrow_outward
-              </span>
-            </a>
+              {isSending ? 'Sending...' : sent ? 'Sent!' : 'Send Message'}
+              <span className="material-icons text-sm">arrow_forward</span>
+            </button>
+          </form>
 
-            {/* GitHub Card */}
-            <a
-              href="https://github.com/Sreeansh-Dash"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-gray-200 dark:border-gray-700 p-5 bg-white/60 dark:bg-gray-800/40 hover:border-gray-400 transition-colors flex items-center justify-between rounded-sm group block"
-            >
-              <div className="flex items-center gap-4">
-                <span className="material-icons text-gray-400">code</span>
-                <div>
-                  <span className="block text-[10px] font-mono uppercase tracking-wider text-gray-400">GitHub</span>
-                  <span className="font-mono text-sm group-hover:text-accent-blue transition-colors">
-                    Sreeansh-Dash
-                  </span>
+          {/* Social Links Cards */}
+          <div className="pt-2 space-y-3">
+            <div className="grid grid-cols-2 gap-3">
+              <a 
+                href="https://github.com/Sreeansh-Dash" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-3.5 p-3 border border-stone-200 dark:border-stone-850 bg-white/40 dark:bg-black/15 rounded-sm hover:border-gray-400 transition-colors group"
+              >
+                <span className="material-icons text-base text-gray-400 group-hover:text-accent-blue">code</span>
+                <div className="min-w-0">
+                  <span className="block text-[8px] font-mono text-gray-400 uppercase tracking-wider">GitHub</span>
+                  <span className="block text-xs font-mono truncate text-gray-700 dark:text-gray-300">Sreeansh-Dash</span>
                 </div>
-              </div>
-              <span className="material-icons text-base text-gray-400 group-hover:text-accent-blue transition-colors">
-                arrow_outward
-              </span>
-            </a>
+              </a>
 
-            {/* Location Card */}
-            <div className="border border-gray-200 dark:border-gray-700 p-5 bg-white/60 dark:bg-gray-800/40 hover:border-gray-400 transition-colors flex items-center gap-4 rounded-sm">
-              <span className="material-icons text-gray-400">location_on</span>
-              <div>
-                <span className="block text-[10px] font-mono uppercase tracking-wider text-gray-400">Location</span>
-                <span className="font-sans text-sm font-bold block text-gray-900 dark:text-white">
-                  VIT Chennai, India
-                </span>
-                <span className="font-serif text-xs text-gray-500 italic block mt-0.5">
-                  (from Bhilai, CG)
-                </span>
-              </div>
+              <a 
+                href="https://www.linkedin.com/in/sreeansh-dash/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-3.5 p-3 border border-stone-200 dark:border-stone-850 bg-white/40 dark:bg-black/15 rounded-sm hover:border-gray-400 transition-colors group"
+              >
+                <span className="material-icons text-base text-gray-400 group-hover:text-accent-blue">link</span>
+                <div className="min-w-0">
+                  <span className="block text-[8px] font-mono text-gray-400 uppercase tracking-wider">LinkedIn</span>
+                  <span className="block text-xs font-mono truncate text-gray-700 dark:text-gray-300">in/sreeansh-dash</span>
+                </div>
+              </a>
             </div>
           </div>
 
-          {/* Bottom Handwritten Note */}
-          <motion.div
-            className="pt-10 pb-4"
-            animate={reduceAnimations ? { rotate: 0 } : { rotate: [-1, 1, -1, 0, -1] }}
-            transition={reduceAnimations ? {} : { duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <p className="font-handwriting text-3xl text-center text-gray-500 dark:text-gray-400">
-              <WrittenText text="&ldquo;Thank you for reading.&rdquo;" delay={200} speed={25} fontHandwriting={true} showCursor={true} />
-            </p>
-          </motion.div>
+          {/* Bottom Sticky Note positioned cleanly */}
+          <div className="relative h-24 mt-4 flex justify-center items-center">
+            <StickyNote className="absolute -bottom-2" rotation="2deg">
+              <div className="font-handwriting text-sm leading-tight text-gray-800 text-center max-w-[160px]">
+                <span className="block font-bold">P.S. — I usually reply</span>
+                <span className="block mt-0.5">within 24 hours.</span>
+                <span className="block text-[11px] text-gray-500 italic mt-1 leading-snug">(Unless I'm debugging something cursed.)</span>
+              </div>
+            </StickyNote>
+          </div>
         </div>
 
-        <div className="mt-auto pt-8 flex justify-end text-xs font-mono text-gray-400">
-          Vol. 1 · Page 016
+        {/* Footer & Book Closing Line */}
+        <div className="mt-auto pt-6 border-t border-stone-200 dark:border-stone-800 text-center">
+          <p className="text-[10px] font-mono text-gray-450 dark:text-gray-400 uppercase tracking-widest leading-relaxed">
+            Sreeansh Dash · 2025 · Built with React + Vite + Tailwind · Hosted on Netlify
+          </p>
+          <div className="flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase mt-2" aria-hidden="true">
+            <span>Get in Touch</span>
+            <span>Page 016</span>
+          </div>
         </div>
       </div>
     </>

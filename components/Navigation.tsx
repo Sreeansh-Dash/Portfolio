@@ -175,7 +175,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentChapter, onNavigate }) =
               <span className={`material-icons text-sm transition-colors ${showSearch ? 'text-bookmark-red' : 'text-gray-400 group-hover:text-bookmark-red'}`} aria-hidden="true">search</span>
             </button>
             <button
-              onClick={() => { onNavigate(Chapter.CLOSING); toggleMenu(); }}
+              onClick={() => { onNavigate(Chapter.CONTACT); toggleMenu(); }}
               className="group p-1 focus:outline-none focus:ring-2 focus:ring-bookmark-red rounded"
               title="Contact Page"
               aria-label="Go to Contact Page"
@@ -193,7 +193,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentChapter, onNavigate }) =
           aria-label="Close Menu"
         >
           <div className="w-12 h-12 rounded-full wax-seal flex items-center justify-center transform group-hover:scale-105 transition-transform duration-200 border-2 border-red-900 group-focus:ring-2 group-focus:ring-white">
-            <span className="font-cursive text-white/90 text-xl font-bold drop-shadow-md select-none transform -rotate-12 translate-y-0.5">JD</span>
+            <span className="font-cursive text-white/90 text-xl font-bold drop-shadow-md select-none transform -rotate-12 translate-y-0.5">SD</span>
           </div>
         </button>
       </div>

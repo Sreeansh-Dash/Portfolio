@@ -5,14 +5,13 @@ import Navigation from './components/Navigation';
 import { Chapter } from './types';
 import { NAVIGATION_ITEMS } from './constants';
 import CoverSpread from './components/spreads/CoverSpread';
-import ProjectsSpread from './components/spreads/ProjectsSpread';
-import CaseStudySpread from './components/spreads/CaseStudySpread';
-import GrievanceSpread from './components/spreads/GrievanceSpread';
-import SkillsSpread from './components/spreads/SkillsSpread';
+import IndexSpread from './components/spreads/IndexSpread';
 import AboutSpread from './components/spreads/AboutSpread';
+import SmartCaneSpread from './components/spreads/SmartCaneSpread';
+import BloodAnalyzerSpread from './components/spreads/BloodAnalyzerSpread';
+import CascadeXSpread from './components/spreads/CascadeXSpread';
 import ResumeSpread from './components/spreads/ResumeSpread';
 import ContactSpread from './components/spreads/ContactSpread';
-import SmartCaneSpread from './components/spreads/SmartCaneSpread';
 import BookScene from './components/BookScene';
 import BookOpeningSequence from './components/BookOpeningSequence';
 import InkCursor from './components/InkCursor';
@@ -75,19 +74,19 @@ const App: React.FC = () => {
     switch (currentChapter) {
       case Chapter.COVER:
         return <CoverSpread onNavigate={handleNavigate} />;
+      case Chapter.INDEX:
+        return <IndexSpread onNavigate={handleNavigate} />;
       case Chapter.ABOUT:
         return <AboutSpread />;
-      case Chapter.PROJECTS:
-        return <ProjectsSpread onNavigate={handleNavigate} />;
-      case Chapter.DEEP_DIVE_1:
+      case Chapter.WALKING_STICK:
         return <SmartCaneSpread onNavigate={handleNavigate} />;
-      case Chapter.DEEP_DIVE_2:
-        return <GrievanceSpread />;
-      case Chapter.TOOLKIT:
-        return <SkillsSpread />;
+      case Chapter.BLOOD_ANALYZER:
+        return <BloodAnalyzerSpread />;
+      case Chapter.CASCADEX:
+        return <CascadeXSpread />;
       case Chapter.RESUME:
         return <ResumeSpread />;
-      case Chapter.CLOSING:
+      case Chapter.CONTACT:
         return <ContactSpread />;
       default:
         return <CoverSpread onNavigate={handleNavigate} />;

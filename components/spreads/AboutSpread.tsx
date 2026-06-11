@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import SplitText from '../ui/SplitText';
-import BlurText from '../ui/BlurText';
 import WrittenText from '../ui/WrittenText';
 import InteractiveWord from '../ui/InteractiveWord';
 import InkWord from '../InkWord';
+import StickyNote from '../StickyNote';
 import { useAnimation } from '../AnimationContext';
 import MistakeText from '../ui/MistakeText';
 
@@ -13,67 +13,73 @@ const AboutSpread: React.FC = () => {
 
   return (
     <>
-      {/* Left Page: Narrative */}
-      <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-texture bg-cover">
-        <header className="flex justify-between items-start mb-12">
+      {/* Left Page: Philosophy & Currently Building */}
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-texture">
+        <header className="flex justify-between items-start mb-10">
           <div className="flex items-center gap-3 opacity-70">
             <span className="material-icons text-gray-600 dark:text-gray-400">menu_book</span>
-            <span className="font-display font-bold text-gray-900 dark:text-gray-100 tracking-wide">Portfolio Book</span>
+            <span className="font-display font-bold text-gray-900 dark:text-gray-100 tracking-wide text-xs uppercase">Portfolio Book</span>
           </div>
-          <span className="font-serif text-sm italic text-gray-500 dark:text-gray-400">Chapter II</span>
+          <span className="font-serif text-xs italic text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold">Chapter III</span>
         </header>
 
-        <div className="flex-grow flex flex-col justify-center">
-          <h1 className="font-display text-5xl lg:text-6xl text-primary dark:text-white mb-8 leading-tight">
+        <div className="flex-grow flex flex-col justify-center max-w-xl">
+          <h1 className="font-display text-5xl lg:text-6xl text-primary dark:text-white mb-8 leading-tight font-black">
             <MistakeText text="How I Think" mistakeAt={6} wrongChars="Thnk" />
           </h1>
-          <div className="prose dark:prose-invert prose-lg font-serif text-gray-900 dark:text-gray-200 max-w-lg leading-relaxed">
-            <p>
-              <span className="text-5xl font-display float-left mr-3 mt-[-6px]">I</span>
-              <WrittenText
-                text="'m a third-year AI & ML student at VIT Chennai who builds things before most of my batch knows what they want to build. Not because I'm ahead — but because building is how I learn. I need the problem to be real before the solution means anything to me."
-                delay={200}
-                speed={8}
-              />
+
+          <div className="prose dark:prose-invert prose-lg font-serif text-gray-900 dark:text-gray-200 leading-relaxed space-y-6">
+            <p className="text-lg md:text-xl">
+              <span className="text-5xl font-display font-black float-left mr-3 mt-[-4px]">I</span>
+              think in systems first, then in interfaces. Before writing a line of code, I ask: what's the smallest version of this that actually solves the real problem? That question has taken me from training ML models on medical data to soldering sensors onto circuit boards to designing flows in Figma — sometimes in the same week.
             </p>
-            <p className="mt-6">
-              <WrittenText text="My work cuts across" delay={600} speed={10} /> <InteractiveWord text="embedded systems" />, <InteractiveWord text="machine learning" />, and <InteractiveWord text="product design" /> — <WrittenText text="not because I can't focus, but because the most interesting problems sit at exactly those intersections." delay={900} speed={10} />
+            <p className="text-lg md:text-xl">
+              I'm drawn to problems where the stakes are real: healthcare, accessibility, infrastructure. Not because they're impressive to list, but because the feedback loop is honest — either it helps someone or it doesn't.
             </p>
-            <p className="mt-6">
-              <WrittenText text="I care about" delay={1500} speed={10} /> <InteractiveWord text="structural integrity" hoverClass="font-bold text-primary dark:text-blue-400" />: <WrittenText text="understanding why a system works, not just that it does." delay={1800} speed={10} />
+            <p className="italic text-lg md:text-xl text-gray-600 dark:text-gray-400 border-l-2 border-accent-blue dark:border-blue-400 pl-4">
+              The tools I use are incidental. What I care about is whether the thing works for the person it's built for.
             </p>
           </div>
 
-          <div className="mt-8 p-4 border border-dashed border-gray-300 dark:border-gray-600 bg-gray-50/50 dark:bg-gray-800/30">
-            <p className="font-mono text-[10px] uppercase tracking-widest text-gray-400 mb-3">Currently building</p>
-            <ul className="space-y-1.5">
-              {[
-                { name: 'CascadeX', desc: 'Adverse drug interaction scanner' },
-                { name: 'Blood Report Analyzer', desc: 'Cluster-adaptive ML diagnostic tool' },
-                { name: 'CodeAutopsy', desc: 'GitHub repo architectural mapper (Groq)' },
-              ].map((p) => (
-                <li key={p.name} className="flex items-baseline gap-2 font-serif text-sm text-gray-700 dark:text-gray-300">
-                  <span className="text-accent-blue text-xs font-bold">›</span>
-                  <span>
-                    <strong className="font-sans font-bold text-gray-900 dark:text-white text-xs uppercase tracking-wider">
-                      <InkWord accent>{p.name}</InkWord>
-                    </strong>
-                    <span className="text-gray-500 dark:text-gray-400 ml-1 italic">— {p.desc}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
+          {/* Currently Building Block */}
+          <div className="mt-8 p-5 border border-dashed border-gray-300 dark:border-gray-600 bg-gray-50/50 dark:bg-gray-800/30 rounded-sm">
+            <p className="font-mono text-xs uppercase tracking-widest text-primary dark:text-blue-300 font-bold mb-4">Currently Building</p>
+            <div className="space-y-4">
+              <div>
+                <div className="flex justify-between items-baseline">
+                  <h4 className="font-sans font-bold text-sm uppercase tracking-wider text-gray-900 dark:text-white">CascadeX</h4>
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-400 uppercase tracking-widest">In Progress</span>
+                </div>
+                <p className="font-serif text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-1">Medicine barcode scanner flagging dangerous drug combinations. <span className="font-mono text-xs text-gray-500 font-medium">(Neo4j · Groq · React Native)</span></p>
+              </div>
+              
+              <div>
+                <div className="flex justify-between items-baseline mt-1">
+                  <h4 className="font-sans font-bold text-sm uppercase tracking-wider text-gray-900 dark:text-white">Cluster-Adaptive Blood Analyzer</h4>
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-green-100 dark:bg-green-950 text-green-800 dark:text-green-400 uppercase tracking-widest">Research Done</span>
+                </div>
+                <p className="font-serif text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-1">Personalized risk scoring replacing one-size-fits-all limits. <span className="font-mono text-xs text-gray-500 font-medium">(XGBoost · KMeans · Python)</span></p>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-baseline mt-1">
+                  <h4 className="font-sans font-bold text-sm uppercase tracking-wider text-gray-900 dark:text-white">CodeAutopsy</h4>
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-400 uppercase tracking-widest">In Progress</span>
+                </div>
+                <p className="font-serif text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-1">Maps GitHub repo structures visually using Groq LLM. <span className="font-mono text-xs text-gray-500 font-medium">(Groq API · Python · Graph Viz)</span></p>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase">
+        <div className="mt-8 pt-8 flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase" aria-hidden="true">
           <span>Vol. 1</span>
-          <span>03</span>
+          <span>Page 005</span>
         </div>
       </div>
 
-      {/* Right Page: Philosophy */}
-      <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative bg-paper-light dark:bg-paper-dark">
+      {/* Right Page: Intellectual Fingerprint, Sticky Note & Skills */}
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-paper-light dark:bg-paper-dark">
         {/* Corner curl — sits at bottom-right, appears on hover */}
         <motion.div
           className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"
@@ -86,59 +92,71 @@ const AboutSpread: React.FC = () => {
           }}
         />
 
-        {/* Swaying handwritten note */}
-        <motion.div
-          className="absolute top-24 right-12 w-48 bg-[#fef9c3] dark:bg-[#eab308] dark:bg-opacity-90 p-4 shadow-md z-10"
-          animate={reduceAnimations ? { rotate: 2 } : { rotate: [2, 3.5, 2, 0.5, 2] }}
-          transition={reduceAnimations ? {} : { duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <div className="font-handwriting text-xl text-gray-800 dark:text-gray-900 leading-snug">
-            <WrittenText text="&ldquo;Constraints don't limit the solution. They are the solution.&rdquo;" delay={200} speed={25} fontHandwriting={true} showCursor={true} />
-            <span className="block text-right mt-2 text-sm opacity-75">— Note to self</span>
+        {/* Pinned handwritten note positioned cleanly in top-right without covering text */}
+        <StickyNote className="absolute top-8 right-6 md:right-12 z-20" rotation="-2deg">
+          <div className="font-handwriting text-xs md:text-sm text-gray-800 leading-snug max-w-[140px]">
+            <span className="block font-bold">Ship something that works.</span>
+            <span className="block mt-1">Then make it beautiful.</span>
+            <span className="block mt-1">Then ask if it was the right thing to build at all.</span>
+            <span className="block text-right mt-2 text-[9px] opacity-75">— note to self</span>
           </div>
-          <div className="w-3 h-3 absolute -top-1.5 left-1/2 -ml-1.5 rounded-full bg-gray-400/50 shadow-inner"></div>
-        </motion.div>
+        </StickyNote>
 
-        <div className="flex-grow flex flex-col mt-32 relative">
-          <div className="flex items-start gap-8 mb-10">
-            <div className="w-32 h-40 flex-shrink-0 bg-gray-200 dark:bg-gray-700 relative overflow-hidden shadow-sm border-4 border-white dark:border-gray-600 transform -rotate-1">
-              <img src="/about.jpeg" alt="Sreeansh Dash" className="w-full h-full object-cover" />
+        <div className="flex-grow flex flex-col mt-6 relative justify-center">
+          <div className="flex items-start gap-8 mb-8 pr-24 md:pr-32">
+            <div className="w-28 h-36 flex-shrink-0 bg-gray-200 dark:bg-gray-700 relative overflow-hidden shadow-md border-2 border-white dark:border-gray-600 transform -rotate-2">
+              <img src="/about.jpeg" alt="Sreeansh working" className="w-full h-full object-cover" />
             </div>
-            <div>
-              <h2 className="font-display text-3xl text-gray-900 dark:text-gray-100 mb-2">
-                <SplitText text="Way of Thinking" delay={50} duration={0.4} />
+            <div className="pt-3">
+              <h2 className="font-display text-2xl text-gray-900 dark:text-gray-100 font-bold mb-1.5">
+                Way of Thinking
               </h2>
-              <p className="font-serif italic text-gray-500 dark:text-gray-400 text-lg">
-                <WrittenText text="Translating problems to models." delay={500} speed={15} fontHandwriting={true} />
+              <p className="font-serif italic text-gray-500 dark:text-gray-400 text-sm">
+                Translating problems to systems.
               </p>
             </div>
           </div>
 
-          <div className="pl-4 border-l-2 border-gray-200 dark:border-gray-700 space-y-8 relative ml-4">
-            <div>
-              <h3 className="font-sans font-bold text-sm uppercase tracking-wider text-black dark:text-white mb-2">Build to understand</h3>
-              <p className="font-serif text-gray-800 dark:text-gray-300 text-sm leading-relaxed">
-                The <InteractiveWord text="Smart Cane" hoverClass="font-handwriting text-lg text-primary" /> started as a question: <WrittenText text="what does 'terrain-aware' actually mean in hardware? I built it to find out." delay={800} speed={10} />
-              </p>
-            </div>
-            <div>
-              <h3 className="font-sans font-bold text-sm uppercase tracking-wider text-black dark:text-white mb-2">Systems over features</h3>
-              <p className="font-serif text-gray-800 dark:text-gray-300 text-sm leading-relaxed">
-                The <InteractiveWord text="Grievance AI" hoverClass="font-handwriting text-lg text-primary" /> wasn't a classifier. <WrittenText text="It was a decision pipeline. The difference in framing changes every architectural choice you make." delay={1200} speed={10} />
-              </p>
-            </div>
-            <div>
-              <h3 className="font-sans font-bold text-sm uppercase tracking-wider text-black dark:text-white mb-2">Design is structural</h3>
-              <p className="font-serif text-gray-800 dark:text-gray-300 text-sm leading-relaxed">
-                UX decisions are engineering decisions. Clarity of interface reflects clarity of architecture — you can't fake one without exposing the other.
-              </p>
+          {/* Passions list */}
+          <div className="mb-8 space-y-3">
+            <h4 className="font-sans font-bold text-sm uppercase tracking-wider text-black dark:text-white">Things I think about more than is normal</h4>
+            <ul className="space-y-2 font-serif text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed pl-5 list-disc">
+              <li>Why standard blood test reference ranges ignore individual metabolic variation</li>
+              <li>How much better assistive tech could be if hardware engineers and ML people talked more</li>
+              <li>Whether the next wave of medical AI will actually reach primary care</li>
+              <li>How to make complex systems feel simple from the outside</li>
+            </ul>
+          </div>
+
+          {/* Skills block */}
+          <div className="border-t border-gray-200 dark:border-gray-700 pt-6 mt-4">
+            <h4 className="font-sans font-bold text-sm uppercase tracking-wider text-black dark:text-white mb-4">Technical Toolkit</h4>
+            <div className="space-y-3 font-mono text-xs">
+              {[
+                { category: 'Code', items: ['Python', 'JavaScript', 'Java', 'C/C++'] },
+                { category: 'AI/ML', items: ['Deep Learning', 'NLP', 'Computer Vision', 'YOLOv8', 'OpenCV'] },
+                { category: 'Build', items: ['React', 'REST APIs', 'Streamlit', 'Git'] },
+                { category: 'Hardware', items: ['ESP32', 'Arduino', 'IMU', 'Ultrasonic Sensors'] },
+                { category: 'Design', items: ['Figma', 'UX Research', 'Prototyping'] }
+              ].map(skill => (
+                <div key={skill.category} className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6 pb-1.5 border-b border-gray-100 dark:border-gray-800 last:border-b-0">
+                  <span className="w-24 font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest text-[10px]">{skill.category}</span>
+                  <div className="flex flex-wrap gap-2">
+                    {skill.items.map(item => (
+                      <span key={item} className="px-2.5 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs font-sans font-medium">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="mt-auto pt-8 flex justify-between items-end text-[10px] tracking-widest text-gray-400 font-bold uppercase">
+        <div className="mt-8 pt-8 flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase" aria-hidden="true">
           <span>About Me</span>
-          <span>04</span>
+          <span>Page 006</span>
         </div>
       </div>
     </>

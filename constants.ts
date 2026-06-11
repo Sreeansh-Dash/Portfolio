@@ -3,56 +3,56 @@ import { Chapter, NavItem, Project } from './types';
 export const NAVIGATION_ITEMS: NavItem[] = [
   {
     id: Chapter.COVER,
-    label: 'Beginnings',
+    label: 'The Cover',
     roman: 'I',
     pageNumber: '1-2',
-    subLabel: 'Introduction'
+    subLabel: 'Preface'
+  },
+  {
+    id: Chapter.INDEX,
+    label: 'Table of Contents',
+    roman: 'II',
+    pageNumber: '3-4',
+    subLabel: 'Contents'
   },
   {
     id: Chapter.ABOUT,
-    label: 'About Me',
-    roman: 'II',
-    pageNumber: '3-4',
-    subLabel: 'How I think'
-  },
-  {
-    id: Chapter.PROJECTS,
-    label: 'Projects',
+    label: 'How I Think',
     roman: 'III',
     pageNumber: '5-6',
-    subLabel: 'Selected Works'
+    subLabel: 'Philosophy & Way of Thinking'
   },
   {
-    id: Chapter.DEEP_DIVE_1,
-    label: 'Deep Dive 1',
+    id: Chapter.WALKING_STICK,
+    label: 'Smart Walking Stick',
     roman: 'IV',
     pageNumber: '7-8',
-    subLabel: 'Case Study'
+    subLabel: 'Project 01'
   },
   {
-    id: Chapter.DEEP_DIVE_2,
-    label: 'Deep Dive 2',
+    id: Chapter.BLOOD_ANALYZER,
+    label: 'Blood Report Analyzer',
     roman: 'V',
     pageNumber: '9-10',
-    subLabel: 'Analysis'
+    subLabel: 'Project 02'
   },
   {
-    id: Chapter.TOOLKIT,
-    label: 'Technical Toolkit',
+    id: Chapter.CASCADEX,
+    label: 'CascadeX Scanner',
     roman: 'VI',
     pageNumber: '11-12',
-    subLabel: 'Skills & Tools'
+    subLabel: 'Project 03'
   },
   {
     id: Chapter.RESUME,
-    label: 'Resume',
+    label: 'The Paper Trail',
     roman: 'VII',
     pageNumber: '13-14',
-    subLabel: 'Professional History'
+    subLabel: 'Resume & History'
   },
   {
-    id: Chapter.CLOSING,
-    label: 'Contact',
+    id: Chapter.CONTACT,
+    label: "Let's Talk",
     roman: 'VIII',
     pageNumber: '15-16',
     subLabel: 'Get in Touch'
@@ -61,58 +61,41 @@ export const NAVIGATION_ITEMS: NavItem[] = [
 
 export const PROJECTS: Project[] = [
   {
-    title: 'Smart Cane',
-    qualifier: 'Embedded Assistive System',
-    category: 'Embedded Systems',
-    techStack: 'Ackermann Steering · Ultrasonic Sensors · Terrain Feedback',
-    description: 'An intelligent mobility aid integrating Ackermann steering geometry, embedded sensing, and terrain-aware haptic feedback for visually impaired navigation.',
-    image: '/accessible.png',
-    rotation: 'rotate-0',
-    ctaText: 'View Case Study',
-    link: Chapter.DEEP_DIVE_1,
+    id: 'walking-stick',
+    number: '01',
+    name: 'Smart Terrain-Specific Ackermann Steering Walking Stick',
+    tagline: "Because independence shouldn't depend on good terrain.",
+    status: 'patent-pending',
+    statusLabel: 'Patent Design — Under Review',
+    tags: ['C++', 'ESP32', 'Arduino', 'IMU', 'Ultrasonic', 'Embedded'],
+    hasPhotos: false,
+    description: 'A fully designed assistive device for visually impaired users that combines real-time obstacle detection with IMU-based fall detection. The mechanical frame applies Ackermann steering geometry — borrowed from automotive design — to improve directional stability across uneven surfaces. Fall detection triggers immediate SMS and buzzer alerts to caregivers, reducing emergency response time. This is a patent-pending design. The device has been fully engineered and documented; physical fabrication is the next step.',
+    ctaText: 'Patent Pending'
   },
   {
-    title: 'Grievance AI',
-    qualifier: 'Applied NLP System',
-    category: 'Machine Learning',
-    techStack: 'NLP Classification · Decision Workflows · Automated Resolution',
-    description: 'An end-to-end AI pipeline for automated grievance classification, priority scoring, and resolution routing — built around NLP models and structured decision logic.',
-    image: '/rocket.png',
-    rotation: 'rotate-0',
-    ctaText: 'Explore Architecture',
-    link: Chapter.DEEP_DIVE_2,
+    id: 'blood-analyzer',
+    number: '02',
+    name: 'Cluster-Adaptive Blood Report Analyzer',
+    tagline: "Your blood is not average. Your reference ranges shouldn't be either.",
+    status: 'complete',
+    statusLabel: 'Research Complete',
+    tags: ['Python', 'XGBoost', 'KMeans', 'PCA', 'Healthcare ML'],
+    hasPhotos: true,
+    photos: ['tsne_clusters.png', '06_novelty_validation.png'],
+    statCallout: '70% of cluster thresholds diverge >10% from global ranges',
+    description: "Standard blood test reports flag results as 'abnormal' based on population-wide averages that ignore individual metabolic variation. This project challenges that assumption. Trained on the NidaanKosha dataset (99,992 patients, 109 biomarkers), the system first clusters patients into 5 metabolic profiles using KMeans — then computes personalized 5th/95th percentile thresholds for each cluster. The result: 70% of cluster-specific thresholds diverge more than 10% from standard global ranges, confirming that one-size-fits-all references misclassify a large portion of patients. A multi-label XGBoost classifier then flags risk across 6 conditions — Anaemia, Diabetes Risk, Dyslipidemia, Kidney Risk, Liver Stress, and Thyroid Abnormality — with AUC-ROC scores up to 0.87 on the test set.",
+    ctaText: 'Research Complete'
   },
   {
-    title: 'CascadeX',
-    qualifier: 'Healthcare AI · In Development',
-    category: 'AI / Healthcare',
-    techStack: 'Computer Vision · Barcode Scanning · Drug Interaction Models',
-    description: 'Scans medicine barcodes and flags dangerous drug interactions before they happen — real-time adverse pairing detection at the point of use.',
-    image: '/accessible.png',
-    rotation: 'rotate-0',
-    ctaText: 'Coming Soon',
-    comingSoon: true,
-  },
-  {
-    title: 'Blood Report Analyzer',
-    qualifier: 'ML Diagnostic Tool · In Development',
-    category: 'Machine Learning',
-    techStack: 'Clustering Algorithms · Unsupervised ML · Medical Data Analysis',
-    description: 'A cluster-adaptive system that reads blood reports, identifies patient groupings through unsupervised learning, and surfaces diagnostic patterns without predefined labels.',
-    image: '/rocket.png',
-    rotation: 'rotate-0',
-    ctaText: 'Coming Soon',
-    comingSoon: true,
-  },
-  {
-    title: 'CodeAutopsy',
-    qualifier: 'Developer Tool · In Development',
-    category: 'Software Engineering',
-    techStack: 'Groq API · Static Analysis · GitHub Integration',
-    description: 'Takes any GitHub repository URL and maps the structural relationships between files — an architectural X-ray for codebases, powered by Groq.',
-    image: '/book_ribbon.png',
-    rotation: 'rotate-0',
-    ctaText: 'Coming Soon',
-    comingSoon: true,
-  },
+    id: 'cascadex',
+    number: '03',
+    name: 'CascadeX',
+    tagline: 'Scan first. Take second.',
+    status: 'in-progress',
+    statusLabel: 'In Progress',
+    tags: ['React Native', 'Neo4j', 'Groq API', 'Expo EAS'],
+    hasPhotos: false, // set to true when screenshots ready
+    description: "Polypharmacy — taking multiple medications simultaneously — is one of the most under-addressed risks for elderly patients. CascadeX makes the hidden danger visible. Scan any medicine's barcode, and the app instantly queries a Neo4j graph database mapping known drug-drug interactions. The Groq API handles natural language explanations, translating clinical interaction data into plain language any patient can understand. Built with Expo EAS for cross-platform mobile deployment. Primary users: elderly patients managing multiple prescriptions. Actual users: anyone who's ever wondered 'can I take these two together?'",
+    ctaText: 'In Progress'
+  }
 ];

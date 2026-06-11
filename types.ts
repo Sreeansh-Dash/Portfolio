@@ -1,12 +1,12 @@
 export enum Chapter {
   COVER = 'COVER',
+  INDEX = 'INDEX',
   ABOUT = 'ABOUT',
-  PROJECTS = 'PROJECTS',
-  DEEP_DIVE_1 = 'DEEP_DIVE_1',
-  DEEP_DIVE_2 = 'DEEP_DIVE_2',
-  TOOLKIT = 'TOOLKIT',
+  WALKING_STICK = 'WALKING_STICK',
+  BLOOD_ANALYZER = 'BLOOD_ANALYZER',
+  CASCADEX = 'CASCADEX',
   RESUME = 'RESUME',
-  CLOSING = 'CLOSING'
+  CONTACT = 'CONTACT'
 }
 
 export interface NavItem {
@@ -18,14 +18,18 @@ export interface NavItem {
 }
 
 export interface Project {
-  title: string;
-  category: string;
+  id: string;
+  number: string;
+  name: string;
+  tagline: string;
   description: string;
-  image: string;
-  rotation: string;
-  qualifier?: string;
-  techStack?: string;
+  status: string;
+  statusLabel: string;
+  tags: string[];
+  hasPhotos: boolean;
+  photos?: string[];
+  statCallout?: string;
   ctaText?: string;
-  link?: Chapter;
+  link?: string;
   comingSoon?: boolean;
 }
