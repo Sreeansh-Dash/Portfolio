@@ -144,6 +144,7 @@ const ProjectsSpread: React.FC<Props> = ({ onNavigate }) => {
               text="ngineering is the art of balancing constraints. Whether designing embedded control loops or distributed AI pipelines, my focus is on system integrity, scalability, and impact."
               delay={200}
               speed={8}
+              showCursor={true}
             />
           </p>
           <p className="text-lg text-ink-light dark:text-gray-300 text-justify hyphens-auto mt-8 font-serif leading-relaxed">

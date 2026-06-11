@@ -25,6 +25,7 @@ const SkillsSpread: React.FC = () => {
               text="ools are not the work — they're how the work gets done. The most important skill is knowing which tool the problem actually needs, and why."
               delay={200}
               speed={10}
+              showCursor={true}
             />
           </p>
           <p className="font-serif text-lg leading-relaxed text-gray-300">

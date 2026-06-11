@@ -181,7 +181,7 @@ const ContactSpread: React.FC = () => {
             transition={reduceAnimations ? {} : { duration: 6, repeat: Infinity, ease: 'easeInOut' }}
           >
             <p className="font-handwriting text-3xl text-center text-gray-500 dark:text-gray-400">
-              <WrittenText text="&ldquo;Thank you for reading.&rdquo;" delay={200} speed={25} fontHandwriting={true} />
+              <WrittenText text="&ldquo;Thank you for reading.&rdquo;" delay={200} speed={25} fontHandwriting={true} showCursor={true} />
             </p>
           </motion.div>
         </div>

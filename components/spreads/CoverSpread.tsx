@@ -60,7 +60,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           </p>
 
           <p className="font-sans text-sm text-gray-500 mb-8">
-            <WrittenText text="B.Tech CSE (AI & ML) — VIT Chennai · 9.62 CGPA · 5th Semester" delay={400} speed={5} />
+            <WrittenText text="B.Tech CSE (AI & ML) — VIT Chennai · 9.62 CGPA · 5th Semester" delay={400} speed={5} showCursor={true} />
           </p>
 
           <hr className="w-16 border-t-2 border-gray-200 dark:border-gray-700 mb-8" />

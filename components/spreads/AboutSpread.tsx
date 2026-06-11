@@ -93,7 +93,7 @@ const AboutSpread: React.FC = () => {
           transition={reduceAnimations ? {} : { duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         >
           <div className="font-handwriting text-xl text-gray-800 dark:text-gray-900 leading-snug">
-            <WrittenText text="&ldquo;Constraints don't limit the solution. They are the solution.&rdquo;" delay={200} speed={25} fontHandwriting={true} />
+            <WrittenText text="&ldquo;Constraints don't limit the solution. They are the solution.&rdquo;" delay={200} speed={25} fontHandwriting={true} showCursor={true} />
             <span className="block text-right mt-2 text-sm opacity-75">— Note to self</span>
           </div>
           <div className="w-3 h-3 absolute -top-1.5 left-1/2 -ml-1.5 rounded-full bg-gray-400/50 shadow-inner"></div>

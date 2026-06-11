@@ -8,6 +8,7 @@ interface WrittenTextProps {
   speed?: number;
   delay?: number;
   fontHandwriting?: boolean;
+  showCursor?: boolean;
 }
 
 const WrittenText: React.FC<WrittenTextProps> = ({ 
@@ -15,7 +16,8 @@ const WrittenText: React.FC<WrittenTextProps> = ({
   className = "", 
   speed = 15, // fast typing speed by default
   delay = 0,
-  fontHandwriting = false
+  fontHandwriting = false,
+  showCursor = false
 }) => {
   const containerRef = useRef<HTMLSpanElement>(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.1 });
@@ -64,7 +66,7 @@ const WrittenText: React.FC<WrittenTextProps> = ({
   return (
     <span ref={containerRef} className={`relative ${className} ${fontClass}`}>
       {displayedText}
-      {!liteMode && (
+      {!liteMode && showCursor && (
         <span 
           className={`mistake-cursor inline-block font-handwriting transition-opacity duration-1000 ${
             isDone ? 'opacity-0' : 'opacity-100'

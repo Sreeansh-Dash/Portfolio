@@ -135,7 +135,7 @@ const SmartCaneSpread: React.FC<Props> = () => {
                 <div className="mb-4">
                     <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-1">What I Learned</h4>
                     <p className="font-serif text-xs text-ink-light dark:text-gray-300 leading-relaxed text-justify">
-                        <WrittenText text="Building in hardware makes every decision irreversible in a way that software doesn't. You can't hot-reload a circuit. That constraint changed how I approach architecture generally — decide slowly, build once." delay={1000} speed={12} fontHandwriting={true} />
+                        <WrittenText text="Building in hardware makes every decision irreversible in a way that software doesn't. You can't hot-reload a circuit. That constraint changed how I approach architecture generally — decide slowly, build once." delay={1000} speed={12} fontHandwriting={true} showCursor={true} />
                     </p>
                 </div>
 

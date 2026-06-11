@@ -93,7 +93,7 @@ const ResumeSpread: React.FC = () => {
                           animate={reduceAnimations ? { rotate: -2 } : { rotate: [-2, -0.5, -2, -3.5, -2] }}
                           transition={reduceAnimations ? {} : { duration: 8, repeat: Infinity, ease: 'easeInOut' }}
                         >
-                          <WrittenText text="Full resume?" delay={400} speed={15} />
+                          <WrittenText text="Full resume?" delay={400} speed={15} showCursor={true} />
                         </motion.span>
                     </a>
                 </div>

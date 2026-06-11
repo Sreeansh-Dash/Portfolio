@@ -141,7 +141,7 @@ const GrievanceSpread: React.FC<Props> = () => {
                 <div className="mb-4">
                     <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-1">What I Learned</h4>
                     <p className="font-serif text-xs text-ink-light dark:text-gray-300 leading-relaxed text-justify">
-                        <WrittenText text="There's a meaningful difference between building a classifier and building a decision system. The classifier is one component. The architecture around it — routing logic, fallback handling, auditability — is where the actual product lives." delay={800} speed={12} fontHandwriting={true} />
+                        <WrittenText text="There's a meaningful difference between building a classifier and building a decision system. The classifier is one component. The architecture around it — routing logic, fallback handling, auditability — is where the actual product lives." delay={800} speed={12} fontHandwriting={true} showCursor={true} />
                     </p>
                 </div>
 
