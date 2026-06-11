@@ -124,8 +124,8 @@ const ProjectsSpread: React.FC<Props> = ({ onNavigate }) => {
   return (
     <>
       {/* Left Page: Engineering Context */}
-      <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50">
-        <header className="mb-12">
+      <div className="flex-1 p-6 md:p-12 lg:p-16 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-light dark:bg-paper-dark bg-paper-texture overflow-hidden">
+        <header className="mb-12 flex-shrink-0">
           <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-2 font-mono">
             <SplitText text="Portfolio Vol. 1" delay={40} duration={0.4} />
           </span>
@@ -137,7 +137,7 @@ const ProjectsSpread: React.FC<Props> = ({ onNavigate }) => {
           </h2>
         </header>
 
-        <div className="flex-grow pt-1">
+        <div className="flex-grow pt-1 flex flex-col justify-start overflow-y-auto custom-scrollbar pr-2">
           <p className="text-lg text-ink-light dark:text-gray-300 text-justify hyphens-auto font-serif leading-relaxed">
             <span className="float-left text-6xl font-display font-bold mr-3 mt-[-10px] text-primary dark:text-white">E</span>
             <WrittenText
@@ -161,13 +161,13 @@ const ProjectsSpread: React.FC<Props> = ({ onNavigate }) => {
           </div>
         </div>
 
-        <div className="mt-auto pt-8 text-xs font-mono text-gray-400">
+        <div className="mt-auto pt-8 text-xs font-mono text-gray-400 flex-shrink-0">
           05
         </div>
       </div>
 
       {/* Right Page: Project List */}
-      <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative bg-paper-light dark:bg-paper-dark">
+      <div className="flex-1 p-8 md:p-12 lg:p-16 flex flex-col relative bg-paper-light dark:bg-paper-dark overflow-hidden">
         {/* Corner curl — sits at bottom-right, appears on hover */}
         <motion.div
           className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"

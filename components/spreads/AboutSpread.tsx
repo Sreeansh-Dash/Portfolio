@@ -14,8 +14,8 @@ const AboutSpread: React.FC = () => {
   return (
     <>
       {/* Left Page: Philosophy & Currently Building */}
-      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-texture">
-        <header className="flex justify-between items-start mb-10">
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-light dark:bg-paper-dark bg-paper-texture overflow-hidden">
+        <header className="flex justify-between items-start mb-10 flex-shrink-0">
           <div className="flex items-center gap-3 opacity-70">
             <span className="material-icons text-gray-600 dark:text-gray-400">menu_book</span>
             <span className="font-display font-bold text-gray-900 dark:text-gray-100 tracking-wide text-xs uppercase">Portfolio Book</span>
@@ -23,7 +23,7 @@ const AboutSpread: React.FC = () => {
           <span className="font-serif text-xs italic text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold">Chapter III</span>
         </header>
 
-        <div className="flex-grow flex flex-col justify-center max-w-xl">
+        <div className="flex-grow flex flex-col justify-start max-w-xl overflow-y-auto custom-scrollbar pr-2">
           <h1 className="font-display text-5xl lg:text-6xl text-primary dark:text-white mb-8 leading-tight font-black">
             <MistakeText text="How I Think" mistakeAt={6} wrongChars="Thnk" />
           </h1>
@@ -50,7 +50,7 @@ const AboutSpread: React.FC = () => {
                   <h4 className="font-sans font-bold text-sm uppercase tracking-wider text-gray-900 dark:text-white">CascadeX</h4>
                   <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-400 uppercase tracking-widest">In Progress</span>
                 </div>
-                <p className="font-serif text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-1">Medicine barcode scanner flagging dangerous drug combinations. <span className="font-mono text-xs text-gray-500 font-medium">(Neo4j · Groq · React Native)</span></p>
+                <p className="font-serif text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-1">Medicine barcode scanner flagging dangerous drug combinations. <span className="font-mono text-xs text-gray-500 dark:text-gray-400 font-medium">(Neo4j · Groq · React Native)</span></p>
               </div>
               
               <div>
@@ -58,7 +58,7 @@ const AboutSpread: React.FC = () => {
                   <h4 className="font-sans font-bold text-sm uppercase tracking-wider text-gray-900 dark:text-white">Cluster-Adaptive Blood Analyzer</h4>
                   <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-green-100 dark:bg-green-950 text-green-800 dark:text-green-400 uppercase tracking-widest">Research Done</span>
                 </div>
-                <p className="font-serif text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-1">Personalized risk scoring replacing one-size-fits-all limits. <span className="font-mono text-xs text-gray-500 font-medium">(XGBoost · KMeans · Python)</span></p>
+                <p className="font-serif text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-1">Personalized risk scoring replacing one-size-fits-all limits. <span className="font-mono text-xs text-gray-500 dark:text-gray-400 font-medium">(XGBoost · KMeans · Python)</span></p>
               </div>
 
               <div>
@@ -66,20 +66,20 @@ const AboutSpread: React.FC = () => {
                   <h4 className="font-sans font-bold text-sm uppercase tracking-wider text-gray-900 dark:text-white">CodeAutopsy</h4>
                   <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-800 dark:text-blue-400 uppercase tracking-widest">In Progress</span>
                 </div>
-                <p className="font-serif text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-1">Maps GitHub repo structures visually using Groq LLM. <span className="font-mono text-xs text-gray-500 font-medium">(Groq API · Python · Graph Viz)</span></p>
+                <p className="font-serif text-sm text-gray-600 dark:text-gray-400 leading-relaxed mt-1">Maps GitHub repo structures visually using Groq LLM. <span className="font-mono text-xs text-gray-500 dark:text-gray-400 font-medium">(Groq API · Python · Graph Viz)</span></p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase" aria-hidden="true">
+        <div className="mt-8 pt-8 flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase flex-shrink-0" aria-hidden="true">
           <span>Vol. 1</span>
           <span>Page 005</span>
         </div>
       </div>
 
       {/* Right Page: Intellectual Fingerprint, Sticky Note & Skills */}
-      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-paper-light dark:bg-paper-dark">
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-paper-light dark:bg-paper-dark overflow-hidden">
         {/* Corner curl — sits at bottom-right, appears on hover */}
         <motion.div
           className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"
@@ -102,7 +102,7 @@ const AboutSpread: React.FC = () => {
           </div>
         </StickyNote>
 
-        <div className="flex-grow flex flex-col mt-6 relative justify-center">
+        <div className="flex-grow flex flex-col mt-6 relative justify-start overflow-y-auto custom-scrollbar pr-2">
           <div className="flex items-start gap-8 mb-8 pr-24 md:pr-32">
             <div className="w-28 h-36 flex-shrink-0 bg-gray-200 dark:bg-gray-700 relative overflow-hidden shadow-md border-2 border-white dark:border-gray-600 transform -rotate-2">
               <img src="/about.jpeg" alt="Sreeansh working" className="w-full h-full object-cover" />
@@ -154,7 +154,7 @@ const AboutSpread: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase" aria-hidden="true">
+        <div className="mt-8 pt-8 flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase flex-shrink-0" aria-hidden="true">
           <span>About Me</span>
           <span>Page 006</span>
         </div>

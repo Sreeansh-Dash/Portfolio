@@ -13,8 +13,8 @@ const IndexSpread: React.FC<Props> = ({ onNavigate }) => {
   return (
     <>
       {/* Left Page: Editorial Context / Introduction */}
-      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-texture">
-        <header className="mb-12">
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-light dark:bg-paper-dark bg-paper-texture overflow-hidden">
+        <header className="mb-12 flex-shrink-0">
           <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 font-mono">
             <SplitText text="Portfolio Vol. 1" delay={40} duration={0.4} />
           </span>
@@ -23,7 +23,7 @@ const IndexSpread: React.FC<Props> = ({ onNavigate }) => {
           </h1>
         </header>
 
-        <div className="flex-grow flex flex-col justify-center max-w-lg">
+        <div className="flex-grow flex flex-col justify-start max-w-lg overflow-y-auto custom-scrollbar pr-2">
           <div className="space-y-8">
             <h2 className="font-display text-3xl lg:text-4xl text-gray-900 dark:text-gray-100 italic font-semibold leading-snug">
               "This portfolio is a work in progress — like everything worth building."
@@ -43,14 +43,14 @@ const IndexSpread: React.FC<Props> = ({ onNavigate }) => {
           </div>
         </div>
 
-        <div className="mt-auto pt-8 flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase" aria-hidden="true">
+        <div className="mt-auto pt-8 flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase flex-shrink-0" aria-hidden="true">
           <span>Introduction</span>
           <span>Page 003</span>
         </div>
       </div>
 
       {/* Right Page: Table of Contents */}
-      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-paper-light dark:bg-paper-dark">
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-paper-light dark:bg-paper-dark overflow-hidden">
         {/* Corner curl — sits at bottom-right, appears on hover */}
         <motion.div
           className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"

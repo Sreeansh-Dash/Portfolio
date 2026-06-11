@@ -14,8 +14,8 @@ const SmartCaneSpread: React.FC<Props> = () => {
   return (
     <>
       {/* Left Page: Narrative & Context */}
-      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-texture">
-        <header className="mb-8 flex justify-between items-start">
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-light dark:bg-paper-dark bg-paper-texture overflow-hidden">
+        <header className="mb-8 flex justify-between items-start flex-shrink-0">
           <div className="flex items-center space-x-2 opacity-70">
             <span className="material-icons text-xs">menu_book</span>
             <span className="text-xs uppercase tracking-widest font-mono font-bold">Portfolio Book</span>
@@ -25,7 +25,7 @@ const SmartCaneSpread: React.FC<Props> = () => {
           </span>
         </header>
 
-        <div className="flex-grow space-y-8 max-w-xl justify-center flex flex-col">
+        <div className="flex-grow space-y-8 max-w-xl justify-start flex flex-col overflow-y-auto custom-scrollbar pr-2">
           <div>
             <h1 className="font-display text-4xl lg:text-5xl text-primary dark:text-white font-black mb-3 tracking-tight">
               <SplitText text="Smart Walking Stick" delay={70} duration={0.4} />
@@ -80,13 +80,13 @@ const SmartCaneSpread: React.FC<Props> = () => {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 text-xs font-mono text-gray-400 dark:text-gray-500">
+        <div className="mt-8 pt-8 text-xs font-mono text-gray-400 dark:text-gray-500 flex-shrink-0">
           Page 007
         </div>
       </div>
 
       {/* Right Page: Technical Approach & Outcome */}
-      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-paper-light dark:bg-paper-dark">
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-paper-light dark:bg-paper-dark overflow-hidden">
         {/* Corner curl — sits at bottom-right, appears on hover */}
         <motion.div
           className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"
@@ -99,7 +99,7 @@ const SmartCaneSpread: React.FC<Props> = () => {
           }}
         />
 
-        <div className="flex-grow flex flex-col justify-center max-w-xl space-y-6">
+        <div className="flex-grow flex flex-col justify-start max-w-xl space-y-6 overflow-y-auto custom-scrollbar pr-2">
           {/* Section: What Was Built */}
           <div>
             <h3 className="font-display text-2xl font-bold text-ink-light dark:text-white mb-4 border-b-2 border-primary/10 pb-2.5">
@@ -173,7 +173,7 @@ const SmartCaneSpread: React.FC<Props> = () => {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 flex justify-end text-xs font-mono text-gray-400 dark:text-gray-500">
+        <div className="mt-8 pt-8 flex justify-end text-xs font-mono text-gray-400 dark:text-gray-500 flex-shrink-0">
           Vol. 1 · Page 008
         </div>
       </div>
