@@ -24,7 +24,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
     <>
       {/* Left Page: Hero / Intro (Personal Details) */}
       <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50">
-        <div className="mt-4 md:mt-8 relative flex-grow flex flex-col justify-center max-w-xl">
+        <div className="mt-4 md:mt-8 relative flex-grow flex flex-col justify-start overflow-y-auto custom-scrollbar scroll-hint-container pr-2 max-w-xl">
           
           {/* Availability & Location Badges */}
           <div className="flex flex-wrap items-center gap-4 mb-8">
@@ -55,11 +55,12 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
             I build systems that think — and products people actually use.
           </p>
 
-          {/* Introductory Paragraph to fill space & improve context */}
+          {/* Introductory Paragraph */}
           <p className="font-serif text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
-            I am a third-year computer science student specializing in artificial intelligence and machine learning. 
-            My work spans deep learning classifiers, offline-first mobile systems, and embedded hardware design — 
-            focused entirely on creating accessible technology with honest utility.
+            I build things that cross disciplines — ML models trained on medical data, 
+            mobile apps backed by graph databases, hardware that detects falls and calls 
+            for help. The common thread is always the same: does it actually work for 
+            the person it was built for?
           </p>
 
           {/* Academic Line */}
@@ -68,7 +69,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap gap-5 mb-10">
+          <div className="flex flex-wrap gap-5 mb-6">
             <button
               onClick={() => onNavigate(Chapter.INDEX)}
               className="bg-primary text-white dark:bg-white dark:text-primary px-10 py-4 font-display font-bold tracking-wide text-base flex items-center gap-2.5 hover:opacity-90 transition-opacity shadow-lg cursor-pointer"

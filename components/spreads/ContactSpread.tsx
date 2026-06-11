@@ -9,7 +9,8 @@ const ContactSpread: React.FC = () => {
   const [copied, setCopied] = useState(false);
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [isSending, setIsSending] = useState(false);
-  const [sent, setSent] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
   const { reduceAnimations } = useAnimation();
 
   const handleCopyEmail = () => {
@@ -20,16 +21,29 @@ const ContactSpread: React.FC = () => {
     }, 2000);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSending(true);
-    // Simulate submission
-    setTimeout(() => {
+    setError(false);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data as any).toString(),
+      });
+      if (response.ok) {
+        setSubmitted(true);
+        setFormState({ name: '', email: '', message: '' });
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    } finally {
       setIsSending(false);
-      setSent(true);
-      setFormState({ name: '', email: '', message: '' });
-      setTimeout(() => setSent(false), 3000);
-    }, 1200);
+    }
   };
 
   return (
@@ -121,7 +135,27 @@ const ContactSpread: React.FC = () => {
         <div className="flex-grow flex flex-col justify-center relative mt-4 space-y-6 max-w-xl">
           
           {/* Contact Form */}
-          <form onSubmit={handleFormSubmit} className="space-y-4">
+          {submitted ? (
+            <div className="space-y-4">
+              <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-gray-400 border-b border-stone-250 dark:border-stone-800 pb-2 mb-3">
+                Send a Message
+              </h3>
+              <div className="py-8 text-center space-y-3">
+                <span className="material-icons text-3xl text-green-500">check_circle_outline</span>
+                <p className="font-serif text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                  Message sent. I'll get back to you within 24 hours.
+                </p>
+              </div>
+            </div>
+          ) : (
+          <form
+            onSubmit={handleFormSubmit}
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            className="space-y-4"
+          >
+            <input type="hidden" name="form-name" value="contact" />
             <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-gray-400 border-b border-stone-250 dark:border-stone-800 pb-2 mb-3">
               Send a Message
             </h3>
@@ -131,7 +165,8 @@ const ContactSpread: React.FC = () => {
                 <label htmlFor="form-name" className="block text-[10px] font-mono uppercase text-gray-400 mb-1">Name</label>
                 <input 
                   id="form-name"
-                  type="text" 
+                  type="text"
+                  name="name"
                   required
                   placeholder="Your Name"
                   value={formState.name}
@@ -143,7 +178,8 @@ const ContactSpread: React.FC = () => {
                 <label htmlFor="form-email" className="block text-[10px] font-mono uppercase text-gray-400 mb-1">Email</label>
                 <input 
                   id="form-email"
-                  type="email" 
+                  type="email"
+                  name="email"
                   required
                   placeholder="your@email.com"
                   value={formState.email}
@@ -157,6 +193,7 @@ const ContactSpread: React.FC = () => {
               <label htmlFor="form-message" className="block text-[10px] font-mono uppercase text-gray-400 mb-1">Message</label>
               <textarea 
                 id="form-message"
+                name="message"
                 rows={3}
                 required
                 placeholder="What are you building?"
@@ -168,13 +205,20 @@ const ContactSpread: React.FC = () => {
 
             <button 
               type="submit"
-              disabled={isSending || sent}
-              className="w-full py-3 bg-primary dark:bg-white text-white dark:text-primary font-mono text-xs font-bold uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-1.5 cursor-pointer"
+              disabled={isSending}
+              className="w-full py-3 bg-primary dark:bg-white text-white dark:text-primary font-mono text-xs font-bold uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-60"
             >
-              {isSending ? 'Sending...' : sent ? 'Sent!' : 'Send Message'}
-              <span className="material-icons text-sm">arrow_forward</span>
+              {isSending ? 'Sending...' : 'Send Message'}
+              <span className="material-icons text-sm">{isSending ? 'hourglass_top' : 'arrow_forward'}</span>
             </button>
+            {error && (
+              <p className="text-xs font-mono text-red-500 dark:text-red-400 text-center">
+                Something went wrong. Email me directly at{' '}
+                <a href="mailto:sreeansh786@gmail.com" className="underline">sreeansh786@gmail.com</a>
+              </p>
+            )}
           </form>
+          )}
 
           {/* Social Links Cards */}
           <div className="pt-2 space-y-3">

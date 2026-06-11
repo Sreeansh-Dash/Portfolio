@@ -23,7 +23,7 @@ const CascadeXSpread: React.FC = () => {
           </span>
         </header>
 
-        <div className="flex-grow space-y-8 max-w-xl justify-start flex flex-col overflow-y-auto custom-scrollbar pr-2">
+        <div className="flex-grow space-y-8 max-w-xl justify-start flex flex-col overflow-y-auto custom-scrollbar scroll-hint-container pr-2">
           <div>
             <h1 className="font-display text-4xl lg:text-5xl text-primary dark:text-white font-black mb-3 tracking-tight">
               <SplitText text="CascadeX" delay={70} duration={0.4} />
@@ -92,7 +92,7 @@ const CascadeXSpread: React.FC = () => {
           }}
         />
 
-        <div className="flex-grow flex flex-col justify-start max-w-xl space-y-6 overflow-y-auto custom-scrollbar pr-2">
+        <div className="flex-grow flex flex-col justify-start max-w-xl space-y-6 overflow-y-auto custom-scrollbar scroll-hint-container pr-2">
           {/* Section: Mobile Interaction */}
           <div>
             <h3 className="font-display text-2xl font-bold text-ink-light dark:text-white mb-4 border-b-2 border-primary/10 pb-2.5">

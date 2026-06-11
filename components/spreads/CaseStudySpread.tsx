@@ -13,7 +13,7 @@ const CaseStudySpread: React.FC = () => {
                     <span className="text-xs font-mono text-gray-400">CH. III</span>
                 </div>
 
-                <div className="flex-1 overflow-y-auto custom-scrollbar pr-2">
+                <div className="flex-1 overflow-y-auto custom-scrollbar scroll-hint-container pr-2">
                     <h1 className="font-display text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-2 ">
                         Smart Walking Stick
                     </h1>

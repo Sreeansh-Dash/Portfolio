@@ -85,7 +85,7 @@ const SkillsSpread: React.FC = () => {
           </h2>
         </header>
 
-        <div className="flex-grow space-y-8 overflow-y-auto custom-scrollbar pr-2 pb-4">
+        <div className="flex-grow space-y-8 overflow-y-auto custom-scrollbar scroll-hint-container pr-2 pb-4">
           {[
             {
               group: 'Languages',

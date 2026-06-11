@@ -60,18 +60,34 @@
       };
     </script>
     <style>
+      /* Hidden scrollbars — preserving the book aesthetic */
+      .custom-scrollbar {
+          -ms-overflow-style: none;  /* IE / Edge */
+          scrollbar-width: none;     /* Firefox */
+      }
       .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
+          display: none;             /* Chrome / Safari / Opera */
       }
-      .custom-scrollbar::-webkit-scrollbar-track {
-          background: transparent;
+
+      /* Scroll hint: soft bottom-edge fade — signals more content without a scrollbar */
+      .scroll-hint-container {
+          position: relative;
       }
-      .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #cbd5e1;
-          border-radius: 4px;
+      .scroll-hint-container::after {
+          content: '';
+          position: sticky;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 36px;
+          background: linear-gradient(to top, #fffdf5, transparent);
+          pointer-events: none;
+          display: block;
+          z-index: 10;
+          flex-shrink: 0;
       }
-      .dark .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #475569;
+      .dark .scroll-hint-container::after {
+          background: linear-gradient(to top, #1e293b, transparent);
       }
       .spine-shadow-overlay {
           background: linear-gradient(to right, 

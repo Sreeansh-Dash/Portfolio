@@ -23,7 +23,7 @@ const AboutSpread: React.FC = () => {
           <span className="font-serif text-xs italic text-gray-500 dark:text-gray-400 uppercase tracking-widest font-bold">Chapter III</span>
         </header>
 
-        <div className="flex-grow flex flex-col justify-start max-w-xl overflow-y-auto custom-scrollbar pr-2">
+        <div className="flex-grow flex flex-col justify-start max-w-xl overflow-y-auto custom-scrollbar scroll-hint-container pr-2">
           <h1 className="font-display text-5xl lg:text-6xl text-primary dark:text-white mb-8 leading-tight font-black">
             <MistakeText text="How I Think" mistakeAt={6} wrongChars="Thnk" />
           </h1>
@@ -102,7 +102,7 @@ const AboutSpread: React.FC = () => {
           </div>
         </StickyNote>
 
-        <div className="flex-grow flex flex-col mt-6 relative justify-start overflow-y-auto custom-scrollbar pr-2">
+        <div className="flex-grow flex flex-col mt-6 relative justify-start overflow-y-auto custom-scrollbar scroll-hint-container pr-2">
           <div className="flex items-start gap-8 mb-8 pr-24 md:pr-32">
             <div className="w-28 h-36 flex-shrink-0 bg-gray-200 dark:bg-gray-700 relative overflow-hidden shadow-md border-2 border-white dark:border-gray-600 transform -rotate-2">
               <img src="/about.jpeg" alt="Sreeansh working" className="w-full h-full object-cover" />
@@ -117,15 +117,14 @@ const AboutSpread: React.FC = () => {
             </div>
           </div>
 
-          {/* Passions list */}
           <div className="mb-8 space-y-3">
-            <h4 className="font-sans font-bold text-sm uppercase tracking-wider text-black dark:text-white">Things I think about more than is normal</h4>
-            <ul className="space-y-2 font-serif text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed pl-5 list-disc">
-              <li>Why standard blood test reference ranges ignore individual metabolic variation</li>
-              <li>How much better assistive tech could be if hardware engineers and ML people talked more</li>
-              <li>Whether the next wave of medical AI will actually reach primary care</li>
-              <li>How to make complex systems feel simple from the outside</li>
-            </ul>
+            <h4 className="font-sans font-bold text-sm uppercase tracking-wider text-black dark:text-white">The Problems That Keep Me Up</h4>
+            <div className="space-y-4 font-serif text-sm md:text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p>— Why blood test reference ranges treat every patient as statistically average, when biology clearly doesn't.</p>
+              <p>— Why assistive hardware and ML research so rarely share a room — and what gets missed because of that.</p>
+              <p>— Whether the next wave of medical AI will actually reach primary care, or stop at another conference paper.</p>
+              <p>— How to make systems that are genuinely complex feel completely effortless from the outside.</p>
+            </div>
           </div>
 
           {/* Skills block */}

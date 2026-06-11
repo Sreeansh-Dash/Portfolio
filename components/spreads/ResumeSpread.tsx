@@ -10,7 +10,7 @@ const ResumeSpread: React.FC = () => {
   return (
     <>
       {/* Left Page: Header & Education */}
-      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-texture">
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-light dark:bg-paper-dark bg-paper-texture overflow-hidden">
         <header className="flex justify-between items-start mb-8">
           <div className="flex items-center space-x-2 text-ink-light dark:text-ink-dark opacity-70">
             <span className="material-icons text-sm">menu_book</span>
@@ -125,7 +125,7 @@ const ResumeSpread: React.FC = () => {
               <div>
                 <div className="flex justify-between items-baseline mb-1">
                   <h4 className="font-sans font-bold text-sm uppercase tracking-wide text-gray-900 dark:text-white">Operations Lead — KalingaJyoti</h4>
-                  <span className="text-xs font-mono text-gray-400 whitespace-nowrap ml-4">2024 – Present</span>
+                  <span className="text-xs font-mono text-gray-400 whitespace-nowrap ml-4">August 2025 – April 2026</span>
                 </div>
                 <p className="text-xs font-serif text-gray-500 dark:text-gray-400 italic mb-2">Student Cultural Organisation, VIT Chennai</p>
                 <p className="text-sm font-serif text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
@@ -136,7 +136,7 @@ const ResumeSpread: React.FC = () => {
               <div>
                 <div className="flex justify-between items-baseline mb-1">
                   <h4 className="font-sans font-bold text-sm uppercase tracking-wide text-gray-900 dark:text-white">Open-Source Contributor — Y-SoC</h4>
-                  <span className="text-xs font-mono text-gray-400 whitespace-nowrap ml-4">2024 – Present</span>
+                  <span className="text-xs font-mono text-gray-400 whitespace-nowrap ml-4">March 2026 – May 2026</span>
                 </div>
                 <p className="text-sm font-serif text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
                   Participate in collaborative programming, perform code reviews, develop features, and engage in collaborative developer-focused problem-solving on community-driven open-source projects.

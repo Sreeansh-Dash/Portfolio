@@ -23,7 +23,7 @@ const IndexSpread: React.FC<Props> = ({ onNavigate }) => {
           </h1>
         </header>
 
-        <div className="flex-grow flex flex-col justify-start max-w-lg overflow-y-auto custom-scrollbar pr-2">
+        <div className="flex-grow flex flex-col justify-start max-w-lg overflow-y-auto custom-scrollbar scroll-hint-container pr-2">
           <div className="space-y-8">
             <h2 className="font-display text-3xl lg:text-4xl text-gray-900 dark:text-gray-100 italic font-semibold leading-snug">
               "This portfolio is a work in progress — like everything worth building."
@@ -73,7 +73,7 @@ const IndexSpread: React.FC<Props> = ({ onNavigate }) => {
           <span className="font-display italic text-gray-500 dark:text-gray-400 text-lg hidden sm:block">Table of Contents</span>
         </div>
 
-        <nav aria-label="Table of Contents" className="flex-1 space-y-4 overflow-y-auto custom-scrollbar pr-3">
+        <nav aria-label="Table of Contents" className="flex-1 space-y-4 overflow-y-auto custom-scrollbar scroll-hint-container pr-3">
           {NAVIGATION_ITEMS.map((item, idx) => {
             const isHere = item.id === Chapter.INDEX;
             return (

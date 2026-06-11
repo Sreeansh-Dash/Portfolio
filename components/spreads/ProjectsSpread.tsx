@@ -137,7 +137,7 @@ const ProjectsSpread: React.FC<Props> = ({ onNavigate }) => {
           </h2>
         </header>
 
-        <div className="flex-grow pt-1 flex flex-col justify-start overflow-y-auto custom-scrollbar pr-2">
+        <div className="flex-grow pt-1 flex flex-col justify-start overflow-y-auto custom-scrollbar scroll-hint-container pr-2">
           <p className="text-lg text-ink-light dark:text-gray-300 text-justify hyphens-auto font-serif leading-relaxed">
             <span className="float-left text-6xl font-display font-bold mr-3 mt-[-10px] text-primary dark:text-white">E</span>
             <WrittenText
@@ -199,7 +199,7 @@ const ProjectsSpread: React.FC<Props> = ({ onNavigate }) => {
             <span className="text-sm font-mono text-gray-400">2024 — 2026</span>
           </div>
 
-          <ul className="space-y-10 overflow-y-auto custom-scrollbar h-full pr-4 pb-4">
+          <ul className="space-y-10 overflow-y-auto custom-scrollbar scroll-hint-container h-full pr-4 pb-4">
             {PROJECTS.map((project, idx) => (
               <li key={idx} className="group cursor-default">
                 <ProjectItem project={project} onNavigate={onNavigate} />
