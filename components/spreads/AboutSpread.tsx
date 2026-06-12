@@ -7,9 +7,12 @@ import InkWord from '../InkWord';
 import StickyNote from '../StickyNote';
 import { useAnimation } from '../AnimationContext';
 import MistakeText from '../ui/MistakeText';
+import ImageModal from '../ui/ImageModal';
+import { useState } from 'react';
 
 const AboutSpread: React.FC = () => {
   const { liteMode: reduceAnimations } = useAnimation();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <>
@@ -104,8 +107,11 @@ const AboutSpread: React.FC = () => {
 
         <div className="flex-grow flex flex-col mt-6 relative justify-start overflow-y-auto custom-scrollbar scroll-hint-container pr-2">
           <div className="flex items-start gap-8 mb-8 pr-24 md:pr-32">
-            <div className="w-28 h-36 flex-shrink-0 bg-gray-200 dark:bg-gray-700 relative overflow-hidden shadow-md border-2 border-white dark:border-gray-600 transform -rotate-2">
-              <img src="/about.jpeg" alt="Sreeansh working" className="w-full h-full object-cover" />
+            <div className="w-28 h-36 flex-shrink-0 bg-gray-200 dark:bg-gray-700 relative overflow-hidden shadow-md border-2 border-white dark:border-gray-600 transform -rotate-2 group/img cursor-pointer" onClick={() => setSelectedImage("/about.jpeg")} title="Click to enlarge">
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity z-10">
+                <span className="material-icons text-white text-2xl">zoom_in</span>
+              </div>
+              <img src="/about.jpeg" alt="Sreeansh working" className="w-full h-full object-cover transition-transform duration-300 group-hover/img:scale-105" />
             </div>
             <div className="pt-3">
               <h2 className="font-display text-2xl text-gray-900 dark:text-gray-100 font-bold mb-1.5">
@@ -158,6 +164,12 @@ const AboutSpread: React.FC = () => {
           <span>Page 006</span>
         </div>
       </div>
+      
+      <ImageModal 
+        isOpen={!!selectedImage} 
+        onClose={() => setSelectedImage(null)} 
+        imageSrc={selectedImage || ''} 
+      />
     </>
   );
 };

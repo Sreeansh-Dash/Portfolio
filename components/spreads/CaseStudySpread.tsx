@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ImageModal from '../ui/ImageModal';
 
 const CaseStudySpread: React.FC = () => {
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
     return (
         <>
             {/* Left Page: Narrative */}
@@ -71,9 +73,14 @@ const CaseStudySpread: React.FC = () => {
                         {/* Polaroid */}
                         <div className="relative transform rotate-2 hover:rotate-0 transition-transform duration-500 w-64 mx-auto my-4 group cursor-pointer ">
                             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-24 h-8 bg-white/30 dark:bg-white/10 border border-white/20 z-10 backdrop-blur-sm shadow-sm rotate-[-2deg]"></div>
-                            <div className="bg-white p-3 pb-8 shadow-polaroid rounded-sm">
-                                <div className="aspect-square bg-gray-100 overflow-hidden relative grayscale group-hover:grayscale-0 transition-all duration-700">
-                                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000" alt="Hardware Prototype" className="w-full h-full object-cover" />
+                            <div className="bg-white p-3 pb-8 shadow-polaroid rounded-sm" onClick={() => setSelectedImage("https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000")} title="Click to enlarge">
+                                <div className="aspect-square bg-gray-100 overflow-hidden relative grayscale group-hover:grayscale-0 transition-all duration-700 group/img">
+                                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity z-10">
+                                      <span className="text-white font-mono text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                                        <span className="material-icons text-sm">zoom_in</span> Click to view
+                                      </span>
+                                    </div>
+                                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000" alt="Hardware Prototype" className="w-full h-full object-cover transition-transform duration-300 group-hover/img:scale-105" />
                                 </div>
                                 <div className="mt-3 font-handwriting text-gray-600 text-xl text-center transform -rotate-1">
                                     Prototype Mk. I
@@ -105,6 +112,12 @@ const CaseStudySpread: React.FC = () => {
                     <span>043</span>
                 </div>
             </div>
+            
+            <ImageModal 
+              isOpen={!!selectedImage} 
+              onClose={() => setSelectedImage(null)} 
+              imageSrc={selectedImage || ''} 
+            />
         </>
     );
 };

@@ -3,11 +3,13 @@ import { motion } from 'framer-motion';
 import { Chapter } from '../../types';
 import SplitText from '../ui/SplitText';
 import WrittenText from '../ui/WrittenText';
+import ImageModal from '../ui/ImageModal';
 import { useAnimation } from '../AnimationContext';
 
 const BloodAnalyzerSpread: React.FC = () => {
   const { reduceAnimations } = useAnimation();
   const [hoveredStack, setHoveredStack] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <>
@@ -105,28 +107,35 @@ const BloodAnalyzerSpread: React.FC = () => {
           </div>
 
           {/* Staggered double photo stack with polaroid effects, captions, and annotations */}
-          <div 
+          <div
             className="relative w-full h-72 flex items-center justify-center bg-stone-50 dark:bg-stone-900/30 rounded border border-stone-100 dark:border-stone-800 p-4 select-none"
             onMouseEnter={() => setHoveredStack(true)}
             onMouseLeave={() => setHoveredStack(false)}
           >
             <div className="relative w-full max-w-sm h-full flex items-center justify-center">
-              
+
               {/* Primary Image: t-SNE Clusters */}
-              <motion.div 
-                className="absolute left-2 top-2 w-[58%] bg-white dark:bg-stone-850 p-2.5 border border-stone-200 dark:border-stone-800/80 shadow-lg z-10 origin-bottom-left transition-transform duration-500 group-hover:rotate-0"
+              <motion.div
+                className="absolute left-2 top-2 w-[58%] bg-white dark:bg-stone-850 p-2.5 border border-stone-200 dark:border-stone-800/80 shadow-lg z-10 origin-bottom-left transition-transform duration-500 group-hover:rotate-0 cursor-pointer group/img"
                 style={{ rotate: -4 }}
                 animate={hoveredStack && !reduceAnimations ? { rotate: -2, x: -6, y: -4 } : { rotate: -4, x: 0, y: 0 }}
                 transition={{ duration: 0.3 }}
+                onClick={() => setSelectedImage("/blood_tsne.png")}
+                title="Click to view full size"
               >
                 {/* Yellow tape */}
                 <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-24 h-5 bg-yellow-100/80 dark:bg-yellow-900/40 rotate-1 shadow-sm border border-yellow-200/50 backdrop-blur-[1px] z-20"></div>
 
                 <div className="relative overflow-hidden bg-stone-100 dark:bg-stone-900 border border-stone-200/50 dark:border-stone-800/50">
-                  <img 
-                    src="/blood_tsne.png" 
-                    alt="t-SNE Cluster Analysis" 
-                    className="w-full h-auto object-contain opacity-95 mx-auto"
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity z-10">
+                    <span className="text-white font-mono text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                      <span className="material-icons text-sm">zoom_in</span> Click to enlarge
+                    </span>
+                  </div>
+                  <img
+                    src="/blood_tsne.png"
+                    alt="t-SNE Cluster Analysis"
+                    className="w-full h-auto object-contain opacity-95 mx-auto transition-transform duration-300 group-hover/img:scale-105"
                     onError={(e) => {
                       e.currentTarget.src = "https://placehold.co/500x300/eae8e6/4b5563?text=t-SNE+Clusters";
                     }}
@@ -138,20 +147,27 @@ const BloodAnalyzerSpread: React.FC = () => {
               </motion.div>
 
               {/* Secondary Image: Divergence Validation */}
-              <motion.div 
-                className="absolute right-2 bottom-2 w-[52%] bg-white dark:bg-stone-850 p-2.5 border border-stone-200 dark:border-stone-800/80 shadow-xl z-20 origin-top-right transition-transform duration-500 group-hover:rotate-0"
+              <motion.div
+                className="absolute right-2 bottom-2 w-[52%] bg-white dark:bg-stone-850 p-2.5 border border-stone-200 dark:border-stone-800/80 shadow-xl z-20 origin-top-right transition-transform duration-500 group-hover:rotate-0 cursor-pointer group/img"
                 style={{ rotate: 3 }}
                 animate={hoveredStack && !reduceAnimations ? { scale: 1.05, x: 8, y: 4, rotate: 1 } : { scale: 1.0, x: 0, y: 0, rotate: 3 }}
                 transition={{ duration: 0.3 }}
+                onClick={() => setSelectedImage("/blood_ranges.png")}
+                title="Click to view full size"
               >
                 {/* Yellow tape */}
                 <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-24 h-5 bg-yellow-100/80 dark:bg-yellow-900/40 -rotate-2 shadow-sm border border-yellow-200/50 backdrop-blur-[1px] z-20"></div>
 
                 <div className="relative overflow-hidden bg-stone-100 dark:bg-stone-900 border border-stone-200/50 dark:border-stone-800/50">
-                  <img 
-                    src="/blood_ranges.png" 
-                    alt="Cluster-Specific Reference Ranges" 
-                    className="w-full h-auto object-contain opacity-95 mx-auto"
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity z-10">
+                    <span className="text-white font-mono text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                      <span className="material-icons text-sm">zoom_in</span> Click to enlarge
+                    </span>
+                  </div>
+                  <img
+                    src="/blood_ranges.png"
+                    alt="Cluster-Specific Reference Ranges"
+                    className="w-full h-auto object-contain opacity-95 mx-auto transition-transform duration-300 group-hover/img:scale-105"
                     onError={(e) => {
                       e.currentTarget.src = "https://placehold.co/500x300/eae8e6/4b5563?text=Cluster+Ranges";
                     }}
@@ -163,17 +179,17 @@ const BloodAnalyzerSpread: React.FC = () => {
               </motion.div>
 
               {/* Handwritten Annotation - Pointing to t-SNE clusters */}
-              <div className="absolute -left-20 bottom-10 w-32 transform -rotate-6 text-red-800 dark:text-red-400 font-handwriting text-base leading-tight opacity-90 pointer-events-none hidden lg:flex flex-col items-center z-30">
+              <div className="absolute -left-20 top-1/2 -translate-y-1/2 w-32 transform -rotate-12 text-red-800 dark:text-red-400 font-handwriting text-base leading-tight opacity-90 pointer-events-none hidden lg:flex flex-col items-center z-30">
                 <span className="block mb-1 text-center font-bold">5 distinct metabolic profiles</span>
-                <svg className="w-8 h-8 text-red-800 dark:text-red-400 transform rotate-90 self-end -mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-red-800 dark:text-red-400 transform rotate-90 self-end mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 11l5-5m0 0l5 5m-5-5v12" />
                 </svg>
               </div>
 
               {/* Handwritten Annotation - Pointing to range divergence */}
-              <div className="absolute -right-24 top-8 w-36 transform rotate-6 text-red-800 dark:text-red-400 font-handwriting text-base leading-tight opacity-90 pointer-events-none hidden lg:flex flex-col items-center z-30">
+              <div className="absolute -right-24 top-1/2 -translate-y-1/2 w-36 transform rotate-6 text-red-800 dark:text-red-400 font-handwriting text-base leading-tight opacity-90 pointer-events-none hidden lg:flex flex-col items-center z-30">
                 <span className="block mb-1 text-center font-bold">70% diverge from global averages!</span>
-                <svg className="w-8 h-8 text-red-800 dark:text-red-400 transform -rotate-45 self-start -ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-red-800 dark:text-red-400 transform -rotate-[135deg] self-start ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 11l5-5m0 0l5 5m-5-5v12" />
                 </svg>
               </div>
@@ -204,6 +220,23 @@ const BloodAnalyzerSpread: React.FC = () => {
                 </span>
               </div>
             </div>
+
+            <div className="mt-6">
+              <a
+                href="https://cluster-adaptive-blood-report-analy.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between w-full p-4 border-2 border-accent-blue/30 hover:border-accent-blue bg-accent-blue/5 hover:bg-accent-blue/10 transition-all duration-300 rounded-sm"
+              >
+                <div>
+                  <span className="block text-sm font-bold text-accent-blue uppercase tracking-widest font-mono mb-1">Live Project</span>
+                  <span className="block text-primary dark:text-white font-display font-bold text-xl group-hover:underline">View the Web App</span>
+                </div>
+                <div className="w-10 h-10 rounded-full bg-accent-blue text-white flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                  <span className="material-icons">open_in_new</span>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -211,6 +244,12 @@ const BloodAnalyzerSpread: React.FC = () => {
           Vol. 1 · Page 010
         </div>
       </div>
+      
+      <ImageModal 
+        isOpen={!!selectedImage} 
+        onClose={() => setSelectedImage(null)} 
+        imageSrc={selectedImage || ''} 
+      />
     </>
   );
 };

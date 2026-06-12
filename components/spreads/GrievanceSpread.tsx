@@ -4,12 +4,16 @@ import { Chapter } from '../../types';
 import SplitText from '../ui/SplitText';
 import WrittenText from '../ui/WrittenText';
 import InteractiveWord from '../ui/InteractiveWord';
+import ImageModal from '../ui/ImageModal';
+import { useState } from 'react';
 
 interface Props {
     onNavigate?: (chapter: Chapter) => void;
 }
 
 const GrievanceSpread: React.FC<Props> = () => {
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
     return (
         <>
             {/* Left Page: Problem, Role, Contributors */}
@@ -108,20 +112,20 @@ const GrievanceSpread: React.FC<Props> = () => {
                     {/* Simple tape effect */}
                     <div className="absolute top-2 left-1/2 -translate-x-1/2 w-24 h-6 bg-blue-100/80 dark:bg-blue-900/40 -rotate-1 shadow-sm opacity-80 z-20 mix-blend-multiply dark:mix-blend-overlay"></div>
 
-                    <div className="relative">
-                        <div className="bg-white dark:bg-gray-800 p-2 shadow-sm border border-gray-200 dark:border-gray-700">
-                            <img
-                                src="/grieve.png"
-                                onError={(e) => {
-                                    e.currentTarget.src = "https://placehold.co/600x350/f0f0f0/a0a0a0?text=System+Architecture+Diagram";
-                                }}
-                                alt="System Architecture Overview"
-                                className="w-auto h-auto max-h-[160px] object-contain mx-auto hover:opacity-100 transition-opacity"
-                            />
+                    <div className="relative overflow-hidden bg-stone-100 dark:bg-stone-900 border border-stone-200/50 dark:border-stone-800/50 group/img cursor-pointer" onClick={() => setSelectedImage("/GrievanceFlow.png")} title="Click to enlarge">
+                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity z-10">
+                          <span className="text-white font-mono text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                            <span className="material-icons text-sm">zoom_in</span> Click to view
+                          </span>
                         </div>
-                        <div className="text-center mt-1.5 font-mono text-[10px] text-gray-500 uppercase tracking-wider">
-                            Figure 1. Example Running System
-                        </div>
+                        <img 
+                          src="/GrievanceFlow.png" 
+                          alt="System Architecture Diagram" 
+                          className="w-full h-auto max-h-[160px] object-contain opacity-95 mx-auto transition-transform duration-300 group-hover/img:scale-105"
+                          onError={(e) => {
+                            e.currentTarget.src = "https://placehold.co/500x300/eae8e6/4b5563?text=Architecture+Diagram";
+                          }}
+                        />
                     </div>
                 </div>
 
@@ -174,6 +178,12 @@ const GrievanceSpread: React.FC<Props> = () => {
                     Vol. 1 · Page 010
                 </div>
             </div>
+
+            <ImageModal 
+                isOpen={!!selectedImage} 
+                onClose={() => setSelectedImage(null)} 
+                imageSrc={selectedImage || ''} 
+            />
         </>
     );
 };

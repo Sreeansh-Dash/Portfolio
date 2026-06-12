@@ -151,8 +151,6 @@ const App: React.FC = () => {
               prevLabel={prevChapter?.label}
               nextLabel={nextChapter?.label}
             >
-              <Navigation currentChapter={currentChapter} onNavigate={handleNavigate} />
-
               <div className="w-full h-full relative" style={{ perspective: '2000px', transformStyle: 'preserve-3d' }}>
                 <AnimatePresence mode="wait" custom={direction}>
                   <PageCurlWrapper
@@ -165,6 +163,7 @@ const App: React.FC = () => {
                 </AnimatePresence>
               </div>
             </BookLayout>
+            <Navigation currentChapter={currentChapter} onNavigate={handleNavigate} />
           </BookScene>
         )}
       </div>

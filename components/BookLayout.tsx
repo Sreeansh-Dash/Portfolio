@@ -38,6 +38,9 @@ const BookLayout: React.FC<BookLayoutProps> = ({
         {/* Mobile: Top to Bottom separation line */}
         <div className="absolute top-1/2 left-0 right-0 h-px bg-gray-300 dark:bg-gray-700 md:hidden z-20" aria-hidden="true"></div>
 
+        {/* Content Rendered Here (Usually two flex-1 divs) */}
+        {children}
+
         {/* Navigation Controls - Unobtrusive until hovered */}
         {onPrev && (
           <motion.button
@@ -80,9 +83,6 @@ const BookLayout: React.FC<BookLayoutProps> = ({
             </div>
           </motion.button>
         )}
-
-        {/* Content Rendered Here (Usually two flex-1 divs) */}
-        {children}
       </div>
 
       {/* Background decoration under the book */}

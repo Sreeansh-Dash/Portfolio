@@ -5,12 +5,15 @@ import SplitText from '../ui/SplitText';
 import BlurText from '../ui/BlurText';
 import WrittenText from '../ui/WrittenText';
 import InteractiveWord from '../ui/InteractiveWord';
+import ImageModal from '../ui/ImageModal';
+import { useState } from 'react';
 
 interface Props {
   onNavigate: (chapter: Chapter) => void;
 }
 
 const SmartCaneSpread: React.FC<Props> = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   return (
     <>
       {/* Left Page: Narrative & Context */}
@@ -114,15 +117,20 @@ const SmartCaneSpread: React.FC<Props> = () => {
           <div className="relative my-6 group flex flex-col items-center">
             <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-40 h-7 bg-yellow-100/80 dark:bg-yellow-900/40 rotate-1 shadow-sm border border-yellow-200/50 backdrop-blur-[1px] z-20"></div>
 
-            <div className="relative">
-              <div className="bg-stone-50 dark:bg-stone-850 p-3 shadow-lg rotate-1 border border-stone-200 dark:border-stone-800 transition-transform duration-500 group-hover:rotate-0 inline-block">
+            <div className="relative group/img cursor-pointer" onClick={() => setSelectedImage("/smartcane.png")} title="Click to enlarge">
+              <div className="bg-stone-50 dark:bg-stone-850 p-3 shadow-lg rotate-1 border border-stone-200 dark:border-stone-800 transition-transform duration-500 group-hover/img:rotate-0 inline-block relative overflow-hidden">
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity z-10">
+                  <span className="text-white font-mono text-xs font-bold uppercase tracking-widest flex items-center gap-2">
+                    <span className="material-icons text-sm">zoom_in</span> Click to view
+                  </span>
+                </div>
                 <img
                   src="/smartcane.png"
                   onError={(e) => {
                     e.currentTarget.src = "https://placehold.co/500x300/eae8e6/4b5563?text=Prototype+Mk.+I";
                   }}
                   alt="Smart Cane Prototype"
-                  className="w-auto h-auto max-h-[200px] object-contain opacity-90 mx-auto"
+                  className="w-auto h-auto max-h-[200px] object-contain opacity-90 mx-auto transition-transform duration-300 group-hover/img:scale-105"
                 />
               </div>
               <div className="text-center mt-3 font-mono text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">
@@ -177,6 +185,12 @@ const SmartCaneSpread: React.FC<Props> = () => {
           Vol. 1 · Page 008
         </div>
       </div>
+      
+      <ImageModal 
+        isOpen={!!selectedImage} 
+        onClose={() => setSelectedImage(null)} 
+        imageSrc={selectedImage || ''} 
+      />
     </>
   );
 };

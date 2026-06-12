@@ -70,11 +70,28 @@ const Navigation: React.FC<NavigationProps> = ({ currentChapter, onNavigate }) =
     <nav ref={navRef} className="absolute right-12 md:right-24 top-0 z-50 flex flex-col items-center" aria-label="Chapter Navigation">
       {/* The Red Ribbon hanging part - Now Toggles */}
       <motion.div
-        className="origin-top"
-        animate={flutterAnimate}
-        transition={flutterTransition}
+        className="origin-top z-50"
+        initial={{ y: -40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <button
+        <motion.div
+          className="origin-top"
+          animate={reduceAnimations ? {} : { y: [0, 15, 0, 8, 0] }}
+          transition={{ 
+            duration: 1.5, 
+            repeat: 3, 
+            repeatDelay: 0.5,
+            delay: 0.6,
+            ease: "easeOut" 
+          }}
+        >
+          <motion.div
+            className="origin-top"
+            animate={flutterAnimate}
+            transition={flutterTransition}
+          >
+            <button
           className={`w-8 bg-bookmark-red shadow-md cursor-pointer transition-all duration-300 hover:h-24 ${isOpen ? 'h-16' : 'h-20'} border-none outline-none focus:ring-2 focus:ring-yellow-400`}
           onClick={toggleMenu}
           aria-expanded={isOpen}
@@ -88,6 +105,8 @@ const Navigation: React.FC<NavigationProps> = ({ currentChapter, onNavigate }) =
             </div>
           )}
         </button>
+        </motion.div>
+        </motion.div>
       </motion.div>
 
       {/* The Paper Menu Dropdown */}
