@@ -27,7 +27,7 @@ const BookLayout: React.FC<BookLayoutProps> = ({
     <div className="book-container w-full max-w-7xl mx-auto relative">
       {/* The physical book cover/pages container */}
       <div
-        className="bg-paper-light dark:bg-paper-dark w-full min-h-[85vh] h-auto md:h-auto md:aspect-[3/2] lg:aspect-[1.5/1] shadow-book rounded-sm flex flex-col md:flex-row overflow-visible md:overflow-hidden relative transition-all duration-300"
+        className="bg-page w-full min-h-[85vh] h-auto md:h-auto md:aspect-[3/2] lg:aspect-[1.5/1] shadow-book rounded-sm flex flex-col md:flex-row overflow-visible md:overflow-hidden relative transition-all duration-300"
       >
         {/* Paper Texture Overlay */}
         <div className="absolute inset-0 bg-paper-texture opacity-40 pointer-events-none mix-blend-multiply dark:mix-blend-soft-light z-0" aria-hidden="true"></div>

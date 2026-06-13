@@ -67,10 +67,10 @@ const Navigation: React.FC<NavigationProps> = ({ currentChapter, onNavigate }) =
   const flutterTransition = reduceAnimations ? {} : { duration: 8, repeat: Infinity, ease: 'easeInOut' };
 
   return (
-    <nav ref={navRef} className="absolute right-12 md:right-24 top-0 z-50 flex flex-col items-center" aria-label="Chapter Navigation">
+    <nav ref={navRef} className="absolute right-12 md:right-24 top-0 z-50 flex flex-col items-center pointer-events-none" aria-label="Chapter Navigation">
       {/* The Red Ribbon hanging part - Now Toggles */}
       <motion.div
-        className="origin-top z-50"
+        className="origin-top z-50 pointer-events-auto"
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -101,7 +101,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentChapter, onNavigate }) =
           {!isOpen && (
             <div className="w-full h-full flex flex-col items-center justify-end pb-2">
               <span className="text-[8px] font-bold text-white/90 writing-vertical-rl transform rotate-180 mb-1 tracking-widest opacity-80 decoration-transparent">MENU</span>
-              <div className="w-0 h-0 border-l-[16px] border-r-[16px] border-b-[10px] border-l-transparent border-r-transparent border-b-paper-light dark:border-b-paper-dark"></div>
+              <div className="w-0 h-0 border-l-[16px] border-r-[16px] border-b-[10px] border-l-transparent border-r-transparent border-b-page"></div>
             </div>
           )}
         </button>
@@ -113,9 +113,9 @@ const Navigation: React.FC<NavigationProps> = ({ currentChapter, onNavigate }) =
       <div
         id="chapter-menu"
         className={`
-          w-72 bg-paper-light dark:bg-slate-800 shadow-paper-menu rounded-b-sm relative -mt-2 px-8 pt-6 pb-12 
+          w-72 bg-page shadow-paper-menu rounded-b-sm relative -mt-2 px-8 pt-6 pb-12 
           bg-paper-texture transform origin-top transition-all duration-500 ease-in-out
-          ${isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}
+          ${isOpen ? 'opacity-100 scale-y-100 pointer-events-auto' : 'opacity-0 scale-y-0 pointer-events-none'}
         `}
         aria-hidden={!isOpen}
       >

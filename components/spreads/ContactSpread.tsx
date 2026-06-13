@@ -49,28 +49,28 @@ const ContactSpread: React.FC = () => {
   return (
     <>
       {/* Left Page: Let's Talk, Intentions & Open To */}
-      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-texture">
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-panel bg-paper-texture">
         <header className="mb-8 flex justify-between items-start">
           <div className="flex items-center space-x-2 opacity-70">
             <span className="material-icons text-xs">menu_book</span>
             <span className="text-xs uppercase tracking-widest font-mono font-bold">Portfolio Book</span>
           </div>
-          <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase font-mono">
+          <span className="block text-xs font-bold tracking-[0.2em] text-muted uppercase font-mono">
             Chapter VIII
           </span>
         </header>
 
         <div className="flex-grow space-y-6 pt-1 flex flex-col justify-center max-w-xl">
           <div className="space-y-4">
-            <h1 className="font-display text-5xl lg:text-6xl text-primary dark:text-white font-black mb-3 tracking-tight">
+            <h1 className="font-display text-5xl lg:text-6xl text-ink font-black mb-3 tracking-tight">
               <SplitText text="Let's Talk" delay={70} duration={0.4} />
             </h1>
-            <p className="font-serif italic text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-snug">
+            <p className="font-serif italic text-xl md:text-2xl text-ink leading-snug">
               "If you're building something interesting, I want to hear about it."
             </p>
           </div>
 
-          <div className="font-serif text-base md:text-lg text-ink-light dark:text-gray-300 space-y-4 leading-relaxed">
+          <div className="font-serif text-base md:text-lg text-ink space-y-4 leading-relaxed">
             <p>
               I'm currently looking for Software Engineering and AI/ML internships for Summer 2027, preferably in Bengaluru, Hyderabad, Mumbai, or Pune — though I'll always make exceptions for work that's genuinely exciting.
             </p>
@@ -81,10 +81,10 @@ const ContactSpread: React.FC = () => {
 
           {/* Email CTA */}
           <div className="py-4 border-y border-stone-200 dark:border-stone-800 my-4">
-            <span className="block text-[10px] font-mono uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-1">Direct Correspondence</span>
+            <span className="block text-[10px] font-mono uppercase tracking-widest text-muted mb-1">Direct Correspondence</span>
             <a 
               href="mailto:sreeansh786@gmail.com" 
-              className="font-mono text-lg md:text-xl font-black text-accent-blue dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors break-all"
+              className="font-mono text-lg md:text-xl font-black text-accent-warm transition-colors break-all"
             >
               sreeansh786@gmail.com
             </a>
@@ -92,7 +92,7 @@ const ContactSpread: React.FC = () => {
 
           {/* Open To Grid */}
           <div>
-            <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3">Open to</h4>
+            <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-muted mb-3">Open to</h4>
             <div className="grid grid-cols-2 gap-3">
               {[
                 { title: 'Internships', icon: 'work_outline' },
@@ -104,22 +104,22 @@ const ContactSpread: React.FC = () => {
                   key={item.title}
                   className="flex items-center gap-3 p-3 border border-gray-200/80 dark:border-gray-700/60 bg-white/20 dark:bg-black/10 rounded-sm"
                 >
-                  <span className="material-icons text-accent-blue text-base" aria-hidden="true">{item.icon}</span>
-                  <span className="font-mono text-xs text-gray-700 dark:text-gray-300 font-bold uppercase tracking-wide">{item.title}</span>
+                  <span className="material-icons text-accent-warm text-base" aria-hidden="true">{item.icon}</span>
+                  <span className="font-mono text-xs text-ink font-bold uppercase tracking-wide">{item.title}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase" aria-hidden="true">
+        <div className="mt-8 pt-8 flex justify-between items-end text-xs tracking-widest text-muted font-bold uppercase" aria-hidden="true">
           <span>Let's Talk</span>
           <span>Page 015</span>
         </div>
       </div>
 
       {/* Right Page: Message Form & Socials */}
-      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-paper-light dark:bg-paper-dark text-primary dark:text-white">
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-page text-ink">
         {/* Corner curl — sits at bottom-right, appears on hover */}
         <motion.div
           className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"
@@ -137,12 +137,12 @@ const ContactSpread: React.FC = () => {
           {/* Contact Form */}
           {submitted ? (
             <div className="space-y-4">
-              <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-gray-400 border-b border-stone-250 dark:border-stone-800 pb-2 mb-3">
+              <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-muted border-b border-stone-250 dark:border-stone-800 pb-2 mb-3">
                 Send a Message
               </h3>
               <div className="py-8 text-center space-y-3">
                 <span className="material-icons text-3xl text-green-500">check_circle_outline</span>
-                <p className="font-serif text-base text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="font-serif text-base text-ink leading-relaxed">
                   Message sent. I'll get back to you within 24 hours.
                 </p>
               </div>
@@ -156,13 +156,13 @@ const ContactSpread: React.FC = () => {
             className="space-y-4"
           >
             <input type="hidden" name="form-name" value="contact" />
-            <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-gray-400 border-b border-stone-250 dark:border-stone-800 pb-2 mb-3">
+            <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-muted border-b border-stone-250 dark:border-stone-800 pb-2 mb-3">
               Send a Message
             </h3>
             
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="form-name" className="block text-[10px] font-mono uppercase text-gray-400 mb-1">Name</label>
+                <label htmlFor="form-name" className="block text-[10px] font-mono uppercase text-muted mb-1">Name</label>
                 <input 
                   id="form-name"
                   type="text"
@@ -171,11 +171,11 @@ const ContactSpread: React.FC = () => {
                   placeholder="Your Name"
                   value={formState.name}
                   onChange={e => setFormState({ ...formState, name: e.target.value })}
-                  className="w-full text-sm font-sans p-3 bg-white/40 dark:bg-black/15 border border-stone-300 dark:border-stone-700 rounded-sm focus:outline-none focus:border-accent-blue dark:text-white"
+                  className="w-full text-sm font-sans p-3 bg-white/40 dark:bg-black/15 border border-stone-300 dark:border-stone-700 rounded-sm focus:outline-none focus:border-accent-warm text-ink"
                 />
               </div>
               <div>
-                <label htmlFor="form-email" className="block text-[10px] font-mono uppercase text-gray-400 mb-1">Email</label>
+                <label htmlFor="form-email" className="block text-[10px] font-mono uppercase text-muted mb-1">Email</label>
                 <input 
                   id="form-email"
                   type="email"
@@ -184,13 +184,13 @@ const ContactSpread: React.FC = () => {
                   placeholder="your@email.com"
                   value={formState.email}
                   onChange={e => setFormState({ ...formState, email: e.target.value })}
-                  className="w-full text-sm font-sans p-3 bg-white/40 dark:bg-black/15 border border-stone-300 dark:border-stone-700 rounded-sm focus:outline-none focus:border-accent-blue dark:text-white"
+                  className="w-full text-sm font-sans p-3 bg-white/40 dark:bg-black/15 border border-stone-300 dark:border-stone-700 rounded-sm focus:outline-none focus:border-accent-warm text-ink"
                 />
               </div>
             </div>
             
             <div>
-              <label htmlFor="form-message" className="block text-[10px] font-mono uppercase text-gray-400 mb-1">Message</label>
+              <label htmlFor="form-message" className="block text-[10px] font-mono uppercase text-muted mb-1">Message</label>
               <textarea 
                 id="form-message"
                 name="message"
@@ -199,14 +199,14 @@ const ContactSpread: React.FC = () => {
                 placeholder="What are you building?"
                 value={formState.message}
                 onChange={e => setFormState({ ...formState, message: e.target.value })}
-                className="w-full text-sm font-sans p-3 bg-white/40 dark:bg-black/15 border border-stone-300 dark:border-stone-700 rounded-sm focus:outline-none focus:border-accent-blue dark:text-white resize-none"
+                className="w-full text-sm font-sans p-3 bg-white/40 dark:bg-black/15 border border-stone-300 dark:border-stone-700 rounded-sm focus:outline-none focus:border-accent-warm text-ink resize-none"
               />
             </div>
 
             <button 
               type="submit"
               disabled={isSending}
-              className="w-full py-3 bg-primary dark:bg-white text-white dark:text-primary font-mono text-xs font-bold uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-60"
+              className="w-full py-3 bg-ink text-page font-mono text-xs font-bold uppercase tracking-widest rounded-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-60"
             >
               {isSending ? 'Sending...' : 'Send Message'}
               <span className="material-icons text-sm">{isSending ? 'hourglass_top' : 'arrow_forward'}</span>
@@ -229,10 +229,10 @@ const ContactSpread: React.FC = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3.5 p-3 border border-stone-200 dark:border-stone-850 bg-white/40 dark:bg-black/15 rounded-sm hover:border-gray-400 transition-colors group"
               >
-                <span className="material-icons text-base text-gray-400 group-hover:text-accent-blue">code</span>
+                <span className="material-icons text-base text-muted group-hover:text-accent-warm">code</span>
                 <div className="min-w-0">
-                  <span className="block text-[8px] font-mono text-gray-400 uppercase tracking-wider">GitHub</span>
-                  <span className="block text-xs font-mono truncate text-gray-700 dark:text-gray-300">Sreeansh-Dash</span>
+                  <span className="block text-[8px] font-mono text-muted uppercase tracking-wider">GitHub</span>
+                  <span className="block text-xs font-mono truncate text-ink">Sreeansh-Dash</span>
                 </div>
               </a>
 
@@ -242,10 +242,10 @@ const ContactSpread: React.FC = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-3.5 p-3 border border-stone-200 dark:border-stone-850 bg-white/40 dark:bg-black/15 rounded-sm hover:border-gray-400 transition-colors group"
               >
-                <span className="material-icons text-base text-gray-400 group-hover:text-accent-blue">link</span>
+                <span className="material-icons text-base text-muted group-hover:text-accent-warm">link</span>
                 <div className="min-w-0">
-                  <span className="block text-[8px] font-mono text-gray-400 uppercase tracking-wider">LinkedIn</span>
-                  <span className="block text-xs font-mono truncate text-gray-700 dark:text-gray-300">in/sreeansh-dash</span>
+                  <span className="block text-[8px] font-mono text-muted uppercase tracking-wider">LinkedIn</span>
+                  <span className="block text-xs font-mono truncate text-ink">in/sreeansh-dash</span>
                 </div>
               </a>
             </div>
@@ -265,10 +265,10 @@ const ContactSpread: React.FC = () => {
 
         {/* Footer & Book Closing Line */}
         <div className="mt-auto pt-6 border-t border-stone-200 dark:border-stone-800 text-center">
-          <p className="text-[10px] font-mono text-gray-450 dark:text-gray-400 uppercase tracking-widest leading-relaxed">
+          <p className="text-[10px] font-mono text-muted uppercase tracking-widest leading-relaxed">
             Sreeansh Dash · 2025 · Built with React + Vite + Tailwind · Hosted on Netlify
           </p>
-          <div className="flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase mt-2" aria-hidden="true">
+          <div className="flex justify-between items-end text-xs tracking-widest text-muted font-bold uppercase mt-2" aria-hidden="true">
             <span>Get in Touch</span>
             <span>Page 016</span>
           </div>

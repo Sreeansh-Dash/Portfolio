@@ -24,14 +24,18 @@
           extend: {
             colors: {
               primary: "#1a1a1a",
-              "paper-light": "#fffdf5",
-              "paper-dark": "#1e293b",
-              "ink-light": "#1a1a1a",
-              "ink-dark": "#e2e8f0",
+
               "accent-blue": "#3b82f6",
               "sticky-yellow": "#fef08a",
               "bookmark-red": "#b91c1c",
               "wax-red": "#991b1b",
+              // Semantic tokens (auto dark-mode via CSS custom properties)
+              "page": "var(--color-bg-primary)",
+              "surface": "var(--color-bg-secondary)",
+              "panel": "var(--color-bg-tertiary)",
+              "ink": "var(--color-text-primary)",
+              "muted": "var(--color-text-secondary)",
+              "accent-warm": "var(--color-text-accent)",
             },
             fontFamily: {
               display: ["'Playfair Display'", "serif"],
@@ -60,6 +64,24 @@
       };
     </script>
     <style>
+      /* Semantic color tokens — auto-switch via .dark class */
+      :root {
+        --color-bg-primary: #F8F4EA;
+        --color-bg-secondary: #E3E8DD;
+        --color-bg-tertiary: #E6DCC6;
+        --color-text-primary: #1F1B16;
+        --color-text-secondary: #6B6356;
+        --color-text-accent: #A6432F;
+      }
+      .dark {
+        --color-bg-primary: #1A1816;
+        --color-bg-secondary: #1C1F26;
+        --color-bg-tertiary: #2A2622;
+        --color-text-primary: #F2EDE2;
+        --color-text-secondary: #A89E8E;
+        --color-text-accent: #D98E5C;
+      }
+
       /* Hidden scrollbars — preserving the book aesthetic */
       .custom-scrollbar {
           -ms-overflow-style: none;  /* IE / Edge */
@@ -80,14 +102,11 @@
           left: 0;
           right: 0;
           height: 36px;
-          background: linear-gradient(to top, #fffdf5, transparent);
+          background: linear-gradient(to top, var(--color-bg-primary), transparent);
           pointer-events: none;
           display: block;
           z-index: 10;
           flex-shrink: 0;
-      }
-      .dark .scroll-hint-container::after {
-          background: linear-gradient(to top, #1e293b, transparent);
       }
       .spine-shadow-overlay {
           background: linear-gradient(to right, 

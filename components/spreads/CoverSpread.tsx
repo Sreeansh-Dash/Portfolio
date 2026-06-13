@@ -23,7 +23,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
   return (
     <>
       {/* Left Page: Hero / Intro (Personal Details) */}
-      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50">
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-page">
         <div className="mt-4 md:mt-8 relative flex-grow flex flex-col justify-start overflow-y-auto custom-scrollbar scroll-hint-container pr-2 max-w-xl">
           
           {/* Availability & Location Badges */}
@@ -32,7 +32,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
               Available for Internships
             </span>
-            <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-wider text-gray-500 dark:text-gray-400 uppercase">
+            <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold tracking-wider text-muted uppercase">
               <span className="material-icons text-sm">place</span>
               Chennai, India
             </span>
@@ -44,19 +44,19 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           </h4>
 
           {/* Name */}
-          <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-black text-primary dark:text-white leading-[0.95] mb-6 tracking-tight">
+          <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-black text-ink leading-[0.95] mb-6 tracking-tight">
             <SplitText text="Sreeansh" delay={80} duration={0.4} />
             <br />
             <SplitText text="Dash" delay={80} duration={0.4} />
           </h1>
 
           {/* Tagline Option A */}
-          <p className="font-serif italic text-2xl md:text-3xl text-gray-900 dark:text-gray-100 leading-snug mb-6">
+          <p className="font-serif italic text-2xl md:text-3xl text-ink leading-snug mb-6">
             I build systems that think — and products people actually use.
           </p>
 
           {/* Introductory Paragraph */}
-          <p className="font-serif text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+          <p className="font-serif text-base md:text-lg text-ink leading-relaxed mb-8">
             I build things that cross disciplines — ML models trained on medical data, 
             mobile apps backed by graph databases, hardware that detects falls and calls 
             for help. The common thread is always the same: does it actually work for 
@@ -64,7 +64,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           </p>
 
           {/* Academic Line */}
-          <p className="font-mono text-sm text-gray-500 dark:text-gray-400 mb-10 border-l-2 border-accent-blue dark:border-blue-400 pl-4 py-1">
+          <p className="font-mono text-sm text-muted mb-10 border-l-2 border-accent-blue dark:border-blue-400 pl-4 py-1">
             B.Tech CSE (AI/ML) · VIT Chennai · 3rd Year · 9.62/10.0 CGPA
           </p>
 
@@ -72,7 +72,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           <div className="flex flex-wrap gap-5 mb-6">
             <button
               onClick={() => onNavigate(Chapter.INDEX)}
-              className="bg-primary text-white dark:bg-white dark:text-primary px-10 py-4 font-display font-bold tracking-wide text-base flex items-center gap-2.5 hover:opacity-90 transition-opacity shadow-lg cursor-pointer"
+              className="bg-ink text-page px-10 py-4 font-display font-bold tracking-wide text-base flex items-center gap-2.5 hover:opacity-90 transition-opacity shadow-lg cursor-pointer"
               aria-label="View Index"
             >
               View My Work
@@ -81,7 +81,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
             
             <a href="/Sreeansh_dash_resume_visual.pdf" download="Sreeansh_Dash_Resume.pdf"
                onClick={handleDownloadClick}
-               className="border-2 border-gray-300 dark:border-gray-600 px-8 py-3.5 font-display font-bold tracking-wide text-base text-gray-800 dark:text-gray-200 hover:border-gray-800 dark:hover:border-gray-400 transition-colors flex items-center gap-2.5">
+               className="border-2 border-gray-300 dark:border-gray-600 px-8 py-3.5 font-display font-bold tracking-wide text-base text-ink hover:border-gray-800 dark:hover:border-gray-400 transition-colors flex items-center gap-2.5">
               {isDownloading ? (
                 <>
                   Downloading… <span className="material-icons text-sm animate-spin">hourglass_top</span>
@@ -97,24 +97,24 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
           {/* Socials */}
           <div className="flex flex-wrap items-center gap-6 text-sm font-mono border-t border-gray-100 dark:border-gray-800/80 pt-6">
             <a href="https://github.com/Sreeansh-Dash" target="_blank" rel="noopener noreferrer"
-               className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400 hover:text-accent-blue dark:hover:text-blue-400 transition-colors">
+               className="flex items-center gap-1.5 text-muted hover:text-accent-warm transition-colors">
               <span className="material-icons text-base">code</span> GitHub
             </a>
             <span className="text-gray-300 dark:text-gray-700">·</span>
             <a href="https://www.linkedin.com/in/sreeansh-dash/" target="_blank" rel="noopener noreferrer"
-               className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400 hover:text-accent-blue dark:hover:text-blue-400 transition-colors">
+               className="flex items-center gap-1.5 text-muted hover:text-accent-warm transition-colors">
               <span className="material-icons text-base">link</span> LinkedIn
             </a>
             <span className="text-gray-300 dark:text-gray-700">·</span>
             <a href="mailto:sreeansh786@gmail.com"
-               className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400 hover:text-accent-blue dark:hover:text-blue-400 transition-colors">
+               className="flex items-center gap-1.5 text-muted hover:text-accent-warm transition-colors">
               <span className="material-icons text-base">mail_outline</span> sreeansh786@gmail.com
             </a>
           </div>
         </div>
 
         {/* Scroll Indicator */}
-        <div className="mt-8 pt-8 flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase" aria-hidden="true">
+        <div className="mt-8 pt-8 flex justify-between items-end text-xs tracking-widest text-muted font-bold uppercase" aria-hidden="true">
           <span className="flex items-center gap-1.5">
             <span className="material-icons text-xs animate-bounce">south</span>
             Scroll to read
@@ -124,7 +124,7 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
       </div>
 
       {/* Right Page: Large Photo Layout */}
-      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-paper-light dark:bg-paper-dark justify-center items-center">
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-surface justify-center items-center">
         {/* Corner curl — sits at bottom-right, appears on hover */}
         <motion.div
           className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"
@@ -165,11 +165,11 @@ const CoverSpread: React.FC<Props> = ({ onNavigate }) => {
         </div>
 
         {/* Small Caption below photo */}
-        <p className="mt-12 font-mono text-[10px] tracking-widest text-gray-500 uppercase">
+        <p className="mt-12 font-mono text-[10px] tracking-widest text-muted uppercase">
           Figure 1.0 · Portrait of Sreeansh Dash
         </p>
 
-        <div className="mt-auto w-full pt-8 flex justify-between items-end text-xs tracking-widest text-gray-400 dark:text-gray-500 font-bold uppercase" aria-hidden="true">
+        <div className="mt-auto w-full pt-8 flex justify-between items-end text-xs tracking-widest text-muted font-bold uppercase" aria-hidden="true">
           <span>Vol. 1</span>
           <span>Page 002</span>
         </div>

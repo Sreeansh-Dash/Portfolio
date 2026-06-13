@@ -12,38 +12,38 @@ const CascadeXSpread: React.FC = () => {
   return (
     <>
       {/* Left Page: Narrative & Problem Framing */}
-      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-paper-light dark:bg-paper-dark bg-paper-texture overflow-hidden">
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative border-b md:border-r md:border-b-0 border-gray-200 dark:border-gray-700/50 bg-page bg-paper-texture overflow-hidden">
         <header className="mb-8 flex justify-between items-start flex-shrink-0">
           <div className="flex items-center space-x-2 opacity-70">
             <span className="material-icons text-xs">menu_book</span>
             <span className="text-xs uppercase tracking-widest font-mono font-bold">Portfolio Book</span>
           </div>
-          <span className="block text-xs font-bold tracking-[0.2em] text-gray-400 uppercase font-mono">
+          <span className="block text-xs font-bold tracking-[0.2em] text-muted uppercase font-mono">
             Chapter VI
           </span>
         </header>
 
         <div className="flex-grow space-y-8 max-w-xl justify-start flex flex-col overflow-y-auto custom-scrollbar scroll-hint-container pr-2">
           <div>
-            <h1 className="font-display text-4xl lg:text-5xl text-primary dark:text-white font-black mb-3 tracking-tight">
+            <h1 className="font-display text-4xl lg:text-5xl text-ink font-black mb-3 tracking-tight">
               <SplitText text="CascadeX" delay={70} duration={0.4} />
             </h1>
-            <h2 className="font-serif text-xl md:text-2xl text-ink-light dark:text-gray-300 italic">
+            <h2 className="font-serif text-xl md:text-2xl text-ink italic">
               <SplitText text="Scan first. Take second." delay={60} duration={0.4} />
             </h2>
           </div>
 
           {/* Problem Framing */}
-          <div className="font-serif text-lg text-ink-light dark:text-gray-300 text-justify leading-relaxed">
-            <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-2.5">Problem Framing</h3>
+          <div className="font-serif text-lg text-ink text-justify leading-relaxed">
+            <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-accent-warm mb-2.5">Problem Framing</h3>
             <p>
               Polypharmacy — taking multiple medications simultaneously — is one of the most under-addressed risks for elderly patients. CascadeX makes the hidden danger visible.
             </p>
           </div>
 
           {/* Technical Approach */}
-          <div className="font-serif text-base md:text-lg text-ink-light dark:text-gray-300 leading-relaxed">
-            <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-primary dark:text-blue-300 mb-2.5">Technical Approach</h3>
+          <div className="font-serif text-base md:text-lg text-ink leading-relaxed">
+            <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-accent-warm mb-2.5">Technical Approach</h3>
             <ul className="list-disc list-outside pl-5 space-y-2 text-justify">
               <li><strong>Neo4j Graph Database:</strong> Queries known adverse drug-drug interactions in real-time.</li>
               <li><strong>Groq API Integration:</strong> Explains clinical interaction risks in natural, reassuring, plain language that anyone can understand.</li>
@@ -54,17 +54,17 @@ const CascadeXSpread: React.FC = () => {
           <div className="mt-8 flex flex-col md:flex-row gap-8 text-sm">
             {/* Tech Tags */}
             <div className="flex-grow">
-              <h4 className="font-mono text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2.5 border-b border-gray-200 dark:border-gray-800 pb-1">Toolkit</h4>
+              <h4 className="font-mono text-xs uppercase tracking-widest text-muted mb-2.5 border-b border-gray-200 dark:border-gray-800 pb-1">Toolkit</h4>
               <div className="flex flex-wrap gap-1.5 mt-2">
                 {['React Native', 'Neo4j', 'Groq API', 'Expo EAS', 'Graph Database', 'TypeScript'].map(tag => (
-                  <span key={tag} className="px-2 py-0.5 bg-stone-100 dark:bg-stone-800 text-gray-700 dark:text-gray-300 rounded text-xs font-mono">{tag}</span>
+                  <span key={tag} className="px-2 py-0.5 bg-stone-100 dark:bg-stone-800 text-ink rounded text-xs font-mono">{tag}</span>
                 ))}
               </div>
             </div>
 
             {/* Status */}
             <div className="flex-grow">
-              <h4 className="font-mono text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2.5 border-b border-gray-200 dark:border-gray-800 pb-1">Status</h4>
+              <h4 className="font-mono text-xs uppercase tracking-widest text-muted mb-2.5 border-b border-gray-200 dark:border-gray-800 pb-1">Status</h4>
               <div className="flex items-center gap-2 mt-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
                 <span className="font-mono text-xs font-bold text-blue-700 dark:text-blue-400 uppercase tracking-wider">In Progress</span>
@@ -73,13 +73,13 @@ const CascadeXSpread: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 text-xs font-mono text-gray-400 dark:text-gray-500 flex-shrink-0">
+        <div className="mt-8 pt-8 text-xs font-mono text-muted flex-shrink-0">
           Page 011
         </div>
       </div>
 
       {/* Right Page: Visual Mockups & Interactions */}
-      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-paper-light dark:bg-paper-dark overflow-hidden">
+      <div className="flex-1 p-8 md:p-14 lg:p-20 flex flex-col relative bg-surface overflow-hidden">
         {/* Corner curl — sits at bottom-right, appears on hover */}
         <motion.div
           className="absolute bottom-0 right-0 w-10 h-10 pointer-events-none z-40"
@@ -95,10 +95,10 @@ const CascadeXSpread: React.FC = () => {
         <div className="flex-grow flex flex-col justify-start max-w-xl space-y-6 overflow-y-auto custom-scrollbar scroll-hint-container pr-2">
           {/* Section: Mobile Interaction */}
           <div>
-            <h3 className="font-display text-2xl font-bold text-ink-light dark:text-white mb-4 border-b-2 border-primary/10 pb-2.5">
+            <h3 className="font-display text-2xl font-bold text-ink mb-4 border-b-2 border-primary/10 pb-2.5">
               <SplitText text="Mobile Interaction" delay={50} duration={0.4} />
             </h3>
-            <p className="font-serif text-base md:text-lg text-ink-light dark:text-gray-300 leading-relaxed text-justify">
+            <p className="font-serif text-base md:text-lg text-ink leading-relaxed text-justify">
               Designed with a simple camera scan interface so that elderly patients can scan barcodes on prescription bottles. The application outputs immediate alerts without requiring complicated navigation.
             </p>
           </div>
@@ -158,12 +158,12 @@ const CascadeXSpread: React.FC = () => {
           </div>
 
           {/* Screenshots text caption */}
-          <div className="text-center font-mono text-xs text-gray-400 uppercase tracking-widest">
+          <div className="text-center font-mono text-xs text-muted uppercase tracking-widest">
             [ CascadeX — App Screenshots Coming Soon ]
           </div>
         </div>
 
-        <div className="mt-8 pt-8 flex justify-end text-xs font-mono text-gray-400 dark:text-gray-500 flex-shrink-0">
+        <div className="mt-8 pt-8 flex justify-end text-xs font-mono text-muted flex-shrink-0">
           Vol. 1 · Page 012
         </div>
       </div>
