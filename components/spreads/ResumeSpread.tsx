@@ -10,6 +10,14 @@ const ResumeSpread: React.FC = () => {
 
   const handleDownloadClick = () => {
     setIsDownloading(true);
+
+    const link = document.createElement('a');
+    link.href = '/Sreeansh_dash_resume_visual.pdf';
+    link.download = 'Sreeansh_Dash_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
     setTimeout(() => {
       setIsDownloading(false);
     }, 1500);
@@ -104,36 +112,6 @@ const ResumeSpread: React.FC = () => {
 
         <div className="mt-6 md:mt-10 z-10 flex-grow flex flex-col justify-start space-y-8 max-w-xl overflow-y-auto custom-scrollbar scroll-hint-container pr-2">
           
-          {/* Action CTA (Prominent and Inline) */}
-          <div className="w-full relative shrink-0">
-            <a
-              href="/Sreeansh_dash_resume_visual.pdf"
-              download="Sreeansh_Dash_Resume.pdf"
-              onClick={handleDownloadClick}
-              className="group flex items-center justify-between w-full p-4 border-2 border-accent-warm/30 hover:border-accent-warm bg-accent-warm/5 hover:bg-accent-warm/10 transition-all duration-300 rounded-sm cursor-pointer text-left"
-            >
-              <div>
-                <span className="block text-xs font-bold text-accent-warm uppercase tracking-widest font-mono mb-1">Full Print Version</span>
-                <span className="block text-ink font-display font-bold text-xl group-hover:underline">
-                  {isDownloading ? 'Downloading...' : 'Download Resume (PDF)'}
-                </span>
-              </div>
-              <div className="w-10 h-10 flex-shrink-0 rounded-full bg-accent-warm text-page flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-sm">
-                <span className={`material-icons ${isDownloading ? 'animate-spin' : ''}`}>
-                  {isDownloading ? 'hourglass_top' : 'download'}
-                </span>
-              </div>
-            </a>
-            <div className="flex justify-end pr-4 mt-2">
-              <motion.span
-                className="font-handwriting text-muted text-sm inline-block"
-                animate={reduceAnimations ? { rotate: -2 } : { rotate: [-2, -0.5, -2, -3.5, -2] }}
-                transition={reduceAnimations ? {} : { duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <WrittenText text="Get the full details ⤴" delay={400} speed={15} showCursor={true} />
-              </motion.span>
-            </div>
-          </div>
           {/* Experience & Leadership */}
           <section className="space-y-4">
             <h3 className="text-xs uppercase tracking-widest text-accent-warm font-bold font-mono">Experience & Leadership</h3>
@@ -161,6 +139,35 @@ const ResumeSpread: React.FC = () => {
               </div>
             </div>
           </section>
+
+          {/* Action CTA (Prominent and Inline) */}
+          <div className="w-full relative shrink-0">
+            <button
+              onClick={handleDownloadClick}
+              className="group flex items-center justify-between w-full p-4 border-2 border-accent-warm/30 hover:border-accent-warm bg-accent-warm/5 hover:bg-accent-warm/10 transition-all duration-300 rounded-sm cursor-pointer text-left relative z-50 pointer-events-auto"
+            >
+              <div>
+                <span className="block text-xs font-bold text-accent-warm uppercase tracking-widest font-mono mb-1">Full Print Version</span>
+                <span className="block text-ink font-display font-bold text-xl group-hover:underline">
+                  {isDownloading ? 'Downloading...' : 'Download Resume (PDF)'}
+                </span>
+              </div>
+              <div className="w-10 h-10 flex-shrink-0 rounded-full bg-accent-warm text-page flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-sm">
+                <span className={`material-icons ${isDownloading ? 'animate-spin' : ''}`}>
+                  {isDownloading ? 'hourglass_top' : 'download'}
+                </span>
+              </div>
+            </button>
+            <div className="flex justify-end pr-4 mt-2">
+              <motion.span
+                className="font-handwriting text-muted text-sm inline-block"
+                animate={reduceAnimations ? { rotate: -2 } : { rotate: [-2, -0.5, -2, -3.5, -2] }}
+                transition={reduceAnimations ? {} : { duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <WrittenText text="Get the full details ⤴" delay={400} speed={15} showCursor={true} />
+              </motion.span>
+            </div>
+          </div>
 
           {/* Certifications */}
           <section className="space-y-4">
